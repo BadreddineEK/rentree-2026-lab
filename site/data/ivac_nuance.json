@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "source": "DEPP — Indicateurs de valeur ajoutée des collèges (data.education.gouv.fr, fr-en-indicateurs-valeur-ajoutee-colleges)",
+    "annee_reference": "session 2025 (DNB)",
+    "definition": "La valeur ajoutée (VA) compare le taux de réussite au DNB observé d'un collège à celui attendu compte tenu du profil de ses élèves. VA positive = l'établissement fait mieux qu'attendu. Elle est calculée à profil social donné : un collège à IPS faible peut avoir une VA fortement positive."
+  },
+  "part_ips_bas_va_positive_pct": 50.0,
+  "n_colleges_ips_bas": 1562,
+  "seuil_ips_bas": "quart le plus défavorisé (IPS ≤ 94, 1er quartile)",
+  "lecture": "Une part importante des collèges les plus défavorisés socialement font mieux que ce que leur profil laisserait attendre : l'IPS décrit un contexte, pas une fatalité."
+}

@@ -1,0 +1,723 @@
+{
+  "meta": {
+    "titre": "Lien entre position sociale des collèges et niveau de vie du territoire",
+    "avertissement": "Corrélation n'est pas causalité. Ce graphique montre que deux faits varient ensemble à l'échelle départementale, pas que l'un cause l'autre."
+  },
+  "points": [
+    {
+      "code": "01",
+      "nom": "AIN",
+      "ips": 109.0,
+      "revenu_median": 24810,
+      "n_colleges": 66
+    },
+    {
+      "code": "02",
+      "nom": "AISNE",
+      "ips": 94.5,
+      "revenu_median": 20920,
+      "n_colleges": 71
+    },
+    {
+      "code": "03",
+      "nom": "ALLIER",
+      "ips": 99.3,
+      "revenu_median": 21500,
+      "n_colleges": 43
+    },
+    {
+      "code": "04",
+      "nom": "ALPES-DE-HAUTE-PROVENCE",
+      "ips": 106.6,
+      "revenu_median": 21790,
+      "n_colleges": 21
+    },
+    {
+      "code": "05",
+      "nom": "HAUTES-ALPES",
+      "ips": 107.8,
+      "revenu_median": 22010,
+      "n_colleges": 15
+    },
+    {
+      "code": "06",
+      "nom": "ALPES-MARITIMES",
+      "ips": 108.4,
+      "revenu_median": 23460,
+      "n_colleges": 92
+    },
+    {
+      "code": "07",
+      "nom": "ARDECHE",
+      "ips": 103.4,
+      "revenu_median": 21990,
+      "n_colleges": 39
+    },
+    {
+      "code": "08",
+      "nom": "ARDENNES",
+      "ips": 93.5,
+      "revenu_median": 20850,
+      "n_colleges": 39
+    },
+    {
+      "code": "09",
+      "nom": "ARIEGE",
+      "ips": 103.7,
+      "revenu_median": 20820,
+      "n_colleges": 17
+    },
+    {
+      "code": "10",
+      "nom": "AUBE",
+      "ips": 100.1,
+      "revenu_median": 21530,
+      "n_colleges": 34
+    },
+    {
+      "code": "11",
+      "nom": "AUDE",
+      "ips": 99.4,
+      "revenu_median": 20510,
+      "n_colleges": 33
+    },
+    {
+      "code": "12",
+      "nom": "AVEYRON",
+      "ips": 105.2,
+      "revenu_median": 21860,
+      "n_colleges": 42
+    },
+    {
+      "code": "13",
+      "nom": "BOUCHES-DU-RHONE",
+      "ips": 104.6,
+      "revenu_median": 22920,
+      "n_colleges": 191
+    },
+    {
+      "code": "14",
+      "nom": "CALVADOS",
+      "ips": 105.7,
+      "revenu_median": 22840,
+      "n_colleges": 76
+    },
+    {
+      "code": "15",
+      "nom": "CANTAL",
+      "ips": 102.5,
+      "revenu_median": 21710,
+      "n_colleges": 26
+    },
+    {
+      "code": "16",
+      "nom": "CHARENTE",
+      "ips": 101.1,
+      "revenu_median": 22000,
+      "n_colleges": 45
+    },
+    {
+      "code": "17",
+      "nom": "CHARENTE-MARITIME",
+      "ips": 105.3,
+      "revenu_median": 22810,
+      "n_colleges": 61
+    },
+    {
+      "code": "18",
+      "nom": "CHER",
+      "ips": 98.9,
+      "revenu_median": 22100,
+      "n_colleges": 30
+    },
+    {
+      "code": "19",
+      "nom": "CORREZE",
+      "ips": 105.0,
+      "revenu_median": 22140,
+      "n_colleges": 30
+    },
+    {
+      "code": "21",
+      "nom": "COTE D'OR",
+      "ips": 105.9,
+      "revenu_median": 23720,
+      "n_colleges": 54
+    },
+    {
+      "code": "22",
+      "nom": "COTES D'ARMOR",
+      "ips": 105.3,
+      "revenu_median": 22670,
+      "n_colleges": 77
+    },
+    {
+      "code": "23",
+      "nom": "CREUSE",
+      "ips": 100.8,
+      "revenu_median": 20620,
+      "n_colleges": 18
+    },
+    {
+      "code": "24",
+      "nom": "DORDOGNE",
+      "ips": 101.7,
+      "revenu_median": 21410,
+      "n_colleges": 46
+    },
+    {
+      "code": "25",
+      "nom": "DOUBS",
+      "ips": 100.0,
+      "revenu_median": 23890,
+      "n_colleges": 60
+    },
+    {
+      "code": "26",
+      "nom": "DROME",
+      "ips": 106.8,
+      "revenu_median": 22450,
+      "n_colleges": 52
+    },
+    {
+      "code": "27",
+      "nom": "EURE",
+      "ips": 102.4,
+      "revenu_median": 22880,
+      "n_colleges": 66
+    },
+    {
+      "code": "28",
+      "nom": "EURE-ET-LOIR",
+      "ips": 102.6,
+      "revenu_median": 23360,
+      "n_colleges": 49
+    },
+    {
+      "code": "29",
+      "nom": "FINISTERE",
+      "ips": 109.6,
+      "revenu_median": 23220,
+      "n_colleges": 110
+    },
+    {
+      "code": "2A",
+      "nom": "CORSE-DU-SUD",
+      "ips": 103.4,
+      "revenu_median": 23420,
+      "n_colleges": 15
+    },
+    {
+      "code": "2B",
+      "nom": "HAUTE-CORSE",
+      "ips": 100.4,
+      "revenu_median": 21460,
+      "n_colleges": 16
+    },
+    {
+      "code": "30",
+      "nom": "GARD",
+      "ips": 102.6,
+      "revenu_median": 21330,
+      "n_colleges": 71
+    },
+    {
+      "code": "31",
+      "nom": "HAUTE-GARONNE",
+      "ips": 115.1,
+      "revenu_median": 24230,
+      "n_colleges": 123
+    },
+    {
+      "code": "32",
+      "nom": "GERS",
+      "ips": 107.6,
+      "revenu_median": 22110,
+      "n_colleges": 28
+    },
+    {
+      "code": "33",
+      "nom": "GIRONDE",
+      "ips": 112.1,
+      "revenu_median": 23950,
+      "n_colleges": 141
+    },
+    {
+      "code": "34",
+      "nom": "HERAULT",
+      "ips": 107.1,
+      "revenu_median": 21800,
+      "n_colleges": 105
+    },
+    {
+      "code": "35",
+      "nom": "ILLE-ET-VILAINE",
+      "ips": 110.8,
+      "revenu_median": 23690,
+      "n_colleges": 110
+    },
+    {
+      "code": "36",
+      "nom": "INDRE",
+      "ips": 97.3,
+      "revenu_median": 21270,
+      "n_colleges": 31
+    },
+    {
+      "code": "37",
+      "nom": "INDRE-ET-LOIRE",
+      "ips": 107.8,
+      "revenu_median": 23140,
+      "n_colleges": 69
+    },
+    {
+      "code": "38",
+      "nom": "ISERE",
+      "ips": 110.2,
+      "revenu_median": 24270,
+      "n_colleges": 118
+    },
+    {
+      "code": "39",
+      "nom": "JURA",
+      "ips": 101.9,
+      "revenu_median": 23140,
+      "n_colleges": 37
+    },
+    {
+      "code": "40",
+      "nom": "LANDES",
+      "ips": 105.7,
+      "revenu_median": 22840,
+      "n_colleges": 46
+    },
+    {
+      "code": "41",
+      "nom": "LOIR-ET-CHER",
+      "ips": 101.6,
+      "revenu_median": 22510,
+      "n_colleges": 37
+    },
+    {
+      "code": "42",
+      "nom": "LOIRE",
+      "ips": 100.4,
+      "revenu_median": 21970,
+      "n_colleges": 76
+    },
+    {
+      "code": "43",
+      "nom": "HAUTE-LOIRE",
+      "ips": 104.6,
+      "revenu_median": 22100,
+      "n_colleges": 40
+    },
+    {
+      "code": "44",
+      "nom": "LOIRE-ATLANTIQUE",
+      "ips": 113.1,
+      "revenu_median": 24120,
+      "n_colleges": 138
+    },
+    {
+      "code": "45",
+      "nom": "LOIRET",
+      "ips": 101.7,
+      "revenu_median": 23090,
+      "n_colleges": 70
+    },
+    {
+      "code": "46",
+      "nom": "LOT",
+      "ips": 104.5,
+      "revenu_median": 21910,
+      "n_colleges": 22
+    },
+    {
+      "code": "47",
+      "nom": "LOT-ET-GARONNE",
+      "ips": 99.3,
+      "revenu_median": 21050,
+      "n_colleges": 37
+    },
+    {
+      "code": "48",
+      "nom": "LOZERE",
+      "ips": 106.0,
+      "revenu_median": 21580,
+      "n_colleges": 17
+    },
+    {
+      "code": "49",
+      "nom": "MAINE-ET-LOIRE",
+      "ips": 105.3,
+      "revenu_median": 22500,
+      "n_colleges": 92
+    },
+    {
+      "code": "50",
+      "nom": "MANCHE",
+      "ips": 101.4,
+      "revenu_median": 22480,
+      "n_colleges": 70
+    },
+    {
+      "code": "51",
+      "nom": "MARNE",
+      "ips": 101.8,
+      "revenu_median": 22830,
+      "n_colleges": 59
+    },
+    {
+      "code": "52",
+      "nom": "HAUTE-MARNE",
+      "ips": 95.4,
+      "revenu_median": 21350,
+      "n_colleges": 26
+    },
+    {
+      "code": "53",
+      "nom": "MAYENNE",
+      "ips": 99.5,
+      "revenu_median": 22230,
+      "n_colleges": 41
+    },
+    {
+      "code": "54",
+      "nom": "MEURTHE-ET-MOSELLE",
+      "ips": 103.2,
+      "revenu_median": 23010,
+      "n_colleges": 79
+    },
+    {
+      "code": "55",
+      "nom": "MEUSE",
+      "ips": 97.6,
+      "revenu_median": 21890,
+      "n_colleges": 27
+    },
+    {
+      "code": "56",
+      "nom": "MORBIHAN",
+      "ips": 107.3,
+      "revenu_median": 23140,
+      "n_colleges": 87
+    },
+    {
+      "code": "57",
+      "nom": "MOSELLE",
+      "ips": 98.6,
+      "revenu_median": 22980,
+      "n_colleges": 102
+    },
+    {
+      "code": "58",
+      "nom": "NIEVRE",
+      "ips": 100.5,
+      "revenu_median": 21380,
+      "n_colleges": 34
+    },
+    {
+      "code": "59",
+      "nom": "NORD",
+      "ips": 98.5,
+      "revenu_median": 21340,
+      "n_colleges": 279
+    },
+    {
+      "code": "60",
+      "nom": "OISE",
+      "ips": 102.9,
+      "revenu_median": 23330,
+      "n_colleges": 79
+    },
+    {
+      "code": "61",
+      "nom": "ORNE",
+      "ips": 99.1,
+      "revenu_median": 21400,
+      "n_colleges": 43
+    },
+    {
+      "code": "62",
+      "nom": "PAS-DE-CALAIS",
+      "ips": 95.1,
+      "revenu_median": 20720,
+      "n_colleges": 157
+    },
+    {
+      "code": "63",
+      "nom": "PUY-DE-DOME",
+      "ips": 106.5,
+      "revenu_median": 23060,
+      "n_colleges": 76
+    },
+    {
+      "code": "64",
+      "nom": "PYRENEES-ATLANTIQUES",
+      "ips": 111.8,
+      "revenu_median": 23300,
+      "n_colleges": 88
+    },
+    {
+      "code": "65",
+      "nom": "HAUTES-PYRENEES",
+      "ips": 104.5,
+      "revenu_median": 21530,
+      "n_colleges": 26
+    },
+    {
+      "code": "66",
+      "nom": "PYRENEES-ORIENTALES",
+      "ips": 99.6,
+      "revenu_median": 20650,
+      "n_colleges": 39
+    },
+    {
+      "code": "67",
+      "nom": "BAS-RHIN",
+      "ips": 105.1,
+      "revenu_median": 24090,
+      "n_colleges": 102
+    },
+    {
+      "code": "68",
+      "nom": "HAUT-RHIN",
+      "ips": 100.1,
+      "revenu_median": 24470,
+      "n_colleges": 69
+    },
+    {
+      "code": "69",
+      "nom": "RHONE",
+      "ips": 110.7,
+      "revenu_median": 24480,
+      "n_colleges": 175
+    },
+    {
+      "code": "70",
+      "nom": "HAUTE-SAONE",
+      "ips": 98.8,
+      "revenu_median": 21860,
+      "n_colleges": 29
+    },
+    {
+      "code": "71",
+      "nom": "SAONE-ET-LOIRE",
+      "ips": 102.2,
+      "revenu_median": 22170,
+      "n_colleges": 60
+    },
+    {
+      "code": "72",
+      "nom": "SARTHE",
+      "ips": 100.2,
+      "revenu_median": 22230,
+      "n_colleges": 75
+    },
+    {
+      "code": "73",
+      "nom": "SAVOIE",
+      "ips": 111.7,
+      "revenu_median": 24270,
+      "n_colleges": 46
+    },
+    {
+      "code": "74",
+      "nom": "HAUTE-SAVOIE",
+      "ips": 113.4,
+      "revenu_median": 28120,
+      "n_colleges": 75
+    },
+    {
+      "code": "75",
+      "nom": "PARIS",
+      "ips": 126.2,
+      "revenu_median": 29730,
+      "n_colleges": 178
+    },
+    {
+      "code": "76",
+      "nom": "SEINE-MARITIME",
+      "ips": 100.5,
+      "revenu_median": 22340,
+      "n_colleges": 132
+    },
+    {
+      "code": "77",
+      "nom": "SEINE-ET-MARNE",
+      "ips": 107.8,
+      "revenu_median": 24640,
+      "n_colleges": 152
+    },
+    {
+      "code": "78",
+      "nom": "YVELINES",
+      "ips": 121.3,
+      "revenu_median": 28130,
+      "n_colleges": 141
+    },
+    {
+      "code": "79",
+      "nom": "DEUX-SEVRES",
+      "ips": 103.1,
+      "revenu_median": 22220,
+      "n_colleges": 48
+    },
+    {
+      "code": "80",
+      "nom": "SOMME",
+      "ips": 99.0,
+      "revenu_median": 21560,
+      "n_colleges": 67
+    },
+    {
+      "code": "81",
+      "nom": "TARN",
+      "ips": 106.1,
+      "revenu_median": 21730,
+      "n_colleges": 42
+    },
+    {
+      "code": "82",
+      "nom": "TARN-ET-GARONNE",
+      "ips": 103.1,
+      "revenu_median": 21520,
+      "n_colleges": 25
+    },
+    {
+      "code": "83",
+      "nom": "VAR",
+      "ips": 105.2,
+      "revenu_median": 23120,
+      "n_colleges": 85
+    },
+    {
+      "code": "84",
+      "nom": "VAUCLUSE",
+      "ips": 99.1,
+      "revenu_median": 21370,
+      "n_colleges": 54
+    },
+    {
+      "code": "85",
+      "nom": "VENDEE",
+      "ips": 104.8,
+      "revenu_median": 22790,
+      "n_colleges": 67
+    },
+    {
+      "code": "86",
+      "nom": "VIENNE",
+      "ips": 106.0,
+      "revenu_median": 22220,
+      "n_colleges": 47
+    },
+    {
+      "code": "87",
+      "nom": "HAUTE-VIENNE",
+      "ips": 103.7,
+      "revenu_median": 22140,
+      "n_colleges": 39
+    },
+    {
+      "code": "88",
+      "nom": "VOSGES",
+      "ips": 98.3,
+      "revenu_median": 21550,
+      "n_colleges": 47
+    },
+    {
+      "code": "89",
+      "nom": "YONNE",
+      "ips": 99.8,
+      "revenu_median": 21940,
+      "n_colleges": 34
+    },
+    {
+      "code": "90",
+      "nom": "TERRITOIRE DE BELFORT",
+      "ips": 101.6,
+      "revenu_median": 22920,
+      "n_colleges": 16
+    },
+    {
+      "code": "91",
+      "nom": "ESSONNE",
+      "ips": 108.6,
+      "revenu_median": 25040,
+      "n_colleges": 120
+    },
+    {
+      "code": "92",
+      "nom": "HAUTS-DE-SEINE",
+      "ips": 125.6,
+      "revenu_median": 29720,
+      "n_colleges": 134
+    },
+    {
+      "code": "93",
+      "nom": "SEINE-SAINT-DENIS",
+      "ips": 94.1,
+      "revenu_median": 19020,
+      "n_colleges": 159
+    },
+    {
+      "code": "94",
+      "nom": "VAL-DE-MARNE",
+      "ips": 110.1,
+      "revenu_median": 24270,
+      "n_colleges": 132
+    },
+    {
+      "code": "95",
+      "nom": "VAL-D'OISE",
+      "ips": 104.7,
+      "revenu_median": 23290,
+      "n_colleges": 139
+    },
+    {
+      "code": "972",
+      "nom": "MARTINIQUE",
+      "ips": 98.2,
+      "revenu_median": 19770,
+      "n_colleges": 50
+    },
+    {
+      "code": "974",
+      "nom": "LA REUNION",
+      "ips": 89.1,
+      "revenu_median": 17070,
+      "n_colleges": 87
+    }
+  ],
+  "regression": {
+    "pente": 257.25,
+    "ordonnee_origine": -4128.4
+  },
+  "correlation_calculee": {
+    "r_pearson": 0.843,
+    "r2": 0.711,
+    "p_value": 1.18e-27,
+    "n_departements": 98,
+    "niveau_geographique": "département (agrégat)",
+    "variables": "IPS moyen des collèges × médiane du niveau de vie",
+    "sources": [
+      "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+      "INSEE — Filosofi 2021, médiane du niveau de vie par département (base tous niveaux géographiques, géo. 01/01/2025)"
+    ],
+    "annee_reference": {
+      "ips": "2025-2026",
+      "revenu": 2021
+    }
+  },
+  "reference_publiee": {
+    "r": 0.87,
+    "description": "corrélation entre l'IPS des élèves de 3e et le revenu médian de leur commune",
+    "niveau_geographique": "commune (élève)",
+    "source": "DEPP, Note d'Information n°23.16 (mars 2023), d'après Murat (2021)",
+    "annee_reference": 2023
+  },
+  "note_comparaison": "La référence DEPP (0,87) est mesurée au niveau communal sur l'IPS des élèves ; ici je recalcule le lien au niveau départemental sur l'IPS moyen des collèges — unité d'analyse différente, donc valeur attendue proche mais non identique.",
+  "divergence_significative": false
+}

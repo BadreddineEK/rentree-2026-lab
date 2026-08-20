@@ -1,0 +1,867 @@
+{
+  "meta": {
+    "source": "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+    "annee_reference": "2025-2026",
+    "definition_ips": "L'IPS (indice de position sociale) résume l'environnement social des élèves d'un établissement : plus il est élevé, plus le public est favorisé. La moyenne nationale est calée autour de 100.",
+    "methode": "Moyenne simple des IPS des collèges du département (public + privé sous contrat).",
+    "n_colleges_total": 7087
+  },
+  "departements": [
+    {
+      "code": "01",
+      "nom": "AIN",
+      "ips_moyen": 109.0,
+      "ips_public": 105.5,
+      "ips_prive": 122.2,
+      "n_colleges": 66
+    },
+    {
+      "code": "02",
+      "nom": "AISNE",
+      "ips_moyen": 94.5,
+      "ips_public": 90.5,
+      "ips_prive": 110.8,
+      "n_colleges": 71
+    },
+    {
+      "code": "03",
+      "nom": "ALLIER",
+      "ips_moyen": 99.3,
+      "ips_public": 96.5,
+      "ips_prive": 117.0,
+      "n_colleges": 43
+    },
+    {
+      "code": "04",
+      "nom": "ALPES-DE-HAUTE-PROVENCE",
+      "ips_moyen": 106.6,
+      "ips_public": 105.1,
+      "ips_prive": 121.6,
+      "n_colleges": 21
+    },
+    {
+      "code": "05",
+      "nom": "HAUTES-ALPES",
+      "ips_moyen": 107.8,
+      "ips_public": 107.3,
+      "ips_prive": 115.8,
+      "n_colleges": 15
+    },
+    {
+      "code": "06",
+      "nom": "ALPES-MARITIMES",
+      "ips_moyen": 108.4,
+      "ips_public": 103.0,
+      "ips_prive": 129.1,
+      "n_colleges": 92
+    },
+    {
+      "code": "07",
+      "nom": "ARDECHE",
+      "ips_moyen": 103.4,
+      "ips_public": 101.3,
+      "ips_prive": 107.7,
+      "n_colleges": 39
+    },
+    {
+      "code": "08",
+      "nom": "ARDENNES",
+      "ips_moyen": 93.5,
+      "ips_public": 90.2,
+      "ips_prive": 116.0,
+      "n_colleges": 39
+    },
+    {
+      "code": "09",
+      "nom": "ARIEGE",
+      "ips_moyen": 103.7,
+      "ips_public": 102.4,
+      "ips_prive": 110.1,
+      "n_colleges": 17
+    },
+    {
+      "code": "10",
+      "nom": "AUBE",
+      "ips_moyen": 100.1,
+      "ips_public": 94.2,
+      "ips_prive": 116.2,
+      "n_colleges": 34
+    },
+    {
+      "code": "11",
+      "nom": "AUDE",
+      "ips_moyen": 99.4,
+      "ips_public": 96.9,
+      "ips_prive": 113.3,
+      "n_colleges": 33
+    },
+    {
+      "code": "12",
+      "nom": "AVEYRON",
+      "ips_moyen": 105.2,
+      "ips_public": 102.6,
+      "ips_prive": 107.9,
+      "n_colleges": 42
+    },
+    {
+      "code": "13",
+      "nom": "BOUCHES-DU-RHONE",
+      "ips_moyen": 104.6,
+      "ips_public": 98.0,
+      "ips_prive": 121.9,
+      "n_colleges": 191
+    },
+    {
+      "code": "14",
+      "nom": "CALVADOS",
+      "ips_moyen": 105.7,
+      "ips_public": 102.1,
+      "ips_prive": 116.5,
+      "n_colleges": 76
+    },
+    {
+      "code": "15",
+      "nom": "CANTAL",
+      "ips_moyen": 102.5,
+      "ips_public": 102.1,
+      "ips_prive": 104.9,
+      "n_colleges": 26
+    },
+    {
+      "code": "16",
+      "nom": "CHARENTE",
+      "ips_moyen": 101.1,
+      "ips_public": 97.6,
+      "ips_prive": 120.2,
+      "n_colleges": 45
+    },
+    {
+      "code": "17",
+      "nom": "CHARENTE-MARITIME",
+      "ips_moyen": 105.3,
+      "ips_public": 103.2,
+      "ips_prive": 116.1,
+      "n_colleges": 61
+    },
+    {
+      "code": "18",
+      "nom": "CHER",
+      "ips_moyen": 98.9,
+      "ips_public": 96.5,
+      "ips_prive": 114.6,
+      "n_colleges": 30
+    },
+    {
+      "code": "19",
+      "nom": "CORREZE",
+      "ips_moyen": 105.0,
+      "ips_public": 102.7,
+      "ips_prive": 116.8,
+      "n_colleges": 30
+    },
+    {
+      "code": "21",
+      "nom": "COTE D'OR",
+      "ips_moyen": 105.9,
+      "ips_public": 103.5,
+      "ips_prive": 121.9,
+      "n_colleges": 54
+    },
+    {
+      "code": "22",
+      "nom": "COTES D'ARMOR",
+      "ips_moyen": 105.3,
+      "ips_public": 101.6,
+      "ips_prive": 110.9,
+      "n_colleges": 77
+    },
+    {
+      "code": "23",
+      "nom": "CREUSE",
+      "ips_moyen": 100.8,
+      "ips_public": 100.8,
+      "ips_prive": null,
+      "n_colleges": 18
+    },
+    {
+      "code": "24",
+      "nom": "DORDOGNE",
+      "ips_moyen": 101.7,
+      "ips_public": 99.4,
+      "ips_prive": 112.7,
+      "n_colleges": 46
+    },
+    {
+      "code": "25",
+      "nom": "DOUBS",
+      "ips_moyen": 100.0,
+      "ips_public": 97.8,
+      "ips_prive": 106.2,
+      "n_colleges": 60
+    },
+    {
+      "code": "26",
+      "nom": "DROME",
+      "ips_moyen": 106.8,
+      "ips_public": 101.8,
+      "ips_prive": 120.4,
+      "n_colleges": 52
+    },
+    {
+      "code": "27",
+      "nom": "EURE",
+      "ips_moyen": 102.4,
+      "ips_public": 98.2,
+      "ips_prive": 123.8,
+      "n_colleges": 66
+    },
+    {
+      "code": "28",
+      "nom": "EURE-ET-LOIR",
+      "ips_moyen": 102.6,
+      "ips_public": 99.0,
+      "ips_prive": 116.8,
+      "n_colleges": 49
+    },
+    {
+      "code": "29",
+      "nom": "FINISTERE",
+      "ips_moyen": 109.6,
+      "ips_public": 105.1,
+      "ips_prive": 115.4,
+      "n_colleges": 110
+    },
+    {
+      "code": "2A",
+      "nom": "CORSE-DU-SUD",
+      "ips_moyen": 103.4,
+      "ips_public": 102.1,
+      "ips_prive": 121.1,
+      "n_colleges": 15
+    },
+    {
+      "code": "2B",
+      "nom": "HAUTE-CORSE",
+      "ips_moyen": 100.4,
+      "ips_public": 98.5,
+      "ips_prive": 128.7,
+      "n_colleges": 16
+    },
+    {
+      "code": "30",
+      "nom": "GARD",
+      "ips_moyen": 102.6,
+      "ips_public": 98.2,
+      "ips_prive": 115.8,
+      "n_colleges": 71
+    },
+    {
+      "code": "31",
+      "nom": "HAUTE-GARONNE",
+      "ips_moyen": 115.1,
+      "ips_public": 110.7,
+      "ips_prive": 136.8,
+      "n_colleges": 123
+    },
+    {
+      "code": "32",
+      "nom": "GERS",
+      "ips_moyen": 107.6,
+      "ips_public": 104.5,
+      "ips_prive": 117.0,
+      "n_colleges": 28
+    },
+    {
+      "code": "33",
+      "nom": "GIRONDE",
+      "ips_moyen": 112.1,
+      "ips_public": 107.9,
+      "ips_prive": 129.1,
+      "n_colleges": 141
+    },
+    {
+      "code": "34",
+      "nom": "HERAULT",
+      "ips_moyen": 107.1,
+      "ips_public": 102.0,
+      "ips_prive": 124.3,
+      "n_colleges": 105
+    },
+    {
+      "code": "35",
+      "nom": "ILLE-ET-VILAINE",
+      "ips_moyen": 110.8,
+      "ips_public": 105.5,
+      "ips_prive": 117.7,
+      "n_colleges": 110
+    },
+    {
+      "code": "36",
+      "nom": "INDRE",
+      "ips_moyen": 97.3,
+      "ips_public": 95.5,
+      "ips_prive": 109.3,
+      "n_colleges": 31
+    },
+    {
+      "code": "37",
+      "nom": "INDRE-ET-LOIRE",
+      "ips_moyen": 107.8,
+      "ips_public": 103.3,
+      "ips_prive": 122.8,
+      "n_colleges": 69
+    },
+    {
+      "code": "38",
+      "nom": "ISERE",
+      "ips_moyen": 110.2,
+      "ips_public": 107.2,
+      "ips_prive": 124.2,
+      "n_colleges": 118
+    },
+    {
+      "code": "39",
+      "nom": "JURA",
+      "ips_moyen": 101.9,
+      "ips_public": 100.9,
+      "ips_prive": 104.5,
+      "n_colleges": 37
+    },
+    {
+      "code": "40",
+      "nom": "LANDES",
+      "ips_moyen": 105.7,
+      "ips_public": 104.1,
+      "ips_prive": 114.6,
+      "n_colleges": 46
+    },
+    {
+      "code": "41",
+      "nom": "LOIR-ET-CHER",
+      "ips_moyen": 101.6,
+      "ips_public": 97.5,
+      "ips_prive": 112.9,
+      "n_colleges": 37
+    },
+    {
+      "code": "42",
+      "nom": "LOIRE",
+      "ips_moyen": 100.4,
+      "ips_public": 95.8,
+      "ips_prive": 109.3,
+      "n_colleges": 76
+    },
+    {
+      "code": "43",
+      "nom": "HAUTE-LOIRE",
+      "ips_moyen": 104.6,
+      "ips_public": 101.9,
+      "ips_prive": 107.9,
+      "n_colleges": 40
+    },
+    {
+      "code": "44",
+      "nom": "LOIRE-ATLANTIQUE",
+      "ips_moyen": 113.1,
+      "ips_public": 107.0,
+      "ips_prive": 122.0,
+      "n_colleges": 138
+    },
+    {
+      "code": "45",
+      "nom": "LOIRET",
+      "ips_moyen": 101.7,
+      "ips_public": 97.5,
+      "ips_prive": 122.1,
+      "n_colleges": 70
+    },
+    {
+      "code": "46",
+      "nom": "LOT",
+      "ips_moyen": 104.5,
+      "ips_public": 102.7,
+      "ips_prive": 115.9,
+      "n_colleges": 22
+    },
+    {
+      "code": "47",
+      "nom": "LOT-ET-GARONNE",
+      "ips_moyen": 99.3,
+      "ips_public": 95.8,
+      "ips_prive": 110.2,
+      "n_colleges": 37
+    },
+    {
+      "code": "48",
+      "nom": "LOZERE",
+      "ips_moyen": 106.0,
+      "ips_public": 103.9,
+      "ips_prive": 110.8,
+      "n_colleges": 17
+    },
+    {
+      "code": "49",
+      "nom": "MAINE-ET-LOIRE",
+      "ips_moyen": 105.3,
+      "ips_public": 97.4,
+      "ips_prive": 114.7,
+      "n_colleges": 92
+    },
+    {
+      "code": "50",
+      "nom": "MANCHE",
+      "ips_moyen": 101.4,
+      "ips_public": 99.2,
+      "ips_prive": 107.9,
+      "n_colleges": 70
+    },
+    {
+      "code": "51",
+      "nom": "MARNE",
+      "ips_moyen": 101.8,
+      "ips_public": 97.2,
+      "ips_prive": 120.0,
+      "n_colleges": 59
+    },
+    {
+      "code": "52",
+      "nom": "HAUTE-MARNE",
+      "ips_moyen": 95.4,
+      "ips_public": 92.9,
+      "ips_prive": 114.7,
+      "n_colleges": 26
+    },
+    {
+      "code": "53",
+      "nom": "MAYENNE",
+      "ips_moyen": 99.5,
+      "ips_public": 96.4,
+      "ips_prive": 105.6,
+      "n_colleges": 41
+    },
+    {
+      "code": "54",
+      "nom": "MEURTHE-ET-MOSELLE",
+      "ips_moyen": 103.2,
+      "ips_public": 99.8,
+      "ips_prive": 120.1,
+      "n_colleges": 79
+    },
+    {
+      "code": "55",
+      "nom": "MEUSE",
+      "ips_moyen": 97.6,
+      "ips_public": 94.4,
+      "ips_prive": 111.6,
+      "n_colleges": 27
+    },
+    {
+      "code": "56",
+      "nom": "MORBIHAN",
+      "ips_moyen": 107.3,
+      "ips_public": 102.9,
+      "ips_prive": 111.4,
+      "n_colleges": 87
+    },
+    {
+      "code": "57",
+      "nom": "MOSELLE",
+      "ips_moyen": 98.6,
+      "ips_public": 95.4,
+      "ips_prive": 123.0,
+      "n_colleges": 102
+    },
+    {
+      "code": "58",
+      "nom": "NIEVRE",
+      "ips_moyen": 100.5,
+      "ips_public": 99.3,
+      "ips_prive": 109.5,
+      "n_colleges": 34
+    },
+    {
+      "code": "59",
+      "nom": "NORD",
+      "ips_moyen": 98.5,
+      "ips_public": 91.7,
+      "ips_prive": 115.5,
+      "n_colleges": 279
+    },
+    {
+      "code": "60",
+      "nom": "OISE",
+      "ips_moyen": 102.9,
+      "ips_public": 99.2,
+      "ips_prive": 121.2,
+      "n_colleges": 79
+    },
+    {
+      "code": "61",
+      "nom": "ORNE",
+      "ips_moyen": 99.1,
+      "ips_public": 95.3,
+      "ips_prive": 109.0,
+      "n_colleges": 43
+    },
+    {
+      "code": "62",
+      "nom": "PAS-DE-CALAIS",
+      "ips_moyen": 95.1,
+      "ips_public": 89.5,
+      "ips_prive": 116.7,
+      "n_colleges": 157
+    },
+    {
+      "code": "63",
+      "nom": "PUY-DE-DOME",
+      "ips_moyen": 106.5,
+      "ips_public": 102.5,
+      "ips_prive": 117.7,
+      "n_colleges": 76
+    },
+    {
+      "code": "64",
+      "nom": "PYRENEES-ATLANTIQUES",
+      "ips_moyen": 111.8,
+      "ips_public": 106.6,
+      "ips_prive": 118.2,
+      "n_colleges": 88
+    },
+    {
+      "code": "65",
+      "nom": "HAUTES-PYRENEES",
+      "ips_moyen": 104.5,
+      "ips_public": 102.7,
+      "ips_prive": 110.5,
+      "n_colleges": 26
+    },
+    {
+      "code": "66",
+      "nom": "PYRENEES-ORIENTALES",
+      "ips_moyen": 99.6,
+      "ips_public": 94.0,
+      "ips_prive": 121.0,
+      "n_colleges": 39
+    },
+    {
+      "code": "67",
+      "nom": "BAS-RHIN",
+      "ips_moyen": 105.1,
+      "ips_public": 101.4,
+      "ips_prive": 132.7,
+      "n_colleges": 102
+    },
+    {
+      "code": "68",
+      "nom": "HAUT-RHIN",
+      "ips_moyen": 100.1,
+      "ips_public": 95.4,
+      "ips_prive": 122.7,
+      "n_colleges": 69
+    },
+    {
+      "code": "69",
+      "nom": "RHONE",
+      "ips_moyen": 110.7,
+      "ips_public": 101.2,
+      "ips_prive": 130.9,
+      "n_colleges": 175
+    },
+    {
+      "code": "70",
+      "nom": "HAUTE-SAONE",
+      "ips_moyen": 98.8,
+      "ips_public": 97.3,
+      "ips_prive": 104.5,
+      "n_colleges": 29
+    },
+    {
+      "code": "71",
+      "nom": "SAONE-ET-LOIRE",
+      "ips_moyen": 102.2,
+      "ips_public": 100.2,
+      "ips_prive": 113.9,
+      "n_colleges": 60
+    },
+    {
+      "code": "72",
+      "nom": "SARTHE",
+      "ips_moyen": 100.2,
+      "ips_public": 97.1,
+      "ips_prive": 109.5,
+      "n_colleges": 75
+    },
+    {
+      "code": "73",
+      "nom": "SAVOIE",
+      "ips_moyen": 111.7,
+      "ips_public": 110.4,
+      "ips_prive": 117.8,
+      "n_colleges": 46
+    },
+    {
+      "code": "74",
+      "nom": "HAUTE-SAVOIE",
+      "ips_moyen": 113.4,
+      "ips_public": 107.3,
+      "ips_prive": 127.2,
+      "n_colleges": 75
+    },
+    {
+      "code": "75",
+      "nom": "PARIS",
+      "ips_moyen": 126.2,
+      "ips_public": 115.4,
+      "ips_prive": 145.4,
+      "n_colleges": 178
+    },
+    {
+      "code": "76",
+      "nom": "SEINE-MARITIME",
+      "ips_moyen": 100.5,
+      "ips_public": 96.0,
+      "ips_prive": 121.6,
+      "n_colleges": 132
+    },
+    {
+      "code": "77",
+      "nom": "SEINE-ET-MARNE",
+      "ips_moyen": 107.8,
+      "ips_public": 104.4,
+      "ips_prive": 132.6,
+      "n_colleges": 152
+    },
+    {
+      "code": "78",
+      "nom": "YVELINES",
+      "ips_moyen": 121.3,
+      "ips_public": 115.7,
+      "ips_prive": 147.3,
+      "n_colleges": 141
+    },
+    {
+      "code": "79",
+      "nom": "DEUX-SEVRES",
+      "ips_moyen": 103.1,
+      "ips_public": 101.3,
+      "ips_prive": 107.8,
+      "n_colleges": 48
+    },
+    {
+      "code": "80",
+      "nom": "SOMME",
+      "ips_moyen": 99.0,
+      "ips_public": 93.0,
+      "ips_prive": 116.6,
+      "n_colleges": 67
+    },
+    {
+      "code": "81",
+      "nom": "TARN",
+      "ips_moyen": 106.1,
+      "ips_public": 101.8,
+      "ips_prive": 118.1,
+      "n_colleges": 42
+    },
+    {
+      "code": "82",
+      "nom": "TARN-ET-GARONNE",
+      "ips_moyen": 103.1,
+      "ips_public": 98.3,
+      "ips_prive": 115.5,
+      "n_colleges": 25
+    },
+    {
+      "code": "83",
+      "nom": "VAR",
+      "ips_moyen": 105.2,
+      "ips_public": 100.8,
+      "ips_prive": 127.2,
+      "n_colleges": 85
+    },
+    {
+      "code": "84",
+      "nom": "VAUCLUSE",
+      "ips_moyen": 99.1,
+      "ips_public": 93.9,
+      "ips_prive": 115.6,
+      "n_colleges": 54
+    },
+    {
+      "code": "85",
+      "nom": "VENDEE",
+      "ips_moyen": 104.8,
+      "ips_public": 98.8,
+      "ips_prive": 111.3,
+      "n_colleges": 67
+    },
+    {
+      "code": "86",
+      "nom": "VIENNE",
+      "ips_moyen": 106.0,
+      "ips_public": 102.0,
+      "ips_prive": 117.7,
+      "n_colleges": 47
+    },
+    {
+      "code": "87",
+      "nom": "HAUTE-VIENNE",
+      "ips_moyen": 103.7,
+      "ips_public": 100.1,
+      "ips_prive": 128.1,
+      "n_colleges": 39
+    },
+    {
+      "code": "88",
+      "nom": "VOSGES",
+      "ips_moyen": 98.3,
+      "ips_public": 97.0,
+      "ips_prive": 103.6,
+      "n_colleges": 47
+    },
+    {
+      "code": "89",
+      "nom": "YONNE",
+      "ips_moyen": 99.8,
+      "ips_public": 97.6,
+      "ips_prive": 116.7,
+      "n_colleges": 34
+    },
+    {
+      "code": "90",
+      "nom": "TERRITOIRE DE BELFORT",
+      "ips_moyen": 101.6,
+      "ips_public": 97.4,
+      "ips_prive": 119.9,
+      "n_colleges": 16
+    },
+    {
+      "code": "91",
+      "nom": "ESSONNE",
+      "ips_moyen": 108.6,
+      "ips_public": 103.5,
+      "ips_prive": 135.8,
+      "n_colleges": 120
+    },
+    {
+      "code": "92",
+      "nom": "HAUTS-DE-SEINE",
+      "ips_moyen": 125.6,
+      "ips_public": 117.0,
+      "ips_prive": 150.2,
+      "n_colleges": 134
+    },
+    {
+      "code": "93",
+      "nom": "SEINE-SAINT-DENIS",
+      "ips_moyen": 94.1,
+      "ips_public": 88.1,
+      "ips_prive": 122.0,
+      "n_colleges": 159
+    },
+    {
+      "code": "94",
+      "nom": "VAL-DE-MARNE",
+      "ips_moyen": 110.1,
+      "ips_public": 104.3,
+      "ips_prive": 135.9,
+      "n_colleges": 132
+    },
+    {
+      "code": "95",
+      "nom": "VAL-D'OISE",
+      "ips_moyen": 104.7,
+      "ips_public": 99.3,
+      "ips_prive": 129.1,
+      "n_colleges": 139
+    },
+    {
+      "code": "971",
+      "nom": "GUADELOUPE",
+      "ips_moyen": 94.8,
+      "ips_public": 92.0,
+      "ips_prive": 116.2,
+      "n_colleges": 52
+    },
+    {
+      "code": "972",
+      "nom": "MARTINIQUE",
+      "ips_moyen": 98.2,
+      "ips_public": 94.3,
+      "ips_prive": 122.1,
+      "n_colleges": 50
+    },
+    {
+      "code": "973",
+      "nom": "GUYANE",
+      "ips_moyen": 83.3,
+      "ips_public": 77.8,
+      "ips_prive": 114.7,
+      "n_colleges": 40
+    },
+    {
+      "code": "974",
+      "nom": "LA REUNION",
+      "ips_moyen": 89.1,
+      "ips_public": 85.5,
+      "ips_prive": 120.3,
+      "n_colleges": 87
+    },
+    {
+      "code": "975",
+      "nom": "ST-PIERRE-ET-MIQUELON",
+      "ips_moyen": 110.1,
+      "ips_public": null,
+      "ips_prive": 110.1,
+      "n_colleges": 1
+    },
+    {
+      "code": "976",
+      "nom": "MAYOTTE",
+      "ips_moyen": 71.8,
+      "ips_public": 71.8,
+      "ips_prive": null,
+      "n_colleges": 22
+    },
+    {
+      "code": "981",
+      "nom": "PROVINCE NORD",
+      "ips_moyen": 79.6,
+      "ips_public": 81.2,
+      "ips_prive": 77.7,
+      "n_colleges": 16
+    },
+    {
+      "code": "982",
+      "nom": "PROVINCE SUD",
+      "ips_moyen": 93.2,
+      "ips_public": 94.0,
+      "ips_prive": 91.3,
+      "n_colleges": 28
+    },
+    {
+      "code": "983",
+      "nom": "PROVINCE DES ILES LOYAUTE",
+      "ips_moyen": 84.9,
+      "ips_public": 78.2,
+      "ips_prive": 89.4,
+      "n_colleges": 10
+    },
+    {
+      "code": "986",
+      "nom": "WALLIS ET FUTUNA",
+      "ips_moyen": 93.2,
+      "ips_public": 93.2,
+      "ips_prive": null,
+      "n_colleges": 6
+    },
+    {
+      "code": "987",
+      "nom": "POLYNESIE FRANCAISE",
+      "ips_moyen": 84.1,
+      "ips_public": 79.6,
+      "ips_prive": 100.1,
+      "n_colleges": 32
+    }
+  ]
+}

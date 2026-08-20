@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "annee_reference": "2025-2026",
+    "definition_ep": "REP et REP+ (réseaux d'éducation prioritaire) concentrent les collèges au public le plus défavorisé ; REP+ est le degré le plus marqué."
+  },
+  "secteur": {
+    "source": "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+    "annee_reference": "2025-2026",
+    "valeurs": [
+      {
+        "label": "Public",
+        "ips_moyen": 100.0,
+        "n": 5404
+      },
+      {
+        "label": "Privé sous contrat",
+        "ips_moyen": 120.2,
+        "n": 1683
+      }
+    ]
+  },
+  "education_prioritaire": {
+    "source": "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023) joint à Ministère de l'Éducation nationale — Annuaire de l'éducation (statut REP / REP+)",
+    "annee_reference": "2025-2026",
+    "valeurs": [
+      {
+        "label": "Hors éducation prioritaire",
+        "ips_moyen": 108.9,
+        "n": 6005
+      },
+      {
+        "label": "REP",
+        "ips_moyen": 86.2,
+        "n": 733
+      },
+      {
+        "label": "REP+",
+        "ips_moyen": 75.0,
+        "n": 370
+      }
+    ]
+  }
+}
