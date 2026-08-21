@@ -4,12 +4,12 @@
    imposés (CONSIGNES §6). Données : site/data/*.json. */
 (function () {
   if (typeof Chart === 'undefined') return;
-  Chart.defaults.color = '#9aa4b2';
+  Chart.defaults.color = '#5a5852';
   Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   Chart.defaults.font.size = 13;
 
-  var GRID = 'rgba(255,255,255,0.06)';
-  var WARN = '#f0a33c', COOL = '#2dd4bf', ACC = '#3aa0e0', HOT = '#e05252';
+  var GRID = 'rgba(0,0,0,0.08)';
+  var WARN = '#b5651d', COOL = '#4a7a55', ACC = '#35506b', HOT = '#a3472f', SAND = '#c98a55';
   var euro = function (v) { return v.toLocaleString('fr-FR') + ' \u20ac'; };
   var noGridX = function () { return { grid: { display: false }, ticks: { color: '#9aa4b2' } }; };
 
@@ -52,7 +52,7 @@
       var ev = d.education_prioritaire.valeurs;
       new Chart(e, {
         type: 'bar',
-        data: { labels: ev.map(function (x) { return x.label.replace('Hors \u00e9ducation prioritaire', 'Hors EP'); }), datasets: [{ data: ev.map(function (x) { return x.ips_moyen; }), backgroundColor: [COOL, WARN, HOT], borderRadius: 6, maxBarThickness: 70 }] },
+        data: { labels: ev.map(function (x) { return x.label.replace('Hors \u00e9ducation prioritaire', 'Hors EP'); }), datasets: [{ data: ev.map(function (x) { return x.ips_moyen; }), backgroundColor: [COOL, SAND, HOT], borderRadius: 6, maxBarThickness: 70 }] },
         options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return 'IPS ' + c.parsed.y + ' \u00b7 ' + ev[c.dataIndex].n + ' coll\u00e8ges'; } } } }, scales: { x: noGridX(), y: { grid: { color: GRID }, min: 60, title: { display: true, text: 'IPS moyen' } } } }
       });
     }

@@ -27,8 +27,8 @@
     new Chart(el, {
       data: {
         datasets: [
-          { type: 'line', data: line, borderColor: '#f0a33c', borderWidth: 2, pointRadius: 0, fill: false, tension: 0 },
-          { type: 'scatter', data: pts, backgroundColor: 'rgba(58,160,224,0.75)', pointRadius: 4, pointHoverRadius: 6 }
+          { type: 'line', data: line, borderColor: '#a3472f', borderWidth: 2, pointRadius: 0, fill: false, tension: 0 },
+          { type: 'scatter', data: pts, backgroundColor: 'rgba(53,80,107,0.62)', pointRadius: 4, pointHoverRadius: 6 }
         ]
       },
       options: {
@@ -41,8 +41,8 @@
           } } }
         },
         scales: {
-          x: { type: 'linear', title: { display: true, text: 'IPS moyen des coll\u00e8ges' }, grid: { color: 'rgba(255,255,255,0.06)' } },
-          y: { type: 'linear', title: { display: true, text: 'Niveau de vie m\u00e9dian (\u20ac/an)' }, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { callback: function (v) { return (v / 1000) + 'k'; } } }
+          x: { type: 'linear', title: { display: true, text: 'IPS moyen des coll\u00e8ges' }, grid: { color: 'rgba(0,0,0,0.08)' } },
+          y: { type: 'linear', title: { display: true, text: 'Niveau de vie m\u00e9dian (\u20ac/an)' }, grid: { color: 'rgba(0,0,0,0.08)' }, ticks: { callback: function (v) { return (v / 1000) + 'k'; } } }
         }
       }
     });
