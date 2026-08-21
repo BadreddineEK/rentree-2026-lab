@@ -1,25 +1,251 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rentrée 2026 — Coût réel et inégalités scolaires</title>
+  <title>Rentrée 2026 — Coût réel, ARS et inégalités scolaires · Lab</title>
+  <meta name="description" content="On me dit chaque année que l'allocation de rentrée ne suffit pas. J'ai vérifié avec de vraies données officielles : coût réel de la rentrée 2026, ARS, IPS des collèges et revenu médian par département. Un Lab de Badreddine EL KHAMLICHI.">
+  <meta name="author" content="Badreddine EL KHAMLICHI">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rentrée 2026 — Coût réel, ARS et inégalités scolaires">
+  <meta property="og:description" content="L'ARS suffit-elle vraiment ? Vérification par les données officielles : coût réel, IPS des collèges, revenu médian par département.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Labs · Badreddine EK">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233498DB'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='17' font-weight='900' text-anchor='middle' fill='white'%3E🎒%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Structure imposée : voir CONSIGNES.md §7 pour l'ordre exact des sections -->
-  <section id="intro"><!-- Hook investigation personnelle --></section>
-  <section id="cout-2026"><!-- Bar chart moyenne/médiane + ARS --></section>
-  <section id="simulateur"><!-- Simulateur personnel de budget --></section>
-  <section id="carte-ips"><!-- Choropèthe IPS par département --></section>
-  <section id="correlation"><!-- Scatter IPS x revenu médian --></section>
-  <section id="secteur"><!-- Public/privé/REP+ --></section>
-  <section id="limites"><!-- Ce que ça ne dit pas --></section>
-  <section id="sources"><!-- Transparence méthodo --></section>
 
-  <script src="js/chart-cout.js"></script>
-  <script src="js/map-ips.js"></script>
-  <script src="js/scatter-correlation.js"></script>
-  <script src="js/simulateur-budget.js"></script>
+<!-- Structure imposée : voir CONSIGNES.md §7 pour l'ordre exact des sections -->
+
+<header class="hero">
+  <div class="wrap">
+    <a class="lab-tag" href="https://labs.badreddineek.com">← Labs · badreddineek.com</a>
+    <p class="eyebrow">Investigation · Données officielles · Rentrée 2026</p>
+    <h1>L'allocation de rentrée suffit-elle <em>vraiment</em> ?</h1>
+    <p class="lede">
+      On me répète chaque année que l'ARS ne couvre pas la rentrée. Plutôt que de me fier
+      à une impression, j'ai pris les vraies données — coût réel, allocation versée,
+      milieu social des collèges et niveau de vie des territoires — pour voir ce qu'elles
+      disent, sans forcer de conclusion qu'elles ne prouvent pas.
+    </p>
+    <p class="byline">
+      Par <a href="https://badreddineek.com" target="_blank" rel="noopener">Badreddine EL KHAMLICHI</a>
+      · data scientist, Lyon · <a href="#sources">sources en bas de page</a>
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1 · INTRO (hook déjà porté par le hero) — mise en garde méthodo -->
+  <section id="intro" class="note-method reveal">
+    <p>
+      <strong>Comment lire ce Lab.</strong> Chaque chiffre est daté et sourcé. Je montre d'abord
+      un coût, puis une géographie sociale, puis le lien statistique <em>publié</em> entre les deux —
+      et enfin ce que ces données <em>ne</em> permettent <em>pas</em> de dire. Deux faits qui varient
+      ensemble ne prouvent pas que l'un cause l'autre.
+    </p>
+  </section>
+
+  <!-- 2 · COÛT 2026 -->
+  <section id="cout-2026" class="reveal">
+    <p class="section-num">01</p>
+    <h2>Combien coûte vraiment une rentrée en 2026 ?</h2>
+    <p class="section-intro">
+      Deux chiffres racontent deux histoires. La <strong>moyenne</strong> (488&nbsp;€) est tirée vers
+      le haut par les plus grosses dépenses. La <strong>médiane</strong> (261&nbsp;€), c'est le foyer
+      « du milieu » : la moitié dépense moins, la moitié dépense plus. En face, l'<abbr title="Allocation de rentrée scolaire">ARS</abbr>
+      versée par la CAF varie selon l'âge de l'enfant.
+    </p>
+    <div class="card chart-card">
+      <canvas id="chart-cout" height="220" aria-label="Coût de la rentrée 2026 comparé à l'allocation de rentrée scolaire par tranche d'âge"></canvas>
+      <p class="chart-legend" id="cout-legend"></p>
+    </div>
+    <p class="takeaway" id="cout-takeaway"></p>
+  </section>
+
+  <!-- 3 · SIMULATEUR (élément différenciant) -->
+  <section id="simulateur" class="reveal">
+    <p class="section-num">02</p>
+    <h2>Votre rentrée à vous</h2>
+    <p class="section-intro">
+      Les moyennes cachent votre cas réel. Indiquez vos enfants : je calcule l'ARS totale
+      que vous devriez toucher, en face d'une estimation du coût. Tout est calculé dans votre
+      navigateur — <strong>rien n'est envoyé nulle part</strong>.
+    </p>
+    <div class="card simulateur" id="simulateur-app">
+      <div class="sim-controls">
+        <label>Nombre d'enfants scolarisés
+          <select id="sim-nb"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        </label>
+      </div>
+      <div id="sim-enfants" class="sim-enfants"></div>
+      <div class="sim-result" id="sim-result" aria-live="polite"></div>
+      <p class="sim-note">
+        Estimation de coût basée sur la moyenne (488&nbsp;€) et la médiane (261&nbsp;€) UFC-Que Choisir 2026,
+        appliquées par enfant. L'ARS suit les barèmes CAF 2026. C'est un ordre de grandeur, pas un devis.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 · CARTE SOCIALE (IPS) -->
+  <section id="carte-ips" class="reveal">
+    <p class="section-num">03</p>
+    <h2>Où sont les écarts sociaux à l'école ?</h2>
+    <p class="section-intro">
+      L'<abbr title="Indice de position sociale">IPS</abbr> résume le milieu social des élèves d'un
+      collège : plus il est élevé, plus le public est favorisé (la moyenne nationale est calée autour
+      de 100). Voici l'IPS moyen des collèges, département par département.
+    </p>
+    <div class="card map-card">
+      <div id="map-ips" class="map" role="img" aria-label="Carte des départements français colorés selon l'IPS moyen des collèges"></div>
+      <div class="map-meta">
+        <span class="map-year" id="map-year">IPS collèges · —</span>
+        <div class="map-legend" id="map-legend"></div>
+      </div>
+    </div>
+    <p class="takeaway">
+      L'écart n'est pas anecdotique : d'un département à l'autre, l'IPS moyen des collèges
+      passe du simple registre « très favorisé » à « très défavorisé ». Reste à savoir si cette
+      géographie recoupe autre chose.
+    </p>
+  </section>
+
+  <!-- 5 · LE LIEN VÉRIFIÉ (scatter) -->
+  <section id="correlation" class="reveal">
+    <p class="section-num">04</p>
+    <h2>Le lien vérifié entre école et territoire</h2>
+    <p class="section-intro">
+      Je croise deux faits distincts : l'IPS moyen des collèges et la médiane du niveau de vie
+      (INSEE Filosofi), par département. Une <strong>corrélation</strong> mesure à quel point deux
+      grandeurs montent et descendent ensemble (de 0 = aucun lien à 1 = lien parfait).
+    </p>
+    <div class="card corr-card">
+      <div class="corr-figure">
+        <span class="corr-r" id="corr-r">—</span>
+        <span class="corr-label">corrélation<br>IPS × niveau de vie</span>
+      </div>
+      <canvas id="chart-scatter" height="260" aria-label="Nuage de points IPS moyen des collèges contre revenu médian, par département, avec droite de régression"></canvas>
+    </div>
+    <p class="source-inline" id="corr-source"></p>
+    <p class="warn">
+      ⚠️ Corrélation n'est pas causalité. Ce lien fort ne dit pas que le revenu « fabrique » l'IPS,
+      ni l'inverse : les deux reflètent une même réalité sociale du territoire.
+    </p>
+  </section>
+
+  <!-- 6 · SECTEUR & ÉDUCATION PRIORITAIRE -->
+  <section id="secteur" class="reveal">
+    <p class="section-num">05</p>
+    <h2>Public, privé, éducation prioritaire</h2>
+    <p class="section-intro">
+      La moyenne nationale masque de vrais écarts selon le type de collège. REP et REP+
+      (réseaux d'éducation prioritaire) regroupent les établissements au public le plus défavorisé.
+    </p>
+    <div class="grid-2">
+      <div class="card chart-card">
+        <h3>Par secteur</h3>
+        <canvas id="chart-secteur" height="180" aria-label="IPS moyen public contre privé sous contrat"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h3>Par éducation prioritaire</h3>
+        <canvas id="chart-ep" height="180" aria-label="IPS moyen hors éducation prioritaire, REP et REP+"></canvas>
+      </div>
+    </div>
+    <p class="takeaway" id="secteur-takeaway"></p>
+  </section>
+
+  <!-- 7 · CE QUE ÇA NE DIT PAS (non négociable, CONSIGNES §7.7) -->
+  <section id="limites" class="reveal">
+    <p class="section-num">06</p>
+    <h2>Ce que ces données ne disent <em>pas</em></h2>
+    <ul class="limites">
+      <li>
+        <strong>Corrélation ≠ causalité.</strong> Un IPS bas et un revenu bas vont souvent de pair,
+        mais aucune de ces données ne prouve qu'un facteur cause l'autre. Ce sont deux symptômes
+        d'une même géographie sociale.
+      </li>
+      <li id="lim-ivac">
+        <strong>Un IPS faible n'est pas une fatalité scolaire.</strong> <span id="ivac-line"></span>
+        La valeur ajoutée (DEPP) compare la réussite au DNB observée à celle attendue vu le profil
+        des élèves : beaucoup de collèges défavorisés font mieux qu'attendu.
+      </li>
+      <li>
+        <strong>Le piège de l'agrégation.</strong> Je raisonne au niveau du département ; l'IPS varie
+        énormément d'un collège à l'autre au sein d'un même territoire. Une moyenne départementale ne
+        décrit aucun établissement en particulier, et ne cible aucune commune.
+      </li>
+      <li>
+        <strong>Des millésimes différents.</strong> L'IPS est 2025-2026, le revenu médian 2021
+        (dernier disponible à ce niveau), l'ARS et les coûts 2026. C'est assumé : l'IPS médian
+        du public est très stable dans le temps (autour de 100 depuis des années), ce qui rend la
+        comparaison robuste — c'est un argument, pas une excuse.
+      </li>
+      <li>
+        <strong>Coût ≠ dépense totale d'éducation.</strong> Les 488&nbsp;€/261&nbsp;€ mesurent les
+        <em>achats de rentrée</em> (fournitures, cartable…), pas le coût annuel complet de la scolarité.
+      </li>
+    </ul>
+  </section>
+
+  <!-- 8 · SOURCES & MÉTHODE -->
+  <section id="sources" class="reveal">
+    <p class="section-num">07</p>
+    <h2>Sources &amp; méthode</h2>
+    <p class="section-intro">Toutes les données sont officielles, datées et re-téléchargeables.</p>
+    <ul class="sources">
+      <li><strong>Coût de la rentrée 2026</strong> (moyenne 488&nbsp;€, médiane 261&nbsp;€) — UFC-Que Choisir / Que Choisir Ensemble, 2026.</li>
+      <li><strong>Allocation de rentrée scolaire 2026</strong> (426,87&nbsp;€ / 450,41&nbsp;€ / 466,02&nbsp;€) — CAF / service-public.gouv.fr, versée le 18 août 2026.</li>
+      <li><strong>IPS des collèges</strong> (rentrée 2025-2026) — DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Statut REP / REP+</strong> — Annuaire de l'éducation, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Médiane du niveau de vie par département</strong> (2021) — INSEE Filosofi, <a href="https://www.insee.fr/fr/statistiques/7756729" target="_blank" rel="noopener">base tous niveaux géographiques</a>.</li>
+      <li><strong>Valeur ajoutée des collèges</strong> (session 2025) — DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-valeur-ajoutee-colleges/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Corrélation de référence 0,87</strong> (IPS élèves de 3e × revenu médian communal) — DEPP, Note d'Information n°23.16, mars 2023 (d'après Murat, 2021).</li>
+      <li><strong>Fond de carte</strong> — contours départementaux simplifiés (france-geojson, d'après IGN/Etalab, Licence Ouverte).</li>
+    </ul>
+    <p class="method-note">
+      Méthode : agrégation de l'IPS par département (moyenne des collèges), jointure avec la médiane
+      du niveau de vie, corrélation de Pearson calculée sur les <span id="method-n">—</span> départements
+      couverts. Pipeline Python reproductible, aucune valeur n'est saisie à la main hors coûts/ARS
+      (réglementaires). Code et données&nbsp;: <a href="https://github.com/BadreddineEK/rentree-2026-lab" target="_blank" rel="noopener">repo GitHub</a>.
+    </p>
+  </section>
+
+  <footer class="foot">
+    <p>Un Lab de <a href="https://badreddineek.com" target="_blank" rel="noopener">Badreddine EL KHAMLICHI</a> · 2026 ·
+      <a href="https://labs.badreddineek.com">autres Labs</a></p>
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/chart-cout.js" defer></script>
+<script src="js/simulateur-budget.js" defer></script>
+<script src="js/map-ips.js" defer></script>
+<script src="js/scatter-correlation.js" defer></script>
+<script>
+  // Révélation douce au scroll (respecte prefers-reduced-motion)
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 </body>
 </html>
