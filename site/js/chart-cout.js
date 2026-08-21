@@ -109,4 +109,50 @@
       + 'Un IPS bas p\u00e8se sur les r\u00e9sultats, mais ne condamne personne&nbsp;: \u00e0 profil \u00e9gal, ces coll\u00e8ges '
       + 'font souvent mieux que les plus favoris\u00e9s.';
   });
+
+  // Poids réel de la rentrée selon le niveau de vie local (barres horizontales).
+  fetch('data/poids_reel.json').then(function (r) { return r.json(); }).then(function (d) {
+    var el = document.getElementById('chart-poids');
+    if (!el) return;
+    var fr = function (x) { return String(x).replace('.', ','); };
+    var rows = d.selection.map(function (s) {
+      return { nom: s.nom, moy: s.poids_moyenne_pct, med: s.poids_mediane_pct, d1: s.d1_mensuel_eur, nat: false };
+    });
+    rows.push({ nom: 'France (r\u00e9f\u00e9rence)', moy: d.national.poids_moyenne_pct, med: d.national.poids_mediane_pct, d1: d.national.d1_mensuel_eur, nat: true });
+    rows.sort(function (a, b) { return b.moy - a.moy; });
+    var colOf = function (r) { return r.nat ? ACC : (r.moy >= 58 ? HOT : (r.moy >= 48 ? WARN : COOL)); };
+    new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: rows.map(function (r) { return r.nom; }),
+        datasets: [{ data: rows.map(function (r) { return r.moy; }), backgroundColor: rows.map(colOf), borderRadius: 5, maxBarThickness: 30 }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) {
+            var r = rows[c.dataIndex];
+            return 'Rentr\u00e9e moyenne = ' + fr(r.moy) + '\u00a0% d\u2019un mois (m\u00e9diane ' + fr(r.med)
+              + '\u00a0%) \u00b7 niveau de vie des 10\u00a0% les plus modestes\u00a0: ' + r.d1 + '\u00a0\u20ac/mois';
+          } } }
+        },
+        scales: {
+          x: { grid: { color: GRID }, min: 0, ticks: { callback: function (v) { return v + ' %'; } },
+               title: { display: true, text: 'Part d\u2019un mois de niveau de vie des 10\u00a0% les plus modestes' } },
+          y: { grid: { display: false }, ticks: { color: '#4a4740', font: { size: 12 } } }
+        }
+      }
+    });
+    var lg = document.getElementById('poids-legend');
+    if (lg) lg.innerHTML = 'Coût de la rentr\u00e9e <b>moyenne</b> (488\u00a0€) rapport\u00e9 \u00e0 un mois de niveau de vie du 1<sup>er</sup> d\u00e9cile. '
+      + '<span style="color:' + ACC + '">\u25a0</span> r\u00e9f\u00e9rence nationale';
+    var hi = d.ecart.dep_poids_max, lo = d.ecart.dep_poids_min;
+    var tk = document.getElementById('poids-takeaway');
+    if (tk) tk.innerHTML = 'Le forfait est le m\u00eame partout, l\u2019effort non. Pour les 10\u00a0% les plus modestes, '
+      + 'la rentrée moyenne absorbe <em>' + fr(hi.poids_moyenne_pct) + '\u00a0%</em> d\u2019un mois de niveau de vie '
+      + '\u00e0 ' + hi.nom + ', contre <em>' + fr(lo.poids_moyenne_pct) + '\u00a0%</em> en ' + lo.nom
+      + '&nbsp;: un \u00e9cart de pr\u00e8s de ' + fr(d.ecart.ratio) + '\u00d7. Un m\u00eame ch\u00e8que, une charge tr\u00e8s diff\u00e9rente.';
+  });
 })();

@@ -31,6 +31,7 @@ IVAC_ANNEE = "session 2025 (DNB)"
 SRC_IPS = "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)"
 SRC_REVENU = "INSEE — Filosofi 2021, médiane du niveau de vie par département (base tous niveaux géographiques, géo. 01/01/2025)"
 SRC_PAUVRETE = "INSEE — Filosofi 2021, taux de pauvreté (seuil 60% du niveau de vie médian) et part des prestations sociales dans le revenu disponible, par département"
+SRC_D1 = "INSEE — Filosofi 2021, 1er décile du niveau de vie (D1) par département ; UFC-Que Choisir 2026 pour le coût de la rentrée"
 SRC_EP = "Ministère de l'Éducation nationale — Annuaire de l'éducation (statut REP / REP+)"
 SRC_IVAC = "DEPP — Indicateurs de valeur ajoutée des collèges (data.education.gouv.fr, fr-en-indicateurs-valeur-ajoutee-colleges)"
 
@@ -45,6 +46,18 @@ def _norm_dep(code: str) -> str:
 
 def _round(x, n=1):
     return None if x is None or (isinstance(x, float) and np.isnan(x)) else round(float(x), n)
+
+
+# Noms propres (accentués, casse correcte) pour l'affichage éditorial, les données
+# sources étant en majuscules non accentuées. Limité aux départements cités nommément.
+NOMS_PROPRES = {
+    "974": "La Réunion", "93": "Seine-Saint-Denis", "59": "Nord", "75": "Paris",
+    "62": "Pas-de-Calais", "92": "Hauts-de-Seine", "78": "Yvelines", "85": "Vendée",
+}
+
+
+def _nom_propre(code: str, defaut: str) -> str:
+    return NOMS_PROPRES.get(str(code), str(defaut).title())
 
 
 def _load_ips() -> pd.DataFrame:
@@ -65,7 +78,16 @@ def _load_revenu() -> pd.DataFrame:
     out["revenu_median"] = piv.get("MED_SL")
     out["taux_pauvrete"] = piv.get("PR_MD60")
     out["part_prestations"] = piv.get("S_SOC_BEN_DI")
+    out["d1"] = piv.get("D1_SL")
     return out.reset_index().dropna(subset=["revenu_median"])
+
+
+def _france_d1() -> float:
+    """1er décile national du niveau de vie (ligne FRANCE de Filosofi)."""
+    f = pd.read_csv(RAW / "filosofi_2021.csv", sep=";", dtype=str,
+                    usecols=["GEO_OBJECT", "FILOSOFI_MEASURE", "OBS_VALUE"])
+    row = f[(f["GEO_OBJECT"] == "FRANCE") & (f["FILOSOFI_MEASURE"] == "D1_SL")]
+    return float(pd.to_numeric(row["OBS_VALUE"], errors="coerce").iloc[0])
 
 
 # ── 1. Coût de la rentrée + ARS (valeurs éditoriales validées, CONSIGNES §4) ──
@@ -273,6 +295,82 @@ def build_territoire_social_dataset(ips_dep: pd.DataFrame) -> None:
           f"IPS x prestations r={corr_prestations['r_pearson']} (n={len(mp)})")
 
 
+# ── 3ter. Le poids réel : ce que la rentrée pèse selon le niveau de vie local ──
+def build_poids_reel_dataset(ips_dep: pd.DataFrame) -> None:
+    """Pont honnête entre l'argent et le territoire : le coût de la rentrée et l'ARS
+    sont des forfaits nationaux, mais leur POIDS dépend du niveau de vie local.
+    On rapporte le coût à un mois de niveau de vie des 10 % les plus modestes (1er
+    décile D1). Aucune donnée inventée : coût UFC, D1 INSEE, division simple."""
+    MOYENNE, MEDIANE = 488, 261
+    noms = ips_dep[["dep", "departement"]].drop_duplicates().set_index("dep")["departement"]
+    rev = _load_revenu().dropna(subset=["d1"]).copy()
+    rev["departement"] = rev["dep"].map(noms)
+    rev = rev.dropna(subset=["departement"])
+    rev["d1_mois"] = rev["d1"] / 12
+    rev["poids_moyenne"] = MOYENNE / rev["d1_mois"] * 100
+    rev["poids_mediane"] = MEDIANE / rev["d1_mois"] * 100
+
+    fr_d1_mois = _france_d1() / 12
+    national = {
+        "d1_mensuel_eur": int(round(fr_d1_mois)),
+        "poids_moyenne_pct": _round(MOYENNE / fr_d1_mois * 100, 0),
+        "poids_mediane_pct": _round(MEDIANE / fr_d1_mois * 100, 0),
+    }
+
+    # Sélection éditoriale de départements contrastés et reconnaissables (valeurs calculées).
+    sel_codes = ["974", "93", "62", "59", "75", "78", "92"]
+    sel = rev[rev["dep"].isin(sel_codes)].copy()
+    selection = [
+        {
+            "code": r.dep,
+            "nom": _nom_propre(r.dep, r.departement),
+            "d1_mensuel_eur": int(round(r.d1_mois)),
+            "poids_moyenne_pct": _round(r.poids_moyenne, 0),
+            "poids_mediane_pct": _round(r.poids_mediane, 0),
+        }
+        for r in sel.itertuples()
+    ]
+    selection.sort(key=lambda x: x["poids_moyenne_pct"], reverse=True)
+
+    hi = rev.loc[rev["poids_moyenne"].idxmax()]
+    lo = rev.loc[rev["poids_moyenne"].idxmin()]
+
+    data = {
+        "meta": {
+            "titre": "Le même chèque ne pèse pas pareil",
+            "explication": "Le coût de la rentrée et l'ARS sont des montants nationaux, identiques "
+                           "partout. Mais 488 € ne représentent pas le même effort selon le niveau de "
+                           "vie local. On rapporte ici le coût à un mois de niveau de vie des 10 % les "
+                           "plus modestes (1er décile D1) de chaque département.",
+            "sources": [SRC_D1],
+            "annee_reference": {"cout": 2026, "d1": REVENU_ANNEE},
+            "definition_d1": "Le 1er décile (D1) est le niveau de vie au-dessous duquel vivent les "
+                             "10 % les plus modestes. On le ramène au mois (D1 annuel / 12).",
+            "methode": "poids (%) = coût de la rentrée / (D1 annuel / 12) × 100.",
+        },
+        "cout": {"moyenne_eur": MOYENNE, "mediane_eur": MEDIANE,
+                 "source": "UFC-Que Choisir", "annee_reference": 2026},
+        "national": national,
+        "ecart": {
+            "dep_poids_max": {"code": hi["dep"], "nom": _nom_propre(hi["dep"], hi["departement"]),
+                              "poids_moyenne_pct": _round(hi["poids_moyenne"], 0),
+                              "poids_mediane_pct": _round(hi["poids_mediane"], 0)},
+            "dep_poids_min": {"code": lo["dep"], "nom": _nom_propre(lo["dep"], lo["departement"]),
+                              "poids_moyenne_pct": _round(lo["poids_moyenne"], 0),
+                              "poids_mediane_pct": _round(lo["poids_mediane"], 0)},
+            "ratio": _round(hi["poids_moyenne"] / lo["poids_moyenne"], 2),
+        },
+        "selection": selection,
+        "lecture": "Pour les familles les plus modestes, la rentrée moyenne peut absorber près des "
+                   "deux tiers d'un mois de niveau de vie dans les départements les plus pauvres, "
+                   "contre moins de la moitié dans les plus favorisés. Un forfait unique, un effort "
+                   "très inégal.",
+    }
+    _write("poids_reel.json", data)
+    print(f"[POIDS] poids moyenne/D1 : {lo['departement']} {lo['poids_moyenne']:.0f}% "
+          f"-> {hi['departement']} {hi['poids_moyenne']:.0f}% (national {national['poids_moyenne_pct']:.0f}%)")
+
+
 # ── 4. Comparaison secteur (public/privé) et éducation prioritaire (REP/REP+) ──
 def build_secteur_comparison_dataset() -> None:
     ips = _load_ips()
@@ -366,6 +464,7 @@ if __name__ == "__main__":
     ips_dep = build_ips_map_dataset()
     build_correlation_dataset(ips_dep)
     build_territoire_social_dataset(ips_dep)
+    build_poids_reel_dataset(ips_dep)
     build_secteur_comparison_dataset()
     build_ivac_nuance_dataset()
     print("OK — JSON exportés dans", OUT)

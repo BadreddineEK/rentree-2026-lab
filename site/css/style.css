@@ -91,6 +91,12 @@ p { margin: 0 0 1.1rem; }
   border-top: 1px solid var(--rule); padding-top: 1rem; font-size: 0.98rem;
 }
 
+/* Note de clôture en fin de conclusion : discrète, filet à gauche */
+.note-inline {
+  margin-top: 1.6rem; padding-left: 1.1rem; border-left: 3px solid var(--rule-strong);
+  color: var(--muted); font-size: 0.98rem;
+}
+
 /* ── FIGURES (graphiques quasi sans chrome) ── */
 figure, .figure { margin: 0; }
 .chart-wrap { margin: 0.4rem 0 0; }
