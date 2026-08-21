@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La rentrée coûte pareil à tout le monde. Pas de la même façon. · Lab</title>
-  <meta name="description" content="Chaque mi-août, la même rengaine : la rentrée coûte cher, l'allocation ne suffit pas. J'ai vérifié avec les données officielles. La vraie histoire n'est pas celle du montant, mais d'un même coût qui ne pèse pas pareil selon où l'on vit et l'école où l'on entre. Un Lab de Badreddine EL KHAMLICHI.">
+  <title>L'école française trie-t-elle plus qu'elle n'élève ? · Lab</title>
+  <meta name="description" content="On entend tout et son contraire sur l'école française. J'ai voulu vérifier moi-même avec les données publiques (DEPP, INSEE) : à quel point les collèges, écoles et lycées sont-ils socialement triés, du primaire au lycée ? Un état des lieux data, à la rentrée. Un Lab de Badreddine EL KHAMLICHI.">
   <meta name="author" content="Badreddine EL KHAMLICHI">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="La rentrée coûte pareil à tout le monde. Pas de la même façon.">
-  <meta property="og:description" content="Un même coût, une même allocation, mais un effort très inégal selon le territoire et l'école. Enquête data sur ce que révèle la rentrée 2026.">
+  <meta property="og:title" content="L'école française trie-t-elle plus qu'elle n'élève ?">
+  <meta property="og:description" content="État des lieux data des inégalités scolaires, du primaire au lycée : IPS, territoire, public/privé, valeur ajoutée. Ce que disent vraiment les données publiques.">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Labs · Badreddine EK">
   <meta name="twitter:card" content="summary_large_image">
@@ -23,18 +23,15 @@
 </head>
 <body>
 
-<!-- Structure imposée : voir CONSIGNES.md §7 pour l'ordre exact des sections -->
-
 <header class="hero">
   <div class="wrap">
     <p class="kicker"><a href="https://labs.badreddineek.com">Labs · badreddineek.com</a> · enquête data, rentrée 2026</p>
-    <h1>La rentrée coûte pareil à tout le monde. <em>Pas de la même façon.</em></h1>
+    <h1>L'école française trie-t-elle plus <em>qu'elle n'élève ?</em></h1>
     <p class="lede">
-      Chaque mi-août, la même petite musique&nbsp;: «&nbsp;la rentrée coûte cher, l'allocation ne
-      suffit pas&nbsp;». J'ai voulu vérifier, chiffres officiels en main. Et j'ai découvert que la
-      vraie histoire n'est pas celle du montant. C'est celle d'un même coût, d'une même allocation,
-      qui ne pèsent pas du tout pareil selon où l'on vit et l'école où l'on entre. La rentrée, ce
-      n'est pas qu'un budget&nbsp;: c'est un révélateur.
+      Sur l'école, j'entends tout et son contraire&nbsp;: elle reproduit les inégalités, elle
+      s'effondre, elle sauve encore des gamins. Plutôt que de choisir un camp, j'ai ouvert les
+      données publiques (DEPP, INSEE) et regardé moi-même. Voici un état des lieux, du primaire au
+      lycée&nbsp;: à quel point l'école trie socialement, où, et ce qu'elle arrive encore à faire.
     </p>
     <p class="byline">
       Par <a href="https://badreddineek.com" target="_blank" rel="noopener">Badreddine EL KHAMLICHI</a>
@@ -45,83 +42,54 @@
 
 <main class="wrap">
 
-  <!-- 1 · INTRO (hook déjà porté par le hero) — cadrage + mise en garde méthodo -->
+  <!-- INTRO — cadrage + mise en garde méthodo -->
   <section id="intro" class="note-method">
     <p>
-      <strong>Ce Lab n'est pas un procès de l'allocation de rentrée.</strong> C'est une tentative de
-      comprendre tout ce qu'une simple rentrée met en jeu&nbsp;: le budget des familles, le territoire
-      où elles vivent, l'école où entrent leurs enfants. Chaque chiffre est daté et sourcé. Et je dis
-      aussi ce que ces données ne permettent pas d'affirmer&nbsp;: deux faits qui varient ensemble ne
-      prouvent pas que l'un cause l'autre.
+      <strong>Comment lire ce Lab.</strong> L'outil central est l'<abbr title="Indice de position sociale">IPS</abbr>,
+      l'indice de position sociale que la DEPP calcule pour chaque établissement&nbsp;: plus il est
+      élevé, plus le public d'élèves est favorisé (la moyenne nationale tourne autour de 100). Chaque
+      chiffre est daté et sourcé. Et je dis aussi ce que ces données ne permettent pas d'affirmer&nbsp;:
+      deux faits qui varient ensemble ne prouvent pas que l'un cause l'autre.
     </p>
   </section>
 
-  <!-- 2 · COÛT 2026 -->
-  <section id="cout-2026">
-    <h2>Moyenne ou médiane&nbsp;: le tour de passe-passe</h2>
+  <!-- CH.1 · LA TRAJECTOIRE DU TRI (IPS par niveau) -->
+  <section id="trajectoire">
+    <h2>Du primaire au lycée, l'entre-soi se creuse</h2>
     <p class="section-intro">
-      Le «&nbsp;coût de la rentrée&nbsp;», c'est deux chiffres très différents. La <strong>moyenne</strong>
-      (488&nbsp;€) additionne tout le monde puis divise&nbsp;: quelques familles qui dépensent
-      beaucoup la tirent vers le haut. La <strong>médiane</strong> (261&nbsp;€), c'est le foyer pile
-      au milieu&nbsp;: la moitié dépense moins, la moitié dépense plus. En face, l'<abbr title="Allocation de rentrée scolaire">ARS</abbr>
-      versée par la CAF va de 426&nbsp;€ à 466&nbsp;€ selon l'âge.
+      Commençons par le plus frappant. Si on compare l'IPS moyen du <strong>public</strong> et du
+      <strong>privé sous contrat</strong> à chaque étage de la scolarité, l'écart ne cesse de grandir.
+      Il est déjà là dès l'école primaire, et il se creuse nettement au collège puis au lycée.
     </p>
     <div class="chart-wrap">
-      <canvas id="chart-cout" height="220" aria-label="Coût de la rentrée 2026 comparé à l'allocation de rentrée scolaire par tranche d'âge"></canvas>
-      <p class="chart-legend" id="cout-legend"></p>
+      <canvas id="chart-niveau" height="220" aria-label="IPS moyen du public et du privé sous contrat, pour les écoles, collèges et lycées"></canvas>
+      <p class="chart-legend" id="niveau-legend"></p>
     </div>
-    <p class="takeaway" id="cout-takeaway"></p>
+    <p class="takeaway" id="niveau-takeaway"></p>
   </section>
 
-  <!-- 3 · SIMULATEUR (élément différenciant) -->
-  <section id="simulateur">
-    <h2>Et vous, ça donne quoi ?</h2>
+  <!-- CH.2 · ÉVOLUTION DANS LE TEMPS -->
+  <section id="evolution">
+    <h2>Et ce n'est pas en train de s'arranger</h2>
     <p class="section-intro">
-      La moyenne et la médiane, c'est le pays entier. Vous, vous avez des enfants d'âges précis.
-      Indiquez-les&nbsp;: je calcule l'ARS totale que vous devriez toucher, face au coût estimé.
-      Tout se calcule dans votre navigateur, <strong>rien n'est envoyé nulle part</strong>.
-    </p>
-    <div class="panel simulateur" id="simulateur-app">
-      <div class="sim-controls">
-        <label>Nombre d'enfants scolarisés
-          <select id="sim-nb"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
-        </label>
-      </div>
-      <div id="sim-enfants" class="sim-enfants"></div>
-      <div class="sim-result" id="sim-result" aria-live="polite"></div>
-      <p class="sim-note">
-        Coût estimé entre la médiane (261&nbsp;€) et la moyenne (488&nbsp;€) UFC-Que Choisir 2026,
-        appliquées par enfant. L'ARS suit les barèmes CAF 2026. C'est un ordre de grandeur, pas un devis.
-      </p>
-    </div>
-  </section>
-
-  <!-- 4 · LE POIDS RÉEL (pont argent → territoire, dataset poids_reel) -->
-  <section id="poids-reel">
-    <h2>Le même chèque ne pèse pas pareil</h2>
-    <p class="section-intro">
-      Voilà le point qu'on oublie&nbsp;: le coût de la rentrée et l'ARS sont des montants
-      <strong>nationaux</strong>, identiques partout. Mais 488&nbsp;€, ce n'est pas le même effort selon
-      qu'on vit dans un département aisé ou modeste. Pour le mesurer, je rapporte le coût à un mois de
-      niveau de vie des <strong>10&nbsp;% les plus modestes</strong> (le 1<sup>er</sup> décile, INSEE),
-      département par département.
+      Une photo, c'est bien&nbsp;; le film, c'est mieux. Sur les dernières rentrées disponibles,
+      l'écart d'IPS entre privé sous contrat et public ne se referme pas. Il se <strong>creuse</strong>,
+      à chaque niveau.
     </p>
     <div class="chart-wrap">
-      <canvas id="chart-poids" height="220" aria-label="Poids de la rentrée moyenne dans un mois de niveau de vie des 10 % les plus modestes, par département"></canvas>
-      <p class="chart-legend" id="poids-legend"></p>
+      <canvas id="chart-evolution" height="200" aria-label="Évolution de l'écart d'IPS entre privé et public, par niveau, sur les dernières rentrées"></canvas>
+      <p class="chart-legend" id="evolution-legend"></p>
     </div>
-    <p class="takeaway" id="poids-takeaway"></p>
+    <p class="takeaway" id="evolution-takeaway"></p>
   </section>
 
-  <!-- 5 · CARTE SOCIALE (IPS) : pivot territoire → école -->
+  <!-- CH.3 · CARTE SOCIALE (IPS collèges) -->
   <section id="carte-ips">
-    <h2>Derrière le budget, l'école</h2>
+    <h2>La carte sociale des collèges</h2>
     <p class="section-intro">
-      Un même coût qui pèse plus lourd dans les territoires modestes&nbsp;: on tient déjà une première
-      inégalité. Mais il en existe une plus profonde. Dans ces mêmes territoires, l'école elle-même
-      n'accueille pas le même public. L'<abbr title="Indice de position sociale">IPS</abbr> résume le
-      milieu social des élèves d'un collège&nbsp;: plus il est haut, plus le public est favorisé (la
-      moyenne nationale tourne autour de 100). Voici l'IPS moyen des collèges, département par département.
+      Cet entre-soi a une géographie. Voici l'<abbr title="Indice de position sociale">IPS</abbr> moyen
+      des collèges, département par département. Plus la couleur penche vers le bleu, plus le public est
+      favorisé&nbsp;; plus elle penche vers le brun, plus il est défavorisé.
     </p>
     <div class="panel">
       <div id="map-ips" class="map" role="img" aria-label="Carte des départements français colorés selon l'IPS moyen des collèges"></div>
@@ -137,7 +105,7 @@
     </p>
   </section>
 
-  <!-- 5 · LE LIEN VÉRIFIÉ (scatter) -->
+  <!-- CH.3 · LE LIEN VÉRIFIÉ (scatter) -->
   <section id="correlation">
     <h2>Ce que la carte recoupe</h2>
     <p class="section-intro">
@@ -159,13 +127,13 @@
     </p>
   </section>
 
-  <!-- 6 · SECTEUR & ÉDUCATION PRIORITAIRE (profondeur de l'inégalité scolaire) -->
+  <!-- CH.5 · SECTEUR & ÉDUCATION PRIORITAIRE (les deux bouts de la distribution) -->
   <section id="secteur">
-    <h2>Public, privé, éducation prioritaire</h2>
+    <h2>Les deux bouts&nbsp;: le privé et l'éducation prioritaire</h2>
     <p class="section-intro">
-      Ce lien territoire-école se creuse encore à l'intérieur d'un même département. La moyenne
-      nationale mélange des mondes qui ne se croisent pas. REP et REP+ (réseaux d'éducation
-      prioritaire) regroupent les collèges au public le plus défavorisé.
+      Zoomons sur le collège. La moyenne nationale (autour de 100) masque deux extrêmes qui ne se
+      croisent jamais&nbsp;: en haut, le privé sous contrat&nbsp;; en bas, l'éducation prioritaire.
+      REP et REP+ regroupent les collèges au public le plus défavorisé.
     </p>
     <div class="cols">
       <div class="figure">
@@ -197,69 +165,65 @@
     <p class="takeaway" id="ivac-takeaway"></p>
   </section>
 
-  <!-- 7 · CE QUE ÇA NE DIT PAS (non négociable, CONSIGNES §7.7) -->
+  <!-- CE QUE ÇA NE DIT PAS -->
   <section id="limites">
     <h2>Ce que ces données ne disent <em>pas</em></h2>
     <ul class="limites">
       <li>
-        <strong>Corrélation n'est pas causalité.</strong> Un IPS bas et un revenu bas vont souvent
-        de pair, mais aucune de ces données ne prouve qu'un facteur cause l'autre. Ce sont deux
-        symptômes d'une même géographie sociale.
+        <strong>L'IPS mesure un milieu social, pas un niveau scolaire.</strong> Un IPS bas décrit
+        un public d'élèves défavorisé, pas de mauvais élèves ni un mauvais établissement. C'est
+        justement ce que montre le chapitre sur la valeur ajoutée.
       </li>
       <li>
-        <strong>Le coût utilisé est national.</strong> Pour mesurer le «&nbsp;poids réel&nbsp;», je
-        rapporte un coût national (488&nbsp;€/261&nbsp;€, UFC-Que Choisir) au niveau de vie local. Or
-        la dépense de rentrée varie sans doute aussi d'un territoire à l'autre, mais aucune source ne
-        la publie à ce niveau. Je fais donc varier le dénominateur (le niveau de vie), pas le
-        numérateur&nbsp;: l'écart réel est probablement encore plus marqué que ce que je montre.
+        <strong>Corrélation n'est pas causalité.</strong> IPS et revenu du territoire vont de pair,
+        mais aucune de ces données ne prouve qu'un facteur cause l'autre. Ce sont deux symptômes
+        d'une même géographie sociale.
       </li>
       <li>
-        <strong>Le piège de l'agrégation.</strong> Je raisonne au niveau du département&nbsp;; l'IPS
-        varie énormément d'un collège à l'autre au sein d'un même territoire. Une moyenne
-        départementale ne décrit aucun établissement en particulier, et ne cible aucune commune.
+        <strong>Le piège de l'agrégation.</strong> Sur la carte, je raisonne par département&nbsp;;
+        or l'IPS varie énormément d'un collège à l'autre au sein d'un même territoire. Une moyenne
+        départementale ne décrit aucun établissement en particulier.
       </li>
       <li>
-        <strong>Des millésimes différents.</strong> L'IPS est 2025-2026, le revenu et la pauvreté 2021
-        (dernier disponible à ce niveau), l'ARS et les coûts 2026. C'est assumé&nbsp;: l'IPS médian du
-        public est très stable dans le temps (autour de 100 depuis des années), ce qui rend la
-        comparaison robuste. C'est un argument, pas une excuse.
+        <strong>Le lycée agrège des mondes.</strong> L'IPS d'un lycée mélange les voies générale,
+        technologique et professionnelle, aux profils sociaux très différents (la voie pro concentre
+        les IPS les plus bas). L'écart public/privé au lycée est donc un ordre de grandeur, pas une
+        mesure fine.
       </li>
       <li>
-        <strong>Coût de rentrée n'est pas coût de la scolarité.</strong> Les 488&nbsp;€/261&nbsp;€
-        mesurent les <em>achats de rentrée</em> (fournitures, cartable…), pas le coût annuel complet
-        d'un enfant scolarisé.
+        <strong>Des millésimes récents mais distincts.</strong> IPS des écoles 2024-2025, des
+        collèges et lycées 2025-2026, revenu médian 2021 (dernier disponible à ce niveau). L'IPS
+        étant très stable d'une année sur l'autre, la comparaison reste robuste.
       </li>
     </ul>
   </section>
 
-  <!-- 8 · CONCLUSION — juste ou aveugle ? -->
+  <!-- CONCLUSION -->
   <section id="conclusion">
-    <h2>Un forfait juste, ou aveugle ?</h2>
+    <h2>Alors, trie-t-elle plus qu'elle n'élève ?</h2>
     <p>
-      Reprenons le fil. Sur le montant, la réponse est plus rassurante qu'on ne le dit&nbsp;: l'ARS 2026
-      (426&nbsp;€ à 466&nbsp;€) couvre la rentrée <strong>médiane</strong> (261&nbsp;€) avec une marge
-      confortable. Le sentiment que «&nbsp;ça ne suffit jamais&nbsp;» vient surtout de la <strong>moyenne</strong>
-      (488&nbsp;€), gonflée par les plus grosses dépenses. Le problème n'est donc pas vraiment la
-      hauteur du chèque.
+      Reprenons. Le tri social est <strong>réel</strong> et il n'a rien de marginal&nbsp;: l'entre-soi
+      entre privé et public s'installe dès le primaire, se creuse au collège, se maintient au lycée,
+      et sur les dernières rentrées il s'élargit plutôt qu'il ne se résorbe. Cette géographie épouse
+      presque parfaitement celle des revenus. Sur ce point, l'école française trie, et le nie mal.
     </p>
     <p>
-      Le problème, c'est qu'il est <strong>plat</strong>. Le même montant, la même dépense, ne pèsent
-      pas du tout pareil&nbsp;: près des deux tiers d'un mois de niveau de vie pour les plus modestes
-      dans les départements pauvres, moitié moins ailleurs. Et derrière ce budget se joue une seconde
-      inégalité, celle de l'école&nbsp;: les territoires où l'argent manque sont aussi ceux où l'IPS
-      des collèges est le plus bas.
+      Mais les mêmes données refusent le fatalisme. À profil social donné, les collèges les plus
+      défavorisés obtiennent souvent une valeur ajoutée <strong>supérieure</strong> à ce que leur
+      public laissait attendre. Là où c'est le plus dur, l'école élève encore. Elle fait donc les
+      deux à la fois&nbsp;: elle trie à l'entrée, et elle rattrape en partie à l'intérieur.
     </p>
     <p class="takeaway">
-      Mon verdict de data scientist&nbsp;: l'ARS fait correctement son travail comptable, mais elle reste
-      aveugle au terrain. Elle traite de la même façon une rentrée qui pèse 40&nbsp;% ou 66&nbsp;% du
-      budget d'une famille modeste, et n'a évidemment aucune prise sur l'école qui l'attend. La vraie
-      question de rentrée n'est peut-être pas «&nbsp;l'aide suffit-elle&nbsp;?&nbsp;», mais «&nbsp;un
-      forfait unique peut-il répondre à un pays aussi inégal&nbsp;?&nbsp;». À vous d'en juger.
+      Mon constat de data scientist&nbsp;: le problème n'est pas que l'école serait devenue une
+      machine à trier sans âme. C'est que le tri social se fait <em>avant</em> et <em>autour</em>
+      d'elle (le privé, la carte scolaire, le territoire), pendant qu'elle dépense son énergie à
+      compenser. La vraie question n'est pas «&nbsp;l'école échoue-t-elle&nbsp;?&nbsp;», mais
+      «&nbsp;combien de temps peut-elle élever d'un côté ce que la société trie de l'autre&nbsp;?&nbsp;».
+      À vous d'en juger.
     </p>
     <p class="note-inline">
-      Bonne nouvelle pour finir&nbsp;: un IPS bas n'est pas une sentence. À profil social égal, les
-      collèges les plus défavorisés font souvent mieux qu'attendu. L'inégalité de départ est réelle&nbsp;;
-      elle n'est pas une fatalité.
+      Prochaine étape de ce Lab&nbsp;: confronter ce tri social à la question du <em>niveau</em>
+      (évaluations nationales, PISA) et à une comparaison internationale. À suivre.
     </p>
   </section>
 
@@ -268,20 +232,19 @@
     <h2>Sources &amp; méthode</h2>
     <p class="section-intro">Toutes les données sont officielles, datées et re-téléchargeables.</p>
     <ul class="sources">
-      <li><strong>Coût de la rentrée 2026</strong> (moyenne 488&nbsp;€, médiane 261&nbsp;€), UFC-Que Choisir / Que Choisir Ensemble, 2026.</li>
-      <li><strong>Allocation de rentrée scolaire 2026</strong> (426,87&nbsp;€ / 450,41&nbsp;€ / 466,02&nbsp;€), CAF / service-public.gouv.fr, versée le 18 août 2026.</li>
-      <li><strong>IPS des collèges</strong> (rentrée 2025-2026), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>IPS des écoles</strong> (rentrée 2024-2025), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-ecoles-ap2022/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>IPS des collèges</strong> (rentrée 2025-2026, historique depuis 2023), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>IPS des lycées</strong> (rentrée 2025-2026), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-lycees-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
       <li><strong>Statut REP / REP+</strong>, Annuaire de l'éducation, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
-      <li><strong>Médiane du niveau de vie, 1<sup>er</sup> décile, taux de pauvreté et part des prestations sociales</strong> (2021), INSEE Filosofi, <a href="https://www.insee.fr/fr/statistiques/7756729" target="_blank" rel="noopener">base tous niveaux géographiques</a>.</li>
+      <li><strong>Médiane du niveau de vie par département</strong> (2021), INSEE Filosofi, <a href="https://www.insee.fr/fr/statistiques/7756729" target="_blank" rel="noopener">base tous niveaux géographiques</a>.</li>
       <li><strong>Valeur ajoutée des collèges</strong> (session 2025), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-valeur-ajoutee-colleges/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
       <li><strong>Corrélation de référence 0,87</strong> (IPS élèves de 3e × revenu médian communal), DEPP, Note d'Information n°23.16, mars 2023 (d'après Murat, 2021).</li>
       <li><strong>Fond de carte</strong>, contours départementaux simplifiés (france-geojson, d'après IGN/Etalab, Licence Ouverte).</li>
     </ul>
     <p class="method-note">
-      Méthode&nbsp;: agrégation de l'IPS par département (moyenne des collèges), jointures avec le
-      niveau de vie, le taux de pauvreté et la valeur ajoutée, corrélations de Pearson calculées sur
-      les <span id="method-n">—</span> départements couverts. Pipeline Python reproductible, aucune
-      valeur n'est saisie à la main hors coûts/ARS (réglementaires). Code et données&nbsp;:
+      Méthode&nbsp;: agrégation des IPS par niveau (écoles, collèges, lycées) et par secteur, carte et
+      corrélation calculées sur les collèges au niveau départemental (Pearson, <span id="method-n">—</span>
+      départements). Pipeline Python reproductible, aucune valeur saisie à la main. Code et données&nbsp;:
       <a href="https://github.com/BadreddineEK/rentree-2026-lab" target="_blank" rel="noopener">repo GitHub</a>.
     </p>
   </section>
@@ -297,7 +260,6 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script src="js/chart-cout.js" defer></script>
-<script src="js/simulateur-budget.js" defer></script>
 <script src="js/map-ips.js" defer></script>
 <script src="js/scatter-correlation.js" defer></script>
 </body>

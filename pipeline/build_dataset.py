@@ -34,6 +34,13 @@ SRC_PAUVRETE = "INSEE — Filosofi 2021, taux de pauvreté (seuil 60% du niveau 
 SRC_D1 = "INSEE — Filosofi 2021, 1er décile du niveau de vie (D1) par département ; UFC-Que Choisir 2026 pour le coût de la rentrée"
 SRC_EP = "Ministère de l'Éducation nationale — Annuaire de l'éducation (statut REP / REP+)"
 SRC_IVAC = "DEPP — Indicateurs de valeur ajoutée des collèges (data.education.gouv.fr, fr-en-indicateurs-valeur-ajoutee-colleges)"
+SRC_IPS_ECOLES = "DEPP — IPS des écoles (data.education.gouv.fr, fr-en-ips-ecoles-ap2022)"
+SRC_IPS_LYCEES = "DEPP — IPS des lycées (data.education.gouv.fr, fr-en-ips-lycees-ap2023)"
+
+# Millésime le plus récent disponible pour chaque niveau.
+ANNEE_ECOLES = "2024-2025"
+ANNEE_COLLEGES = "2025-2026"
+ANNEE_LYCEES = "2025-2026"
 
 
 def _norm_dep(code: str) -> str:
@@ -454,17 +461,107 @@ def build_ivac_nuance_dataset() -> None:
     print(f"[IVAC] {part_positive:.0f}% des collèges à IPS bas (n={len(bas)}) ont une VA positive")
 
 
+# ── 6. IPS par niveau (écoles / collèges / lycées) et évolution ──
+def _load_niveau(fichier: str, ips_col: str) -> pd.DataFrame:
+    raw = json.loads((RAW / fichier).read_text(encoding="utf-8"))
+    df = pd.DataFrame(raw)
+    df["ips"] = pd.to_numeric(df[ips_col], errors="coerce")
+    df["annee"] = df["rentree_scolaire"]
+    return df.dropna(subset=["ips"])
+
+
+def _stats_secteur(df: pd.DataFrame) -> dict:
+    pub = df[df["secteur"] == "public"]["ips"].mean()
+    pri = df[df["secteur"] == "privé sous contrat"]["ips"].mean()
+    tous = df["ips"].mean()
+    return {
+        "ips_moyen": _round(tous),
+        "ips_public": _round(pub),
+        "ips_prive": _round(pri),
+        "ecart_prive_public": _round(pri - pub),
+        "n": int(len(df)),
+    }
+
+
+def build_ips_par_niveau_dataset() -> None:
+    """État des lieux : IPS public vs privé du primaire au lycée (millésime récent).
+    Montre que l'écart social entre secteurs s'accentue le long de la scolarité."""
+    niveaux = [
+        ("Écoles", "ips_ecoles.json", "ips", ANNEE_ECOLES, "primaire (écoles)"),
+        ("Collèges", "ips_colleges_multiyear.json", "ips", ANNEE_COLLEGES, "collège"),
+        ("Lycées", "ips_lycees.json", "ips_etab", ANNEE_LYCEES, "lycée (établissement)"),
+    ]
+    valeurs = []
+    for label, fichier, col, annee, detail in niveaux:
+        df = _load_niveau(fichier, col)
+        df = df[df["annee"] == annee]
+        s = _stats_secteur(df)
+        s.update({"niveau": label, "annee_reference": annee, "detail": detail})
+        valeurs.append(s)
+
+    data = {
+        "meta": {
+            "titre": "L'entre-soi scolaire, du primaire au lycée",
+            "definition_ips": "L'IPS (indice de position sociale) résume le milieu social des élèves "
+                              "d'un établissement : plus il est élevé, plus le public est favorisé. "
+                              "La moyenne nationale est calée autour de 100.",
+            "sources": [SRC_IPS_ECOLES, SRC_IPS, SRC_IPS_LYCEES],
+            "note_lycee": "Pour les lycées, l'IPS d'établissement (ips_etab) agrège les voies générale, "
+                          "technologique et professionnelle, dont les profils sociaux diffèrent fortement.",
+        },
+        "niveaux": valeurs,
+        "lecture": "L'écart d'IPS entre privé sous contrat et public s'accentue au fil de la scolarité : "
+                   "modeste au primaire, il se creuse nettement au collège puis au lycée.",
+    }
+    _write("ips_par_niveau.json", data)
+    ecarts = " | ".join(f"{v['niveau']} {v['ecart_prive_public']:+}" for v in valeurs)
+    print(f"[NIVEAU] écart privé-public : {ecarts}")
+
+
+def build_ips_evolution_dataset() -> None:
+    """Évolution de l'écart social public/privé sur les millésimes disponibles, par niveau."""
+    niveaux = [
+        ("Écoles", "ips_ecoles.json", "ips"),
+        ("Collèges", "ips_colleges_multiyear.json", "ips"),
+        ("Lycées", "ips_lycees.json", "ips_etab"),
+    ]
+    series = []
+    for label, fichier, col in niveaux:
+        df = _load_niveau(fichier, col)
+        points = []
+        for annee in sorted(df["annee"].dropna().unique()):
+            s = _stats_secteur(df[df["annee"] == annee])
+            points.append({"annee": annee, "ips_public": s["ips_public"],
+                           "ips_prive": s["ips_prive"], "ecart_prive_public": s["ecart_prive_public"]})
+        series.append({"niveau": label, "points": points})
+
+    data = {
+        "meta": {
+            "titre": "Le tri social dans le temps",
+            "sources": [SRC_IPS_ECOLES, SRC_IPS, SRC_IPS_LYCEES],
+            "note": "Millésimes comparables au sein de chaque série DEPP. "
+                    "Fenêtres différentes selon le niveau.",
+        },
+        "series": series,
+    }
+    _write("ips_evolution.json", data)
+    for s in series:
+        pts = s["points"]
+        if pts:
+            print(f"[EVOL] {s['niveau']:9s} écart {pts[0]['annee']}={pts[0]['ecart_prive_public']:+} "
+                  f"-> {pts[-1]['annee']}={pts[-1]['ecart_prive_public']:+}")
+
+
 def _write(name: str, data: dict) -> None:
     (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OUT]  site/data/{name}")
 
 
 if __name__ == "__main__":
-    build_cout_rentree_dataset()
     ips_dep = build_ips_map_dataset()
     build_correlation_dataset(ips_dep)
-    build_territoire_social_dataset(ips_dep)
-    build_poids_reel_dataset(ips_dep)
     build_secteur_comparison_dataset()
     build_ivac_nuance_dataset()
+    build_ips_par_niveau_dataset()
+    build_ips_evolution_dataset()
     print("OK — JSON exportés dans", OUT)

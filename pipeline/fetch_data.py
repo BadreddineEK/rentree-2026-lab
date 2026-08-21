@@ -127,9 +127,50 @@ def fetch_education_prioritaire() -> Path:
     return EP_OUT
 
 
+# --- 5. IPS par niveau (écoles / collèges / lycées), toutes années -----------
+# Pour l'état des lieux « du primaire au lycée » et l'évolution dans le temps.
+# On ne garde que les colonnes utiles (département, secteur, IPS, année).
+ODS_EXPORT = "exports/json"
+
+
+def _fetch_export(dataset: str, select: str, out: Path, label: str) -> Path:
+    url = f"{ODS_EDU}/{dataset}/{ODS_EXPORT}"
+    r = requests.get(url, params={"select": select}, headers=UA, timeout=TIMEOUT)
+    r.raise_for_status()
+    data = r.json()
+    out.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    print(f"[{label}] {len(data)} lignes -> {out.name}")
+    return out
+
+
+def fetch_ips_ecoles() -> Path:
+    return _fetch_export(
+        "fr-en-ips-ecoles-ap2022",
+        "rentree_scolaire,code_du_departement,departement,secteur,ips",
+        RAW / "ips_ecoles.json", "ECOLE")
+
+
+def fetch_ips_lycees() -> Path:
+    return _fetch_export(
+        "fr-en-ips-lycees-ap2023",
+        "rentree_scolaire,code_du_departement,departement,secteur,ips_etab,ips_voie_gt,ips_voie_pro",
+        RAW / "ips_lycees.json", "LYCEE")
+
+
+def fetch_ips_colleges_multiyear() -> Path:
+    # Millésimes multiples (pour l'évolution), colonnes minimales.
+    return _fetch_export(
+        "fr-en-ips-colleges-ap2023",
+        "rentree_scolaire,code_du_departement,departement,secteur,ips",
+        RAW / "ips_colleges_multiyear.json", "COL-MY")
+
+
 if __name__ == "__main__":
     fetch_ips_colleges()
     fetch_ivac_colleges()
     fetch_revenu_median()
     fetch_education_prioritaire()
+    fetch_ips_ecoles()
+    fetch_ips_lycees()
+    fetch_ips_colleges_multiyear()
     print("OK — sources brutes dans", RAW)

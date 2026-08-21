@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "titre": "L'entre-soi scolaire, du primaire au lycée",
+    "definition_ips": "L'IPS (indice de position sociale) résume le milieu social des élèves d'un établissement : plus il est élevé, plus le public est favorisé. La moyenne nationale est calée autour de 100.",
+    "sources": [
+      "DEPP — IPS des écoles (data.education.gouv.fr, fr-en-ips-ecoles-ap2022)",
+      "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+      "DEPP — IPS des lycées (data.education.gouv.fr, fr-en-ips-lycees-ap2023)"
+    ],
+    "note_lycee": "Pour les lycées, l'IPS d'établissement (ips_etab) agrège les voies générale, technologique et professionnelle, dont les profils sociaux diffèrent fortement."
+  },
+  "niveaux": [
+    {
+      "ips_moyen": 104.8,
+      "ips_public": 102.9,
+      "ips_prive": 116.3,
+      "ecart_prive_public": 13.4,
+      "n": 29990,
+      "niveau": "Écoles",
+      "annee_reference": "2024-2025",
+      "detail": "primaire (écoles)"
+    },
+    {
+      "ips_moyen": 104.8,
+      "ips_public": 100.0,
+      "ips_prive": 120.2,
+      "ecart_prive_public": 20.2,
+      "n": 7087,
+      "niveau": "Collèges",
+      "annee_reference": "2025-2026",
+      "detail": "collège"
+    },
+    {
+      "ips_moyen": 107.8,
+      "ips_public": 101.4,
+      "ips_prive": 120.4,
+      "ecart_prive_public": 19.1,
+      "n": 3661,
+      "niveau": "Lycées",
+      "annee_reference": "2025-2026",
+      "detail": "lycée (établissement)"
+    }
+  ],
+  "lecture": "L'écart d'IPS entre privé sous contrat et public s'accentue au fil de la scolarité : modeste au primaire, il se creuse nettement au collège puis au lycée."
+}

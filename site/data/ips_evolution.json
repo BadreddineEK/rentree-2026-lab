@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "titre": "Le tri social dans le temps",
+    "sources": [
+      "DEPP — IPS des écoles (data.education.gouv.fr, fr-en-ips-ecoles-ap2022)",
+      "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+      "DEPP — IPS des lycées (data.education.gouv.fr, fr-en-ips-lycees-ap2023)"
+    ],
+    "note": "Millésimes comparables au sein de chaque série DEPP. Fenêtres différentes selon le niveau."
+  },
+  "series": [
+    {
+      "niveau": "Écoles",
+      "points": [
+        {
+          "annee": "2022-2023",
+          "ips_public": 102.6,
+          "ips_prive": 114.4,
+          "ecart_prive_public": 11.8
+        },
+        {
+          "annee": "2023-2024",
+          "ips_public": 102.7,
+          "ips_prive": 115.3,
+          "ecart_prive_public": 12.6
+        },
+        {
+          "annee": "2024-2025",
+          "ips_public": 102.9,
+          "ips_prive": 116.3,
+          "ecart_prive_public": 13.4
+        }
+      ]
+    },
+    {
+      "niveau": "Collèges",
+      "points": [
+        {
+          "annee": "2023-2024",
+          "ips_public": 100.1,
+          "ips_prive": 119.4,
+          "ecart_prive_public": 19.3
+        },
+        {
+          "annee": "2024-2025",
+          "ips_public": 100.2,
+          "ips_prive": 120.3,
+          "ecart_prive_public": 20.0
+        },
+        {
+          "annee": "2025-2026",
+          "ips_public": 100.0,
+          "ips_prive": 120.2,
+          "ecart_prive_public": 20.2
+        }
+      ]
+    },
+    {
+      "niveau": "Lycées",
+      "points": [
+        {
+          "annee": "2023-2024",
+          "ips_public": 100.4,
+          "ips_prive": 119.0,
+          "ecart_prive_public": 18.6
+        },
+        {
+          "annee": "2024-2025",
+          "ips_public": 101.2,
+          "ips_prive": 120.1,
+          "ecart_prive_public": 19.0
+        },
+        {
+          "annee": "2025-2026",
+          "ips_public": 101.4,
+          "ips_prive": 120.4,
+          "ecart_prive_public": 19.1
+        }
+      ]
+    }
+  ]
+}

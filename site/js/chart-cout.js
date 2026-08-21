@@ -1,7 +1,6 @@
-/* Section 2 (coût + ARS) et section 6 (secteur / éducation prioritaire).
-   Choix : Chart.js — léger, responsive nativement, tooltips accessibles, un seul CDN.
-   Toutes les barres de la page sont regroupées ici pour tenir dans les 4 fichiers JS
-   imposés (CONSIGNES §6). Données : site/data/*.json. */
+/* Graphes en barres/lignes de l'enquête : IPS par niveau, évolution du tri,
+   secteur / éducation prioritaire, valeur ajoutée. Chart.js, un seul CDN.
+   Regroupés ici pour tenir dans le nombre de fichiers JS voulu. Données : site/data/*.json. */
 (function () {
   if (typeof Chart === 'undefined') return;
   Chart.defaults.color = '#5a5852';
@@ -10,31 +9,90 @@
 
   var GRID = 'rgba(0,0,0,0.08)';
   var WARN = '#b5651d', COOL = '#4a7a55', ACC = '#35506b', HOT = '#a3472f', SAND = '#c98a55';
-  var euro = function (v) { return v.toLocaleString('fr-FR') + ' \u20ac'; };
+  var PUB = '#35506b', PRI = '#b5651d'; // public = ardoise, privé = ocre
+  var fr = function (x) { return String(x).replace('.', ','); };
   var noGridX = function () { return { grid: { display: false }, ticks: { color: '#9aa4b2' } }; };
 
-  fetch('data/cout_rentree.json').then(function (r) { return r.json(); }).then(function (d) {
-    var el = document.getElementById('chart-cout');
+  // ── IPS public vs privé, du primaire au lycée ──
+  fetch('data/ips_par_niveau.json').then(function (r) { return r.json(); }).then(function (d) {
+    var el = document.getElementById('chart-niveau');
     if (!el) return;
-    var labels = ['Co\u00fbt moyen', 'Co\u00fbt m\u00e9dian', 'ARS 6-10', 'ARS 11-14', 'ARS 15-18'];
-    var vals = [d.cout.moyenne_eur, d.cout.mediane_eur, d.ars[0].montant_eur, d.ars[1].montant_eur, d.ars[2].montant_eur];
+    var n = d.niveaux;
     new Chart(el, {
       type: 'bar',
-      data: { labels: labels, datasets: [{ data: vals, backgroundColor: [WARN, WARN, COOL, COOL, COOL], borderRadius: 6, maxBarThickness: 64 }] },
+      data: {
+        labels: n.map(function (x) { return x.niveau; }),
+        datasets: [
+          { label: 'Public', data: n.map(function (x) { return x.ips_public; }), backgroundColor: PUB, borderRadius: 5, maxBarThickness: 46 },
+          { label: 'Priv\u00e9 sous contrat', data: n.map(function (x) { return x.ips_prive; }), backgroundColor: PRI, borderRadius: 5, maxBarThickness: 46 }
+        ]
+      },
       options: {
         responsive: true,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return euro(c.parsed.y); } } } },
-        scales: { x: noGridX(), y: { grid: { color: GRID }, beginAtZero: true, ticks: { callback: function (v) { return v + ' \u20ac'; } } } }
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) {
+            var x = n[c.dataIndex];
+            return c.dataset.label + ' \u00b7 IPS ' + fr(c.parsed.y) + ' (\u00e9cart priv\u00e9-public ' + fr(x.ecart_prive_public) + ')';
+          } } }
+        },
+        scales: { x: noGridX(), y: { grid: { color: GRID }, min: 90, title: { display: true, text: 'IPS moyen' } } }
       }
     });
-    var lg = document.getElementById('cout-legend');
-    if (lg) lg.innerHTML = '<span style="color:' + WARN + '">\u25a0</span> D\u00e9pense de rentr\u00e9e (UFC-Que Choisir 2026) &nbsp; '
-      + '<span style="color:' + COOL + '">\u25a0</span> ARS vers\u00e9e (CAF 2026)';
-    var tk = document.getElementById('cout-takeaway');
-    if (tk) tk.innerHTML = 'Le basculement est là&nbsp;: l\u2019ARS (' + euro(d.ars[1].montant_eur)
-      + ' pour un coll\u00e9gien) <em>d\u00e9passe largement</em> la rentr\u00e9e <em>m\u00e9diane</em> ('
-      + euro(d.cout.mediane_eur) + '), mais passe sous la <em>moyenne</em> (' + euro(d.cout.moyenne_eur)
-      + '). Tout le d\u00e9bat \u00ab l\u2019ARS suffit ou pas \u00bb tient \u00e0 ce choix de chiffre.';
+    var lg = document.getElementById('niveau-legend');
+    if (lg) lg.innerHTML = '<span style="color:' + PUB + '">\u25a0</span> Public &nbsp; '
+      + '<span style="color:' + PRI + '">\u25a0</span> Priv\u00e9 sous contrat';
+    var ec = d.niveaux[0].ecart_prive_public, cc = d.niveaux[1].ecart_prive_public, lc = d.niveaux[2].ecart_prive_public;
+    var tk = document.getElementById('niveau-takeaway');
+    if (tk) tk.innerHTML = 'Le tri est d\u00e9j\u00e0 l\u00e0 au primaire (\u00e9cart de <em>' + fr(ec) + '</em> points d\u2019IPS entre priv\u00e9 et public), '
+      + 'puis il se creuse au coll\u00e8ge (<em>' + fr(cc) + '</em>) et reste b\u00e9ant au lyc\u00e9e (<em>' + fr(lc) + '</em>). '
+      + 'Plus l\u2019\u00e9l\u00e8ve avance, plus les deux secteurs scolarisent des mondes s\u00e9par\u00e9s.';
+  });
+
+  // ── Évolution de l'écart privé-public dans le temps, par niveau ──
+  fetch('data/ips_evolution.json').then(function (r) { return r.json(); }).then(function (d) {
+    var el = document.getElementById('chart-evolution');
+    if (!el) return;
+    var years = [];
+    d.series.forEach(function (s) { s.points.forEach(function (p) { if (years.indexOf(p.annee) < 0) years.push(p.annee); }); });
+    years.sort();
+    var cols = { '\u00c9coles': COOL, 'Coll\u00e8ges': ACC, 'Lyc\u00e9es': HOT };
+    var datasets = d.series.map(function (s) {
+      var byYear = {}; s.points.forEach(function (p) { byYear[p.annee] = p.ecart_prive_public; });
+      return {
+        label: s.niveau,
+        data: years.map(function (y) { return byYear[y] != null ? byYear[y] : null; }),
+        borderColor: cols[s.niveau] || ACC, backgroundColor: cols[s.niveau] || ACC,
+        borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6, tension: 0.15, spanGaps: false
+      };
+    });
+    new Chart(el, {
+      type: 'line',
+      data: { labels: years, datasets: datasets },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return c.dataset.label + ' \u00b7 \u00e9cart priv\u00e9-public ' + fr(c.parsed.y) + ' pts'; } } }
+        },
+        scales: {
+          x: noGridX(),
+          y: { grid: { color: GRID }, title: { display: true, text: '\u00c9cart d\u2019IPS priv\u00e9 \u2212 public (points)' } }
+        }
+      }
+    });
+    var lg = document.getElementById('evolution-legend');
+    if (lg) lg.innerHTML = Object.keys(cols).map(function (k) {
+      return '<span style="color:' + cols[k] + '">\u25a0</span> ' + k;
+    }).join(' &nbsp; ');
+    var col = d.series.filter(function (s) { return s.niveau === 'Coll\u00e8ges'; })[0];
+    var tk = document.getElementById('evolution-takeaway');
+    if (tk && col && col.points.length >= 2) {
+      var a = col.points[0], b = col.points[col.points.length - 1];
+      tk.innerHTML = 'Aucune des trois courbes ne redescend. Au coll\u00e8ge, l\u2019\u00e9cart priv\u00e9-public est pass\u00e9 de <em>'
+        + fr(a.ecart_prive_public) + '</em> \u00e0 <em>' + fr(b.ecart_prive_public) + '</em> points entre '
+        + a.annee + ' et ' + b.annee + '. Le tri social ne stagne pas&nbsp;: il progresse.';
+    }
   });
 
   fetch('data/secteur_comparison.json').then(function (r) { return r.json(); }).then(function (d) {
@@ -108,51 +166,5 @@
       + q1.part_va_positive_pct + '\u00a0% d\u2019\u00e9tablissements au-dessus de ce que leur profil laissait attendre. '
       + 'Un IPS bas p\u00e8se sur les r\u00e9sultats, mais ne condamne personne&nbsp;: \u00e0 profil \u00e9gal, ces coll\u00e8ges '
       + 'font souvent mieux que les plus favoris\u00e9s.';
-  });
-
-  // Poids réel de la rentrée selon le niveau de vie local (barres horizontales).
-  fetch('data/poids_reel.json').then(function (r) { return r.json(); }).then(function (d) {
-    var el = document.getElementById('chart-poids');
-    if (!el) return;
-    var fr = function (x) { return String(x).replace('.', ','); };
-    var rows = d.selection.map(function (s) {
-      return { nom: s.nom, moy: s.poids_moyenne_pct, med: s.poids_mediane_pct, d1: s.d1_mensuel_eur, nat: false };
-    });
-    rows.push({ nom: 'France (r\u00e9f\u00e9rence)', moy: d.national.poids_moyenne_pct, med: d.national.poids_mediane_pct, d1: d.national.d1_mensuel_eur, nat: true });
-    rows.sort(function (a, b) { return b.moy - a.moy; });
-    var colOf = function (r) { return r.nat ? ACC : (r.moy >= 58 ? HOT : (r.moy >= 48 ? WARN : COOL)); };
-    new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: rows.map(function (r) { return r.nom; }),
-        datasets: [{ data: rows.map(function (r) { return r.moy; }), backgroundColor: rows.map(colOf), borderRadius: 5, maxBarThickness: 30 }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: { label: function (c) {
-            var r = rows[c.dataIndex];
-            return 'Rentr\u00e9e moyenne = ' + fr(r.moy) + '\u00a0% d\u2019un mois (m\u00e9diane ' + fr(r.med)
-              + '\u00a0%) \u00b7 niveau de vie des 10\u00a0% les plus modestes\u00a0: ' + r.d1 + '\u00a0\u20ac/mois';
-          } } }
-        },
-        scales: {
-          x: { grid: { color: GRID }, min: 0, ticks: { callback: function (v) { return v + ' %'; } },
-               title: { display: true, text: 'Part d\u2019un mois de niveau de vie des 10\u00a0% les plus modestes' } },
-          y: { grid: { display: false }, ticks: { color: '#4a4740', font: { size: 12 } } }
-        }
-      }
-    });
-    var lg = document.getElementById('poids-legend');
-    if (lg) lg.innerHTML = 'Coût de la rentr\u00e9e <b>moyenne</b> (488\u00a0€) rapport\u00e9 \u00e0 un mois de niveau de vie du 1<sup>er</sup> d\u00e9cile. '
-      + '<span style="color:' + ACC + '">\u25a0</span> r\u00e9f\u00e9rence nationale';
-    var hi = d.ecart.dep_poids_max, lo = d.ecart.dep_poids_min;
-    var tk = document.getElementById('poids-takeaway');
-    if (tk) tk.innerHTML = 'Le forfait est le m\u00eame partout, l\u2019effort non. Pour les 10\u00a0% les plus modestes, '
-      + 'la rentrée moyenne absorbe <em>' + fr(hi.poids_moyenne_pct) + '\u00a0%</em> d\u2019un mois de niveau de vie '
-      + '\u00e0 ' + hi.nom + ', contre <em>' + fr(lo.poids_moyenne_pct) + '\u00a0%</em> en ' + lo.nom
-      + '&nbsp;: un \u00e9cart de pr\u00e8s de ' + fr(d.ecart.ratio) + '\u00d7. Un m\u00eame ch\u00e8que, une charge tr\u00e8s diff\u00e9rente.';
   });
 })();
