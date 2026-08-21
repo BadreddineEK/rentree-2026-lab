@@ -1,0 +1,773 @@
+{
+  "meta": {
+    "titre": "L'ARS va-t-elle là où le besoin se concentre ?",
+    "explication": "L'ARS est versée sous conditions de ressources : elle atteint surtout les foyers modestes. Ce dataset situe ces foyers (taux de pauvreté, dépendance aux prestations sociales) et montre que les territoires les plus fragiles socialement sont aussi ceux dont les collèges ont l'IPS le plus bas.",
+    "sources": [
+      "DEPP — Indice de position sociale des collèges (data.education.gouv.fr, fr-en-ips-colleges-ap2023)",
+      "INSEE — Filosofi 2021, taux de pauvreté (seuil 60% du niveau de vie médian) et part des prestations sociales dans le revenu disponible, par département"
+    ],
+    "annee_reference": {
+      "ips": "2025-2026",
+      "filosofi": 2021
+    },
+    "definitions": {
+      "taux_pauvrete": "Part de la population vivant sous le seuil de pauvreté (60 % du niveau de vie médian national), en %.",
+      "part_prestations": "Part des prestations sociales (dont allocations familiales, minima sociaux, aides au logement) dans le revenu disponible des ménages, en %."
+    }
+  },
+  "correlations": {
+    "ips_x_taux_pauvrete": {
+      "r_pearson": -0.52,
+      "n_departements": 98,
+      "p_value": 4.14e-08
+    },
+    "ips_x_part_prestations": {
+      "r_pearson": -0.671,
+      "n_departements": 98,
+      "p_value": 4.2e-14
+    },
+    "lecture": "Plus le taux de pauvreté et la dépendance aux prestations sont élevés dans un département, plus l'IPS moyen de ses collèges est bas. L'ARS, ciblée sur les revenus modestes, se déverse donc en priorité dans les territoires à IPS faible."
+  },
+  "exemples": {
+    "plus_fragiles": [
+      {
+        "code": "974",
+        "nom": "LA REUNION",
+        "ips_moyen": 89.1,
+        "taux_pauvrete": 36.1,
+        "part_prestations": 16.1,
+        "revenu_median": 17070
+      },
+      {
+        "code": "08",
+        "nom": "ARDENNES",
+        "ips_moyen": 93.5,
+        "taux_pauvrete": 19.4,
+        "part_prestations": 7.6,
+        "revenu_median": 20850
+      },
+      {
+        "code": "93",
+        "nom": "SEINE-SAINT-DENIS",
+        "ips_moyen": 94.1,
+        "taux_pauvrete": 28.4,
+        "part_prestations": 9.7,
+        "revenu_median": 19020
+      }
+    ],
+    "plus_favorises": [
+      {
+        "code": "75",
+        "nom": "PARIS",
+        "ips_moyen": 126.2,
+        "taux_pauvrete": 15.6,
+        "part_prestations": 2.7,
+        "revenu_median": 29730
+      },
+      {
+        "code": "92",
+        "nom": "HAUTS-DE-SEINE",
+        "ips_moyen": 125.6,
+        "taux_pauvrete": 12.4,
+        "part_prestations": 2.9,
+        "revenu_median": 29720
+      },
+      {
+        "code": "78",
+        "nom": "YVELINES",
+        "ips_moyen": 121.3,
+        "taux_pauvrete": 10.5,
+        "part_prestations": 3.4,
+        "revenu_median": 28130
+      }
+    ]
+  },
+  "points": [
+    {
+      "code": "01",
+      "nom": "AIN",
+      "ips": 109.0,
+      "taux_pauvrete": 10.8,
+      "part_prestations": 3.8
+    },
+    {
+      "code": "02",
+      "nom": "AISNE",
+      "ips": 94.5,
+      "taux_pauvrete": 18.8,
+      "part_prestations": 7.7
+    },
+    {
+      "code": "03",
+      "nom": "ALLIER",
+      "ips": 99.3,
+      "taux_pauvrete": 16.2,
+      "part_prestations": 6.5
+    },
+    {
+      "code": "04",
+      "nom": "ALPES-DE-HAUTE-PROVENCE",
+      "ips": 106.6,
+      "taux_pauvrete": 17.1,
+      "part_prestations": 5.5
+    },
+    {
+      "code": "05",
+      "nom": "HAUTES-ALPES",
+      "ips": 107.8,
+      "taux_pauvrete": 14.7,
+      "part_prestations": 5.2
+    },
+    {
+      "code": "06",
+      "nom": "ALPES-MARITIMES",
+      "ips": 108.4,
+      "taux_pauvrete": 16.4,
+      "part_prestations": 4.7
+    },
+    {
+      "code": "07",
+      "nom": "ARDECHE",
+      "ips": 103.4,
+      "taux_pauvrete": 14.9,
+      "part_prestations": 5.4
+    },
+    {
+      "code": "08",
+      "nom": "ARDENNES",
+      "ips": 93.5,
+      "taux_pauvrete": 19.4,
+      "part_prestations": 7.6
+    },
+    {
+      "code": "09",
+      "nom": "ARIEGE",
+      "ips": 103.7,
+      "taux_pauvrete": 19.0,
+      "part_prestations": 7.2
+    },
+    {
+      "code": "10",
+      "nom": "AUBE",
+      "ips": 100.1,
+      "taux_pauvrete": 16.9,
+      "part_prestations": 6.7
+    },
+    {
+      "code": "11",
+      "nom": "AUDE",
+      "ips": 99.4,
+      "taux_pauvrete": 20.8,
+      "part_prestations": 7.9
+    },
+    {
+      "code": "12",
+      "nom": "AVEYRON",
+      "ips": 105.2,
+      "taux_pauvrete": 14.5,
+      "part_prestations": 5.2
+    },
+    {
+      "code": "13",
+      "nom": "BOUCHES-DU-RHONE",
+      "ips": 104.6,
+      "taux_pauvrete": 18.5,
+      "part_prestations": 6.4
+    },
+    {
+      "code": "14",
+      "nom": "CALVADOS",
+      "ips": 105.7,
+      "taux_pauvrete": 12.5,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "15",
+      "nom": "CANTAL",
+      "ips": 102.5,
+      "taux_pauvrete": 14.2,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "16",
+      "nom": "CHARENTE",
+      "ips": 101.1,
+      "taux_pauvrete": 15.1,
+      "part_prestations": 5.9
+    },
+    {
+      "code": "17",
+      "nom": "CHARENTE-MARITIME",
+      "ips": 105.3,
+      "taux_pauvrete": 12.5,
+      "part_prestations": 4.8
+    },
+    {
+      "code": "18",
+      "nom": "CHER",
+      "ips": 98.9,
+      "taux_pauvrete": 14.7,
+      "part_prestations": 6.2
+    },
+    {
+      "code": "19",
+      "nom": "CORREZE",
+      "ips": 105.0,
+      "taux_pauvrete": 13.7,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "21",
+      "nom": "COTE D'OR",
+      "ips": 105.9,
+      "taux_pauvrete": 11.8,
+      "part_prestations": 4.7
+    },
+    {
+      "code": "22",
+      "nom": "COTES D'ARMOR",
+      "ips": 105.3,
+      "taux_pauvrete": 11.8,
+      "part_prestations": 4.9
+    },
+    {
+      "code": "23",
+      "nom": "CREUSE",
+      "ips": 100.8,
+      "taux_pauvrete": 19.2,
+      "part_prestations": 6.2
+    },
+    {
+      "code": "24",
+      "nom": "DORDOGNE",
+      "ips": 101.7,
+      "taux_pauvrete": 16.6,
+      "part_prestations": 5.7
+    },
+    {
+      "code": "25",
+      "nom": "DOUBS",
+      "ips": 100.0,
+      "taux_pauvrete": 13.1,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "26",
+      "nom": "DROME",
+      "ips": 106.8,
+      "taux_pauvrete": 14.8,
+      "part_prestations": 5.6
+    },
+    {
+      "code": "27",
+      "nom": "EURE",
+      "ips": 102.4,
+      "taux_pauvrete": 12.7,
+      "part_prestations": 5.9
+    },
+    {
+      "code": "28",
+      "nom": "EURE-ET-LOIR",
+      "ips": 102.6,
+      "taux_pauvrete": 12.1,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "29",
+      "nom": "FINISTERE",
+      "ips": 109.6,
+      "taux_pauvrete": 10.8,
+      "part_prestations": 4.9
+    },
+    {
+      "code": "2A",
+      "nom": "CORSE-DU-SUD",
+      "ips": 103.4,
+      "taux_pauvrete": 15.8,
+      "part_prestations": 4.8
+    },
+    {
+      "code": "2B",
+      "nom": "HAUTE-CORSE",
+      "ips": 100.4,
+      "taux_pauvrete": 20.2,
+      "part_prestations": 6.2
+    },
+    {
+      "code": "30",
+      "nom": "GARD",
+      "ips": 102.6,
+      "taux_pauvrete": 20.0,
+      "part_prestations": 7.1
+    },
+    {
+      "code": "31",
+      "nom": "HAUTE-GARONNE",
+      "ips": 115.1,
+      "taux_pauvrete": 14.3,
+      "part_prestations": 5.5
+    },
+    {
+      "code": "32",
+      "nom": "GERS",
+      "ips": 107.6,
+      "taux_pauvrete": 15.3,
+      "part_prestations": 5.3
+    },
+    {
+      "code": "33",
+      "nom": "GIRONDE",
+      "ips": 112.1,
+      "taux_pauvrete": 12.8,
+      "part_prestations": 4.9
+    },
+    {
+      "code": "34",
+      "nom": "HERAULT",
+      "ips": 107.1,
+      "taux_pauvrete": 19.4,
+      "part_prestations": 6.8
+    },
+    {
+      "code": "35",
+      "nom": "ILLE-ET-VILAINE",
+      "ips": 110.8,
+      "taux_pauvrete": 10.8,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "36",
+      "nom": "INDRE",
+      "ips": 97.3,
+      "taux_pauvrete": 15.4,
+      "part_prestations": 6.1
+    },
+    {
+      "code": "37",
+      "nom": "INDRE-ET-LOIRE",
+      "ips": 107.8,
+      "taux_pauvrete": 12.8,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "38",
+      "nom": "ISERE",
+      "ips": 110.2,
+      "taux_pauvrete": 11.8,
+      "part_prestations": 4.6
+    },
+    {
+      "code": "39",
+      "nom": "JURA",
+      "ips": 101.9,
+      "taux_pauvrete": 11.8,
+      "part_prestations": 4.6
+    },
+    {
+      "code": "40",
+      "nom": "LANDES",
+      "ips": 105.7,
+      "taux_pauvrete": 11.7,
+      "part_prestations": 4.7
+    },
+    {
+      "code": "41",
+      "nom": "LOIR-ET-CHER",
+      "ips": 101.6,
+      "taux_pauvrete": 13.2,
+      "part_prestations": 5.3
+    },
+    {
+      "code": "42",
+      "nom": "LOIRE",
+      "ips": 100.4,
+      "taux_pauvrete": 15.8,
+      "part_prestations": 6.3
+    },
+    {
+      "code": "43",
+      "nom": "HAUTE-LOIRE",
+      "ips": 104.6,
+      "taux_pauvrete": 12.3,
+      "part_prestations": 5.5
+    },
+    {
+      "code": "44",
+      "nom": "LOIRE-ATLANTIQUE",
+      "ips": 113.1,
+      "taux_pauvrete": 10.5,
+      "part_prestations": 4.8
+    },
+    {
+      "code": "45",
+      "nom": "LOIRET",
+      "ips": 101.7,
+      "taux_pauvrete": 13.9,
+      "part_prestations": 5.4
+    },
+    {
+      "code": "46",
+      "nom": "LOT",
+      "ips": 104.5,
+      "taux_pauvrete": 15.3,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "47",
+      "nom": "LOT-ET-GARONNE",
+      "ips": 99.3,
+      "taux_pauvrete": 17.7,
+      "part_prestations": 6.3
+    },
+    {
+      "code": "48",
+      "nom": "LOZERE",
+      "ips": 106.0,
+      "taux_pauvrete": 15.5,
+      "part_prestations": 5.6
+    },
+    {
+      "code": "49",
+      "nom": "MAINE-ET-LOIRE",
+      "ips": 105.3,
+      "taux_pauvrete": 11.5,
+      "part_prestations": 5.3
+    },
+    {
+      "code": "50",
+      "nom": "MANCHE",
+      "ips": 101.4,
+      "taux_pauvrete": 11.7,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "51",
+      "nom": "MARNE",
+      "ips": 101.8,
+      "taux_pauvrete": 15.0,
+      "part_prestations": 5.6
+    },
+    {
+      "code": "52",
+      "nom": "HAUTE-MARNE",
+      "ips": 95.4,
+      "taux_pauvrete": 15.3,
+      "part_prestations": 6.2
+    },
+    {
+      "code": "53",
+      "nom": "MAYENNE",
+      "ips": 99.5,
+      "taux_pauvrete": 11.5,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "54",
+      "nom": "MEURTHE-ET-MOSELLE",
+      "ips": 103.2,
+      "taux_pauvrete": 15.3,
+      "part_prestations": 5.6
+    },
+    {
+      "code": "55",
+      "nom": "MEUSE",
+      "ips": 97.6,
+      "taux_pauvrete": 14.8,
+      "part_prestations": 5.7
+    },
+    {
+      "code": "56",
+      "nom": "MORBIHAN",
+      "ips": 107.3,
+      "taux_pauvrete": 11.1,
+      "part_prestations": 4.6
+    },
+    {
+      "code": "57",
+      "nom": "MOSELLE",
+      "ips": 98.6,
+      "taux_pauvrete": 15.9,
+      "part_prestations": 4.8
+    },
+    {
+      "code": "58",
+      "nom": "NIEVRE",
+      "ips": 100.5,
+      "taux_pauvrete": 16.1,
+      "part_prestations": 6.3
+    },
+    {
+      "code": "59",
+      "nom": "NORD",
+      "ips": 98.5,
+      "taux_pauvrete": 19.5,
+      "part_prestations": 7.7
+    },
+    {
+      "code": "60",
+      "nom": "OISE",
+      "ips": 102.9,
+      "taux_pauvrete": 13.4,
+      "part_prestations": 5.7
+    },
+    {
+      "code": "61",
+      "nom": "ORNE",
+      "ips": 99.1,
+      "taux_pauvrete": 15.6,
+      "part_prestations": 5.8
+    },
+    {
+      "code": "62",
+      "nom": "PAS-DE-CALAIS",
+      "ips": 95.1,
+      "taux_pauvrete": 18.4,
+      "part_prestations": 7.8
+    },
+    {
+      "code": "63",
+      "nom": "PUY-DE-DOME",
+      "ips": 106.5,
+      "taux_pauvrete": 13.9,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "64",
+      "nom": "PYRENEES-ATLANTIQUES",
+      "ips": 111.8,
+      "taux_pauvrete": 12.6,
+      "part_prestations": 4.9
+    },
+    {
+      "code": "65",
+      "nom": "HAUTES-PYRENEES",
+      "ips": 104.5,
+      "taux_pauvrete": 16.0,
+      "part_prestations": 6.1
+    },
+    {
+      "code": "66",
+      "nom": "PYRENEES-ORIENTALES",
+      "ips": 99.6,
+      "taux_pauvrete": 21.2,
+      "part_prestations": 7.8
+    },
+    {
+      "code": "67",
+      "nom": "BAS-RHIN",
+      "ips": 105.1,
+      "taux_pauvrete": 13.5,
+      "part_prestations": 4.6
+    },
+    {
+      "code": "68",
+      "nom": "HAUT-RHIN",
+      "ips": 100.1,
+      "taux_pauvrete": 13.7,
+      "part_prestations": 4.4
+    },
+    {
+      "code": "69",
+      "nom": "RHONE",
+      "ips": 110.7,
+      "taux_pauvrete": 14.8,
+      "part_prestations": 5.0
+    },
+    {
+      "code": "70",
+      "nom": "HAUTE-SAONE",
+      "ips": 98.8,
+      "taux_pauvrete": 13.6,
+      "part_prestations": 5.6
+    },
+    {
+      "code": "71",
+      "nom": "SAONE-ET-LOIRE",
+      "ips": 102.2,
+      "taux_pauvrete": 13.3,
+      "part_prestations": 5.3
+    },
+    {
+      "code": "72",
+      "nom": "SARTHE",
+      "ips": 100.2,
+      "taux_pauvrete": 13.5,
+      "part_prestations": 5.7
+    },
+    {
+      "code": "73",
+      "nom": "SAVOIE",
+      "ips": 111.7,
+      "taux_pauvrete": 11.2,
+      "part_prestations": 3.9
+    },
+    {
+      "code": "74",
+      "nom": "HAUTE-SAVOIE",
+      "ips": 113.4,
+      "taux_pauvrete": 9.5,
+      "part_prestations": 2.4
+    },
+    {
+      "code": "75",
+      "nom": "PARIS",
+      "ips": 126.2,
+      "taux_pauvrete": 15.6,
+      "part_prestations": 2.7
+    },
+    {
+      "code": "76",
+      "nom": "SEINE-MARITIME",
+      "ips": 100.5,
+      "taux_pauvrete": 15.4,
+      "part_prestations": 6.6
+    },
+    {
+      "code": "77",
+      "nom": "SEINE-ET-MARNE",
+      "ips": 107.8,
+      "taux_pauvrete": 12.4,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "78",
+      "nom": "YVELINES",
+      "ips": 121.3,
+      "taux_pauvrete": 10.5,
+      "part_prestations": 3.4
+    },
+    {
+      "code": "79",
+      "nom": "DEUX-SEVRES",
+      "ips": 103.1,
+      "taux_pauvrete": 12.4,
+      "part_prestations": 5.3
+    },
+    {
+      "code": "80",
+      "nom": "SOMME",
+      "ips": 99.0,
+      "taux_pauvrete": 16.4,
+      "part_prestations": 6.7
+    },
+    {
+      "code": "81",
+      "nom": "TARN",
+      "ips": 106.1,
+      "taux_pauvrete": 15.7,
+      "part_prestations": 6.0
+    },
+    {
+      "code": "82",
+      "nom": "TARN-ET-GARONNE",
+      "ips": 103.1,
+      "taux_pauvrete": 16.7,
+      "part_prestations": 6.5
+    },
+    {
+      "code": "83",
+      "nom": "VAR",
+      "ips": 105.2,
+      "taux_pauvrete": 15.6,
+      "part_prestations": 5.1
+    },
+    {
+      "code": "84",
+      "nom": "VAUCLUSE",
+      "ips": 99.1,
+      "taux_pauvrete": 19.9,
+      "part_prestations": 6.6
+    },
+    {
+      "code": "85",
+      "nom": "VENDEE",
+      "ips": 104.8,
+      "taux_pauvrete": 9.1,
+      "part_prestations": 4.2
+    },
+    {
+      "code": "86",
+      "nom": "VIENNE",
+      "ips": 106.0,
+      "taux_pauvrete": 14.7,
+      "part_prestations": 5.5
+    },
+    {
+      "code": "87",
+      "nom": "HAUTE-VIENNE",
+      "ips": 103.7,
+      "taux_pauvrete": 16.1,
+      "part_prestations": 6.0
+    },
+    {
+      "code": "88",
+      "nom": "VOSGES",
+      "ips": 98.3,
+      "taux_pauvrete": 15.3,
+      "part_prestations": 5.9
+    },
+    {
+      "code": "89",
+      "nom": "YONNE",
+      "ips": 99.8,
+      "taux_pauvrete": 14.9,
+      "part_prestations": 6.0
+    },
+    {
+      "code": "90",
+      "nom": "TERRITOIRE DE BELFORT",
+      "ips": 101.6,
+      "taux_pauvrete": 16.3,
+      "part_prestations": 5.7
+    },
+    {
+      "code": "91",
+      "nom": "ESSONNE",
+      "ips": 108.6,
+      "taux_pauvrete": 13.9,
+      "part_prestations": 4.9
+    },
+    {
+      "code": "92",
+      "nom": "HAUTS-DE-SEINE",
+      "ips": 125.6,
+      "taux_pauvrete": 12.4,
+      "part_prestations": 2.9
+    },
+    {
+      "code": "93",
+      "nom": "SEINE-SAINT-DENIS",
+      "ips": 94.1,
+      "taux_pauvrete": 28.4,
+      "part_prestations": 9.7
+    },
+    {
+      "code": "94",
+      "nom": "VAL-DE-MARNE",
+      "ips": 110.1,
+      "taux_pauvrete": 17.2,
+      "part_prestations": 5.2
+    },
+    {
+      "code": "95",
+      "nom": "VAL-D'OISE",
+      "ips": 104.7,
+      "taux_pauvrete": 17.7,
+      "part_prestations": 5.9
+    },
+    {
+      "code": "972",
+      "nom": "MARTINIQUE",
+      "ips": 98.2,
+      "taux_pauvrete": 26.8,
+      "part_prestations": 11.2
+    },
+    {
+      "code": "974",
+      "nom": "LA REUNION",
+      "ips": 89.1,
+      "taux_pauvrete": 36.1,
+      "part_prestations": 16.1
+    }
+  ]
+}

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rentrée 2026 — Coût réel, ARS et inégalités scolaires · Lab</title>
+  <title>Rentrée 2026 · Coût réel, ARS et inégalités scolaires · Lab</title>
   <meta name="description" content="On me dit chaque année que l'allocation de rentrée ne suffit pas. J'ai vérifié avec de vraies données officielles : coût réel de la rentrée 2026, ARS, IPS des collèges et revenu médian par département. Un Lab de Badreddine EL KHAMLICHI.">
   <meta name="author" content="Badreddine EL KHAMLICHI">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Rentrée 2026 — Coût réel, ARS et inégalités scolaires">
+  <meta property="og:title" content="Rentrée 2026 · Coût réel, ARS et inégalités scolaires">
   <meta property="og:description" content="L'ARS suffit-elle vraiment ? Vérification par les données officielles : coût réel, IPS des collèges, revenu médian par département.">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Labs · Badreddine EK">
@@ -27,13 +27,12 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="kicker"><a href="https://labs.badreddineek.com">Labs · badreddineek.com</a> &mdash; enquête data, rentrée 2026</p>
-    <h1>L'allocation de rentrée suffit-elle <em>vraiment</em> ?</h1>
+    <p class="kicker"><a href="https://labs.badreddineek.com">Labs · badreddineek.com</a> · enquête data, rentrée 2026</p>
+    <h1>« L'allocation de rentrée ne suffit jamais. » <em>Vraiment ?</em></h1>
     <p class="lede">
-      On me répète chaque année que l'ARS ne couvre pas la rentrée. Plutôt que de me fier
-      à une impression, j'ai pris les vraies données — coût réel, allocation versée,
-      milieu social des collèges et niveau de vie des territoires — pour voir ce qu'elles
-      disent, sans forcer de conclusion qu'elles ne prouvent pas.
+      C'est la petite phrase qu'on entend chaque année à la mi-août. Je l'ai prise au sérieux
+      et je suis allé voir les chiffres officiels. Résultat : la réponse tient à un seul mot,
+      celui qu'on choisit pour parler du «&nbsp;coût de la rentrée&nbsp;». Moyenne, ou médiane.
     </p>
     <p class="byline">
       Par <a href="https://badreddineek.com" target="_blank" rel="noopener">Badreddine EL KHAMLICHI</a>
@@ -47,21 +46,23 @@
   <!-- 1 · INTRO (hook déjà porté par le hero) — mise en garde méthodo -->
   <section id="intro" class="note-method">
     <p>
-      <strong>Comment lire ce Lab.</strong> Chaque chiffre est daté et sourcé. Je montre d'abord
-      un coût, puis une géographie sociale, puis le lien statistique <em>publié</em> entre les deux —
-      et enfin ce que ces données <em>ne</em> permettent <em>pas</em> de dire. Deux faits qui varient
-      ensemble ne prouvent pas que l'un cause l'autre.
+      <strong>Comment lire ce Lab.</strong> Chaque chiffre est daté et sourcé. Je pars du coût réel,
+      je regarde à qui l'allocation est versée, où vivent ces familles, et ce que devient l'école
+      dans ces territoires. À la fin, je réponds à la question du titre. Et je dis aussi ce que
+      ces données ne permettent pas d'affirmer : deux faits qui varient ensemble ne prouvent pas
+      que l'un cause l'autre.
     </p>
   </section>
 
   <!-- 2 · COÛT 2026 -->
   <section id="cout-2026">
-    <h2>Combien coûte vraiment une rentrée en 2026 ?</h2>
+    <h2>Moyenne ou médiane&nbsp;: le tour de passe-passe</h2>
     <p class="section-intro">
-      Deux chiffres racontent deux histoires. La <strong>moyenne</strong> (488&nbsp;€) est tirée vers
-      le haut par les plus grosses dépenses. La <strong>médiane</strong> (261&nbsp;€), c'est le foyer
-      « du milieu » : la moitié dépense moins, la moitié dépense plus. En face, l'<abbr title="Allocation de rentrée scolaire">ARS</abbr>
-      versée par la CAF varie selon l'âge de l'enfant.
+      Le «&nbsp;coût de la rentrée&nbsp;», c'est deux chiffres très différents. La <strong>moyenne</strong>
+      (488&nbsp;€) additionne tout le monde puis divise&nbsp;: quelques familles qui dépensent
+      beaucoup la tirent vers le haut. La <strong>médiane</strong> (261&nbsp;€), c'est le foyer pile
+      au milieu&nbsp;: la moitié dépense moins, la moitié dépense plus. En face, l'<abbr title="Allocation de rentrée scolaire">ARS</abbr>
+      versée par la CAF va de 426&nbsp;€ à 466&nbsp;€ selon l'âge.
     </p>
     <div class="chart-wrap">
       <canvas id="chart-cout" height="220" aria-label="Coût de la rentrée 2026 comparé à l'allocation de rentrée scolaire par tranche d'âge"></canvas>
@@ -72,11 +73,11 @@
 
   <!-- 3 · SIMULATEUR (élément différenciant) -->
   <section id="simulateur">
-    <h2>Votre rentrée à vous</h2>
+    <h2>Et vous, ça donne quoi ?</h2>
     <p class="section-intro">
-      Les moyennes cachent votre cas réel. Indiquez vos enfants : je calcule l'ARS totale
-      que vous devriez toucher, en face d'une estimation du coût. Tout est calculé dans votre
-      navigateur — <strong>rien n'est envoyé nulle part</strong>.
+      La moyenne et la médiane, c'est le pays entier. Vous, vous avez des enfants d'âges précis.
+      Indiquez-les&nbsp;: je calcule l'ARS totale que vous devriez toucher, face au coût estimé.
+      Tout se calcule dans votre navigateur, <strong>rien n'est envoyé nulle part</strong>.
     </p>
     <div class="panel simulateur" id="simulateur-app">
       <div class="sim-controls">
@@ -87,7 +88,7 @@
       <div id="sim-enfants" class="sim-enfants"></div>
       <div class="sim-result" id="sim-result" aria-live="polite"></div>
       <p class="sim-note">
-        Estimation de coût basée sur la moyenne (488&nbsp;€) et la médiane (261&nbsp;€) UFC-Que Choisir 2026,
+        Coût estimé entre la médiane (261&nbsp;€) et la moyenne (488&nbsp;€) UFC-Que Choisir 2026,
         appliquées par enfant. L'ARS suit les barèmes CAF 2026. C'est un ordre de grandeur, pas un devis.
       </p>
     </div>
@@ -95,11 +96,13 @@
 
   <!-- 4 · CARTE SOCIALE (IPS) -->
   <section id="carte-ips">
-    <h2>Où sont les écarts sociaux à l'école ?</h2>
+    <h2>La carte sociale de l'école</h2>
     <p class="section-intro">
-      L'<abbr title="Indice de position sociale">IPS</abbr> résume le milieu social des élèves d'un
-      collège : plus il est élevé, plus le public est favorisé (la moyenne nationale est calée autour
-      de 100). Voici l'IPS moyen des collèges, département par département.
+      Reste une question&nbsp;: à qui l'ARS est-elle versée, et où vivent ces familles ? Pour
+      situer les écarts sociaux à l'école, un indicateur existe. L'<abbr title="Indice de position sociale">IPS</abbr>
+      résume le milieu social des élèves d'un collège&nbsp;: plus il est haut, plus le public est
+      favorisé (la moyenne nationale tourne autour de 100). Voici l'IPS moyen des collèges,
+      département par département.
     </p>
     <div class="panel">
       <div id="map-ips" class="map" role="img" aria-label="Carte des départements français colorés selon l'IPS moyen des collèges"></div>
@@ -109,19 +112,19 @@
       </div>
     </div>
     <p class="takeaway">
-      L'écart n'est pas anecdotique : d'un département à l'autre, l'IPS moyen des collèges
-      passe du simple registre « très favorisé » à « très défavorisé ». Reste à savoir si cette
-      géographie recoupe autre chose.
+      L'écart n'a rien d'anecdotique. D'un département à l'autre, l'IPS moyen des collèges bascule
+      d'un registre «&nbsp;très favorisé&nbsp;» à «&nbsp;très défavorisé&nbsp;». Reste à savoir ce que
+      cette géographie recoupe vraiment.
     </p>
   </section>
 
   <!-- 5 · LE LIEN VÉRIFIÉ (scatter) -->
   <section id="correlation">
-    <h2>Le lien vérifié entre école et territoire</h2>
+    <h2>Ce que la carte recoupe</h2>
     <p class="section-intro">
-      Je croise deux faits distincts : l'IPS moyen des collèges et la médiane du niveau de vie
+      Je croise deux faits distincts&nbsp;: l'IPS moyen des collèges et la médiane du niveau de vie
       (INSEE Filosofi), par département. Une <strong>corrélation</strong> mesure à quel point deux
-      grandeurs montent et descendent ensemble (de 0 = aucun lien à 1 = lien parfait).
+      grandeurs montent et descendent ensemble (0 = aucun lien, 1 = lien parfait).
     </p>
     <div class="corr-head">
       <span class="corr-r" id="corr-r">—</span>
@@ -132,17 +135,49 @@
     </div>
     <p class="source-inline" id="corr-source"></p>
     <p class="warn">
-      Corrélation n'est pas causalité. Ce lien fort ne dit pas que le revenu « fabrique » l'IPS,
-      ni l'inverse : les deux reflètent une même réalité sociale du territoire.
+      Corrélation n'est pas causalité. Ce lien fort ne dit pas que le revenu «&nbsp;fabrique&nbsp;»
+      l'IPS, ni l'inverse. Les deux reflètent une même réalité sociale du territoire.
     </p>
   </section>
 
-  <!-- 6 · SECTEUR & ÉDUCATION PRIORITAIRE -->
+  <!-- 6 · L'ARS VA-T-ELLE LÀ OÙ IL FAUT ? (redistribution / territoire_social) -->
+  <section id="redistribution">
+    <h2>L'ARS tombe-t-elle au bon endroit ?</h2>
+    <p class="section-intro">
+      On l'oublie souvent&nbsp;: l'ARS n'est pas universelle, elle est versée <strong>sous conditions
+      de ressources</strong>. Elle vise donc les foyers modestes. La vraie question n'est pas seulement
+      «&nbsp;couvre-t-elle le coût&nbsp;?&nbsp;», mais «&nbsp;arrive-t-elle là où le besoin se concentre&nbsp;?&nbsp;».
+      J'ai regardé où vivent ces familles, avec le taux de pauvreté et la part des prestations
+      sociales dans le revenu, département par département.
+    </p>
+    <div class="corr-duo" id="terr-corr"></div>
+    <div class="compare" id="terr-compare"></div>
+    <p class="takeaway" id="terr-takeaway"></p>
+  </section>
+
+  <!-- 7 · UN IPS BAS N'EST PAS UNE FATALITÉ (IVAC) -->
+  <section id="valeur-ajoutee">
+    <h2>Un collège défavorisé n'est pas un collège perdu</h2>
+    <p class="section-intro">
+      Avant d'en conclure quoi que ce soit, une nuance essentielle. Un IPS bas décrit un contexte,
+      pas un destin. La <strong>valeur ajoutée</strong> (DEPP) compare la réussite au brevet
+      <em>observée</em> d'un collège à celle <em>attendue</em> vu le profil de ses élèves. Positive,
+      elle signifie que l'établissement fait mieux que prévu. Voici cette valeur ajoutée moyenne
+      selon le milieu social des collèges, du quart le plus défavorisé au plus favorisé.
+    </p>
+    <div class="chart-wrap">
+      <canvas id="chart-ivac" height="200" aria-label="Valeur ajoutée moyenne au brevet selon le quartile d'IPS des collèges"></canvas>
+      <p class="chart-legend" id="ivac-legend"></p>
+    </div>
+    <p class="takeaway" id="ivac-takeaway"></p>
+  </section>
+
+  <!-- 8 · SECTEUR & ÉDUCATION PRIORITAIRE -->
   <section id="secteur">
     <h2>Public, privé, éducation prioritaire</h2>
     <p class="section-intro">
-      La moyenne nationale masque de vrais écarts selon le type de collège. REP et REP+
-      (réseaux d'éducation prioritaire) regroupent les établissements au public le plus défavorisé.
+      Dernier angle mort de la moyenne nationale&nbsp;: elle mélange des mondes qui ne se croisent pas.
+      REP et REP+ (réseaux d'éducation prioritaire) regroupent les collèges au public le plus défavorisé.
     </p>
     <div class="cols">
       <div class="figure">
@@ -162,52 +197,78 @@
     <h2>Ce que ces données ne disent <em>pas</em></h2>
     <ul class="limites">
       <li>
-        <strong>Corrélation ≠ causalité.</strong> Un IPS bas et un revenu bas vont souvent de pair,
-        mais aucune de ces données ne prouve qu'un facteur cause l'autre. Ce sont deux symptômes
-        d'une même géographie sociale.
-      </li>
-      <li id="lim-ivac">
-        <strong>Un IPS faible n'est pas une fatalité scolaire.</strong> <span id="ivac-line"></span>
-        La valeur ajoutée (DEPP) compare la réussite au DNB observée à celle attendue vu le profil
-        des élèves : beaucoup de collèges défavorisés font mieux qu'attendu.
+        <strong>Corrélation n'est pas causalité.</strong> Un IPS bas et un revenu bas vont souvent
+        de pair, mais aucune de ces données ne prouve qu'un facteur cause l'autre. Ce sont deux
+        symptômes d'une même géographie sociale.
       </li>
       <li>
-        <strong>Le piège de l'agrégation.</strong> Je raisonne au niveau du département ; l'IPS varie
-        énormément d'un collège à l'autre au sein d'un même territoire. Une moyenne départementale ne
-        décrit aucun établissement en particulier, et ne cible aucune commune.
+        <strong>Le coût n'est pas ventilé par revenu.</strong> Je sais que l'ARS vise les foyers
+        modestes, et que la rentrée médiane coûte 261&nbsp;€. Mais UFC-Que Choisir ne publie pas la
+        dépense selon le niveau de vie. Je ne peux donc pas prouver que les familles allocataires
+        dépensent plutôt la médiane que la moyenne, même si tout le laisse penser.
       </li>
       <li>
-        <strong>Des millésimes différents.</strong> L'IPS est 2025-2026, le revenu médian 2021
-        (dernier disponible à ce niveau), l'ARS et les coûts 2026. C'est assumé : l'IPS médian
-        du public est très stable dans le temps (autour de 100 depuis des années), ce qui rend la
-        comparaison robuste — c'est un argument, pas une excuse.
+        <strong>Le piège de l'agrégation.</strong> Je raisonne au niveau du département&nbsp;; l'IPS
+        varie énormément d'un collège à l'autre au sein d'un même territoire. Une moyenne
+        départementale ne décrit aucun établissement en particulier, et ne cible aucune commune.
       </li>
       <li>
-        <strong>Coût ≠ dépense totale d'éducation.</strong> Les 488&nbsp;€/261&nbsp;€ mesurent les
-        <em>achats de rentrée</em> (fournitures, cartable…), pas le coût annuel complet de la scolarité.
+        <strong>Des millésimes différents.</strong> L'IPS est 2025-2026, le revenu et la pauvreté 2021
+        (dernier disponible à ce niveau), l'ARS et les coûts 2026. C'est assumé&nbsp;: l'IPS médian du
+        public est très stable dans le temps (autour de 100 depuis des années), ce qui rend la
+        comparaison robuste. C'est un argument, pas une excuse.
+      </li>
+      <li>
+        <strong>Coût de rentrée n'est pas coût de la scolarité.</strong> Les 488&nbsp;€/261&nbsp;€
+        mesurent les <em>achats de rentrée</em> (fournitures, cartable…), pas le coût annuel complet
+        d'un enfant scolarisé.
       </li>
     </ul>
   </section>
 
-  <!-- 8 · SOURCES & MÉTHODE -->
+  <!-- 8 · CONCLUSION — la réponse à la question du titre -->
+  <section id="conclusion">
+    <h2>Alors, l'ARS suffit-elle ?</h2>
+    <p>
+      Pour la majorité des familles, <strong>oui</strong>, et c'est la réponse que je n'attendais pas.
+      Quelle que soit la tranche d'âge, l'ARS 2026 (426&nbsp;€ à 466&nbsp;€) couvre la rentrée
+      <strong>médiane</strong> (261&nbsp;€) avec une marge confortable, de 60&nbsp;% à 80&nbsp;% au-dessus.
+      Le sentiment que «&nbsp;ça ne suffit jamais&nbsp;» vient de la <strong>moyenne</strong> (488&nbsp;€),
+      gonflée par les plus grosses dépenses. Et même face à elle, l'ARS en couvre déjà 87 à 95&nbsp;%.
+    </p>
+    <p>
+      Le vrai sujet n'est donc pas le montant, mais la <strong>cible</strong>. L'ARS étant versée sous
+      conditions de ressources, elle se déverse en priorité dans les départements où la pauvreté est
+      la plus forte, ceux-là mêmes où les collèges ont l'IPS le plus bas. À ce titre, c'est un outil
+      de redistribution qui tombe globalement au bon endroit.
+    </p>
+    <p class="takeaway">
+      Mon verdict de data scientist&nbsp;: l'ARS ne comble pas les plus grosses factures, et elle
+      ignore qu'une rentrée ne coûte pas pareil partout. Mais l'idée qu'elle «&nbsp;ne suffit jamais&nbsp;»
+      est d'abord une illusion de moyenne. Pour le foyer typique qu'elle vise, elle suffit, et au-delà.
+    </p>
+  </section>
+
+  <!-- 9 · SOURCES & MÉTHODE -->
   <section id="sources">
     <h2>Sources &amp; méthode</h2>
     <p class="section-intro">Toutes les données sont officielles, datées et re-téléchargeables.</p>
     <ul class="sources">
-      <li><strong>Coût de la rentrée 2026</strong> (moyenne 488&nbsp;€, médiane 261&nbsp;€) — UFC-Que Choisir / Que Choisir Ensemble, 2026.</li>
-      <li><strong>Allocation de rentrée scolaire 2026</strong> (426,87&nbsp;€ / 450,41&nbsp;€ / 466,02&nbsp;€) — CAF / service-public.gouv.fr, versée le 18 août 2026.</li>
-      <li><strong>IPS des collèges</strong> (rentrée 2025-2026) — DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
-      <li><strong>Statut REP / REP+</strong> — Annuaire de l'éducation, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
-      <li><strong>Médiane du niveau de vie par département</strong> (2021) — INSEE Filosofi, <a href="https://www.insee.fr/fr/statistiques/7756729" target="_blank" rel="noopener">base tous niveaux géographiques</a>.</li>
-      <li><strong>Valeur ajoutée des collèges</strong> (session 2025) — DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-valeur-ajoutee-colleges/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
-      <li><strong>Corrélation de référence 0,87</strong> (IPS élèves de 3e × revenu médian communal) — DEPP, Note d'Information n°23.16, mars 2023 (d'après Murat, 2021).</li>
-      <li><strong>Fond de carte</strong> — contours départementaux simplifiés (france-geojson, d'après IGN/Etalab, Licence Ouverte).</li>
+      <li><strong>Coût de la rentrée 2026</strong> (moyenne 488&nbsp;€, médiane 261&nbsp;€), UFC-Que Choisir / Que Choisir Ensemble, 2026.</li>
+      <li><strong>Allocation de rentrée scolaire 2026</strong> (426,87&nbsp;€ / 450,41&nbsp;€ / 466,02&nbsp;€), CAF / service-public.gouv.fr, versée le 18 août 2026.</li>
+      <li><strong>IPS des collèges</strong> (rentrée 2025-2026), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Statut REP / REP+</strong>, Annuaire de l'éducation, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Médiane du niveau de vie, taux de pauvreté et part des prestations sociales</strong> (2021), INSEE Filosofi, <a href="https://www.insee.fr/fr/statistiques/7756729" target="_blank" rel="noopener">base tous niveaux géographiques</a>.</li>
+      <li><strong>Valeur ajoutée des collèges</strong> (session 2025), DEPP, <a href="https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-valeur-ajoutee-colleges/" target="_blank" rel="noopener">data.education.gouv.fr</a>.</li>
+      <li><strong>Corrélation de référence 0,87</strong> (IPS élèves de 3e × revenu médian communal), DEPP, Note d'Information n°23.16, mars 2023 (d'après Murat, 2021).</li>
+      <li><strong>Fond de carte</strong>, contours départementaux simplifiés (france-geojson, d'après IGN/Etalab, Licence Ouverte).</li>
     </ul>
     <p class="method-note">
-      Méthode : agrégation de l'IPS par département (moyenne des collèges), jointure avec la médiane
-      du niveau de vie, corrélation de Pearson calculée sur les <span id="method-n">—</span> départements
-      couverts. Pipeline Python reproductible, aucune valeur n'est saisie à la main hors coûts/ARS
-      (réglementaires). Code et données&nbsp;: <a href="https://github.com/BadreddineEK/rentree-2026-lab" target="_blank" rel="noopener">repo GitHub</a>.
+      Méthode&nbsp;: agrégation de l'IPS par département (moyenne des collèges), jointures avec le
+      niveau de vie, le taux de pauvreté et la valeur ajoutée, corrélations de Pearson calculées sur
+      les <span id="method-n">—</span> départements couverts. Pipeline Python reproductible, aucune
+      valeur n'est saisie à la main hors coûts/ARS (réglementaires). Code et données&nbsp;:
+      <a href="https://github.com/BadreddineEK/rentree-2026-lab" target="_blank" rel="noopener">repo GitHub</a>.
     </p>
   </section>
 

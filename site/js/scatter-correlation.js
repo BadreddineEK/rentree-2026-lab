@@ -10,10 +10,10 @@
     var rEl = document.getElementById('corr-r');
     if (rEl) rEl.textContent = String(cc.r_pearson).replace('.', ',');
     var src = document.getElementById('corr-source');
-    if (src) src.innerHTML = 'Calcul sur mes donn\u00e9es : <b>r = ' + String(cc.r_pearson).replace('.', ',')
+    if (src) src.innerHTML = 'Calcul sur mes donn\u00e9es&nbsp;: <b>r = ' + String(cc.r_pearson).replace('.', ',')
       + '</b> (' + cc.n_departements + ' d\u00e9partements, IPS ' + cc.annee_reference.ips + ' \u00d7 niveau de vie '
-      + cc.annee_reference.revenu + '). R\u00e9f\u00e9rence publi\u00e9e : <b>r = ' + String(ref.r).replace('.', ',')
-      + '</b> \u2014 ' + ref.description + ' (' + ref.source + ').';
+      + cc.annee_reference.revenu + '). R\u00e9f\u00e9rence publi\u00e9e&nbsp;: <b>r = ' + String(ref.r).replace('.', ',')
+      + '</b>, ' + ref.description + ' (' + ref.source + ').';
     var mn = document.getElementById('method-n');
     if (mn) mn.textContent = cc.n_departements;
     if (!el) return;
@@ -46,5 +46,47 @@
         }
       }
     });
+  });
+
+  // Section « L'ARS tombe-t-elle au bon endroit ? » — pas de graphe, deux corrélations
+  // et une comparaison de territoires réels, rendues depuis territoire_social.json.
+  fetch('data/territoire_social.json').then(function (r) { return r.json(); }).then(function (d) {
+    var fr = function (x) { return String(x).replace('.', ','); };
+
+    var duo = document.getElementById('terr-corr');
+    if (duo) {
+      var cp = d.correlations.ips_x_taux_pauvrete, cs = d.correlations.ips_x_part_prestations;
+      duo.innerHTML =
+        '<div class="corr-card"><span class="corr-r-sm">' + fr(cp.r_pearson) + '</span>'
+        + '<span class="corr-cap">IPS \u00d7 <b>taux de pauvret\u00e9</b><br>par d\u00e9partement (n=' + cp.n_departements + ')</span></div>'
+        + '<div class="corr-card"><span class="corr-r-sm">' + fr(cs.r_pearson) + '</span>'
+        + '<span class="corr-cap">IPS \u00d7 <b>part des prestations sociales</b><br>dans le revenu (n=' + cs.n_departements + ')</span></div>';
+    }
+
+    var cmp = document.getElementById('terr-compare');
+    if (cmp) {
+      var row = function (e) {
+        return '<tr><td class="dep">' + e.nom + '</td><td>' + fr(e.ips_moyen)
+          + '</td><td>' + fr(e.taux_pauvrete) + '&nbsp;%</td><td>' + fr(e.part_prestations) + '&nbsp;%</td></tr>';
+      };
+      cmp.innerHTML =
+        '<table class="cmp-table"><thead><tr><th>D\u00e9partement</th><th>IPS coll\u00e8ges</th>'
+        + '<th>Pauvret\u00e9</th><th>Prestations</th></tr></thead><tbody>'
+        + '<tr class="grp"><td colspan="4">Les plus fragiles socialement</td></tr>'
+        + d.exemples.plus_fragiles.map(row).join('')
+        + '<tr class="grp"><td colspan="4">Les plus favoris\u00e9s</td></tr>'
+        + d.exemples.plus_favorises.map(row).join('')
+        + '</tbody></table>';
+    }
+
+    var tk = document.getElementById('terr-takeaway');
+    if (tk) {
+      var f0 = d.exemples.plus_fragiles[0], g0 = d.exemples.plus_favorises[0];
+      tk.innerHTML = 'Le lien est net et n\u00e9gatif&nbsp;: plus un d\u00e9partement est pauvre, plus l\u2019IPS de '
+        + 'ses coll\u00e8ges est bas. ' + f0.nom + ' (IPS ' + fr(f0.ips_moyen) + ', ' + fr(f0.taux_pauvrete)
+        + '&nbsp;% de pauvret\u00e9) et ' + g0.nom + ' (IPS ' + fr(g0.ips_moyen) + ', ' + fr(g0.taux_pauvrete)
+        + '&nbsp;%) ne vivent pas la m\u00eame rentr\u00e9e. L\u2019ARS, cibl\u00e9e sur les revenus modestes, '
+        + 'atteint donc surtout les territoires \u00e0 IPS faible&nbsp;: elle tombe au bon endroit.';
+    }
   });
 })();

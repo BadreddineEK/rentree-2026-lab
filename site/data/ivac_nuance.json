@@ -7,5 +7,35 @@
   "part_ips_bas_va_positive_pct": 50.0,
   "n_colleges_ips_bas": 1562,
   "seuil_ips_bas": "quart le plus défavorisé (IPS ≤ 94, 1er quartile)",
+  "par_quartile_ips": [
+    {
+      "quartile": "Q1",
+      "label": "Q1 · les plus défavorisés",
+      "va_moyenne": 0.6,
+      "part_va_positive_pct": 50.0,
+      "n_colleges": 1562
+    },
+    {
+      "quartile": "Q2",
+      "label": "Q2",
+      "va_moyenne": -1.7,
+      "part_va_positive_pct": 36.0,
+      "n_colleges": 1554
+    },
+    {
+      "quartile": "Q3",
+      "label": "Q3",
+      "va_moyenne": -1.4,
+      "part_va_positive_pct": 39.0,
+      "n_colleges": 1535
+    },
+    {
+      "quartile": "Q4",
+      "label": "Q4 · les plus favorisés",
+      "va_moyenne": -0.4,
+      "part_va_positive_pct": 52.0,
+      "n_colleges": 1549
+    }
+  ],
   "lecture": "Une part importante des collèges les plus défavorisés socialement font mieux que ce que leur profil laisserait attendre : l'IPS décrit un contexte, pas une fatalité."
 }

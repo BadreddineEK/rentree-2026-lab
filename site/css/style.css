@@ -147,6 +147,29 @@ select {
 .corr-label { font-size: 0.9rem; color: var(--muted); }
 .source-inline { font-size: 0.85rem; color: var(--faint); margin: 0.7rem 0 0; }
 
+/* ── REDISTRIBUTION : deux corrélations + tableau comparatif de territoires ── */
+.corr-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin: 0.4rem 0 1.6rem; }
+.corr-card {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  border-top: 2px solid var(--rule-strong); padding: 0.8rem 0 0;
+}
+.corr-r-sm { font-family: var(--serif); font-size: 2.3rem; font-weight: 600; color: var(--accent); line-height: 0.9; }
+.corr-cap { font-size: 0.85rem; color: var(--muted); }
+.corr-cap b { color: var(--ink); }
+.compare { margin: 0.4rem 0 0; overflow-x: auto; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.cmp-table th {
+  text-align: right; font-weight: 600; color: var(--muted); font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.03em; padding: 0 0 0.5rem; border-bottom: 1px solid var(--rule-strong);
+}
+.cmp-table th:first-child { text-align: left; }
+.cmp-table td { text-align: right; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); }
+.cmp-table td.dep { text-align: left; font-weight: 600; }
+.cmp-table tr.grp td {
+  text-align: left; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--faint); border-bottom: none; padding: 0.9rem 0 0.2rem;
+}
+
 /* ── LISTES limites / sources : pas de cartes, du texte structuré ── */
 .limites { list-style: none; padding: 0; margin: 0; }
 .limites li { padding: 0.9rem 0; border-top: 1px solid var(--rule); color: var(--muted); }
@@ -154,7 +177,7 @@ select {
 .limites li strong { color: var(--ink); }
 .sources { list-style: none; padding: 0; margin: 0; }
 .sources li { font-size: 0.92rem; color: var(--muted); padding: 0.35rem 0 0.35rem 1.1rem; position: relative; }
-.sources li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.sources li::before { content: "\00B7"; position: absolute; left: 0.2rem; color: var(--faint); font-weight: 700; }
 .sources li strong { color: var(--ink); }
 .method-note { font-size: 0.9rem; color: var(--faint); margin-top: 1.3rem; }
 
