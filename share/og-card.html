@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Carte OG — L'école réduit-elle encore les inégalités ?</title>
+<!--
+  Carte de partage sur-mesure (1200×630) aux couleurs de l'article.
+  Optionnelle : l'article utilise déjà une image OG dynamique fiable.
+  Si tu veux CETTE carte à la place : ouvre dans Chrome, capture la zone .card
+  en 1200×630 → enregistre en og.png dans site/, puis remplace la balise
+  og:image de l'article par : <meta property="og:image" content="og.png">.
+-->
+<style>
+  :root{
+    --bg:#fbfaf7;--ink:#1d1b17;--muted:#615d54;--faint:#8c887e;
+    --accent:#9c3b2e;--ocre:#b5651d;--vert:#4a7a55;--ardoise:#35506b;--rule:#e4ded1;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#c9c4b8;display:flex;justify-content:center;padding:40px;font-family:var(--sans);}
+  .card{width:1200px;height:630px;background:var(--bg);color:var(--ink);position:relative;
+        overflow:hidden;padding:72px 80px;display:flex;flex-direction:column;}
+  .accent-bar{position:absolute;top:0;left:0;width:100%;height:12px;background:var(--accent);}
+  .eyebrow{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  h1{font-family:var(--serif);font-weight:600;font-size:76px;line-height:1.04;letter-spacing:-.01em;margin-top:26px;max-width:17ch;}
+  .sub{font-family:var(--serif);font-size:32px;color:#35322c;margin-top:26px;max-width:30ch;line-height:1.35;}
+  .strip{display:flex;gap:56px;margin-top:auto;padding-top:28px;border-top:1px solid var(--rule);}
+  .stat .n{font-family:var(--serif);font-size:46px;font-weight:600;line-height:1;}
+  .stat .l{font-size:20px;color:var(--muted);margin-top:8px;}
+  .by{position:absolute;right:80px;bottom:72px;text-align:right;font-size:22px;color:var(--faint);}
+  .by b{color:var(--muted);font-weight:600;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="accent-bar"></div>
+    <p class="eyebrow">Enquête data · labs.badreddineek.com</p>
+    <h1>L'école française réduit-elle encore les inégalités&nbsp;?</h1>
+    <p class="sub">Du primaire au lycée, ce que disent vraiment les données publiques.</p>
+    <div class="strip">
+      <div class="stat"><div class="n" style="color:var(--ocre);">+20</div><div class="l">écart privé − public<br>au collège (IPS)</div></div>
+      <div class="stat"><div class="n" style="color:var(--ardoise);">0,84</div><div class="l">corrélation avec<br>le niveau de vie</div></div>
+      <div class="stat"><div class="n" style="color:var(--vert);">+0,6</div><div class="l">valeur ajoutée des<br>collèges défavorisés</div></div>
+    </div>
+    <p class="by"><b>Badreddine EL KHAMLICHI</b><br>data scientist · DEPP &amp; INSEE</p>
+  </div>
+</body>
+</html>

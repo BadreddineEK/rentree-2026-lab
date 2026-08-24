@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Carrousel LinkedIn — L'école réduit-elle encore les inégalités ?</title>
+<!--
+  Carrousel 8 slides (1080×1080) pour LinkedIn. 100 % autonome, aucune dépendance.
+  EXPORT : ouvre ce fichier dans Chrome → Ctrl+P → Destination « PDF » →
+  Format « carré » si dispo, Marges « Aucune », coche « Graphiques d'arrière-plan ».
+  Chaque slide = 1 page. Tu obtiens un PDF 8 pages à publier tel quel en carrousel.
+  (Ou capture chaque slide en PNG 1080×1080.)
+-->
+<style>
+  :root{
+    --bg:#fbfaf7; --ink:#1d1b17; --muted:#615d54; --faint:#8c887e;
+    --accent:#9c3b2e; --ocre:#b5651d; --vert:#4a7a55; --ardoise:#35506b;
+    --rule:#e4ded1; --rule-strong:#d3ccbc;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#c9c4b8;font-family:var(--sans);padding:24px;display:flex;flex-direction:column;align-items:center;gap:24px;}
+  .slide{
+    width:1080px;height:1080px;background:var(--bg);color:var(--ink);
+    position:relative;overflow:hidden;padding:96px 88px;display:flex;flex-direction:column;
+  }
+  .accent-bar{position:absolute;top:0;left:0;width:100%;height:12px;background:var(--accent);}
+  .eyebrow{font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .counter{position:absolute;top:96px;right:88px;font-size:26px;color:var(--faint);letter-spacing:.05em;}
+  .foot{position:absolute;left:88px;right:88px;bottom:64px;display:flex;justify-content:space-between;
+        align-items:center;font-size:24px;color:var(--faint);border-top:1px solid var(--rule);padding-top:24px;}
+  .foot b{color:var(--muted);font-weight:600;}
+  h1{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.01em;}
+  h2{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.01em;}
+  .lead{font-family:var(--serif);color:#35322c;line-height:1.4;}
+  .body{color:var(--muted);line-height:1.55;}
+  .spacer{flex:1;}
+  .big{font-family:var(--serif);font-weight:600;color:var(--accent);line-height:.9;}
+  .src{font-size:22px;color:var(--faint);margin-top:auto;}
+
+  /* barres simples dessinées en CSS (pas d'image) */
+  .bars{display:flex;gap:40px;align-items:flex-end;height:320px;margin:48px 0 24px;}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .bar .col{width:100%;border-radius:8px 8px 0 0;}
+  .bar .lbl{font-size:26px;color:var(--muted);margin-top:18px;text-align:center;}
+  .bar .val{font-family:var(--serif);font-size:34px;color:var(--ink);margin-bottom:14px;}
+
+  .duo{display:flex;gap:28px;margin:44px 0;}
+  .chip{flex:1;border:1px solid var(--rule-strong);border-radius:10px;padding:34px 32px;background:#fff;}
+  .chip .n{font-family:var(--serif);font-size:96px;font-weight:600;line-height:.9;}
+  .chip .c{font-size:26px;color:var(--muted);margin-top:16px;line-height:1.35;}
+
+  @media print{
+    body{background:none;padding:0;gap:0;}
+    .slide{box-shadow:none;page-break-after:always;}
+    @page{size:1080px 1080px;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 · COUVERTURE -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">Enquête data · labs.badreddineek.com</p>
+  <div class="spacer" style="max-height:120px"></div>
+  <h1 style="font-size:104px;">L'école française réduit-elle encore les inégalités&nbsp;?</h1>
+  <p class="lead" style="font-size:40px;margin-top:44px;max-width:20ch;">
+    Du primaire au lycée, ce que disent vraiment les données publiques.
+  </p>
+  <div class="spacer"></div>
+  <p class="body" style="font-size:30px;">Un état des lieux calme, chiffres officiels en main — DEPP &amp; INSEE.</p>
+  <div class="foot"><span><b>Badreddine EL KHAMLICHI</b> · data scientist</span><span>1 / 8</span></div>
+</section>
+
+<!-- 2 · LE CONSTAT / AMPLEUR -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">1 · L'ampleur</p>
+  <span class="counter">2 / 8</span>
+  <h2 style="font-size:66px;margin-top:40px;max-width:18ch;">Public et privé n'accueillent pas le même monde</h2>
+  <p class="body" style="font-size:30px;margin-top:24px;max-width:26ch;">
+    L'IPS mesure le milieu social des élèves (100 = moyenne nationale). L'écart privé − public
+    grandit à chaque étage&nbsp;:
+  </p>
+  <div class="bars">
+    <div class="bar"><span class="val">+13</span><div class="col" style="height:44%;background:var(--vert);"></div><span class="lbl">Primaire</span></div>
+    <div class="bar"><span class="val">+20</span><div class="col" style="height:70%;background:var(--ocre);"></div><span class="lbl">Collège</span></div>
+    <div class="bar"><span class="val">+19</span><div class="col" style="height:66%;background:var(--ocre);"></div><span class="lbl">Lycée</span></div>
+  </div>
+  <p class="src">Écart d'IPS privé sous contrat − public · DEPP, rentrée 2024-2026.</p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 3 · ÉVOLUTION -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">2 · L'évolution</p>
+  <span class="counter">3 / 8</span>
+  <h2 style="font-size:70px;margin-top:40px;max-width:16ch;">Et la tendance ne s'inverse pas</h2>
+  <div class="spacer" style="max-height:60px"></div>
+  <p class="lead" style="font-size:40px;max-width:22ch;">Au collège, l'écart privé − public est passé de</p>
+  <p style="margin:28px 0;"><span class="big" style="font-size:150px;">19,3</span>
+     <span class="lead" style="font-size:54px;"> &rarr; </span>
+     <span class="big" style="font-size:150px;">20,2</span></p>
+  <p class="lead" style="font-size:40px;max-width:24ch;">points entre 2023 et 2026. Le tri social ne stagne pas&nbsp;: il progresse, à tous les niveaux.</p>
+  <p class="src" style="margin-top:40px;">DEPP, IPS des collèges, rentrées 2023-2024 à 2025-2026.</p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 4 · GÉOGRAPHIE + CORRÉLATION -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">3 · La géographie</p>
+  <span class="counter">4 / 8</span>
+  <h2 style="font-size:66px;margin-top:40px;max-width:18ch;">C'est presque la carte des revenus</h2>
+  <p class="body" style="font-size:30px;margin-top:24px;max-width:27ch;">
+    En croisant l'IPS des collèges d'un département avec le niveau de vie de ses habitants
+    (donnée indépendante de l'école), le lien est massif&nbsp;:
+  </p>
+  <p style="margin:36px 0 24px;"><span class="big" style="font-size:180px;">0,84</span>
+     <span class="lead" style="font-size:40px;"> de corrélation</span></p>
+  <p class="body" style="font-size:30px;max-width:27ch;">
+    Paris culmine autour de 126, la Seine-Saint-Denis tombe à 94, La Réunion à 89.
+  </p>
+  <p class="src">DEPP × INSEE Filosofi · 98 départements. Corrélation n'est pas causalité.</p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 5 · LES EXTRÊMES -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">4 · Les extrêmes</p>
+  <span class="counter">5 / 8</span>
+  <h2 style="font-size:66px;margin-top:40px;max-width:18ch;">Du privé aux réseaux prioritaires</h2>
+  <div class="bars" style="height:360px;margin-top:64px;">
+    <div class="bar"><span class="val">120</span><div class="col" style="height:100%;background:var(--ocre);"></div><span class="lbl">Privé<br>sous contrat</span></div>
+    <div class="bar"><span class="val">100</span><div class="col" style="height:70%;background:var(--ardoise);"></div><span class="lbl">Public<br>(moyenne)</span></div>
+    <div class="bar"><span class="val">75</span><div class="col" style="height:36%;background:var(--accent);"></div><span class="lbl">Collèges<br>REP+</span></div>
+  </div>
+  <p class="lead" style="font-size:34px;max-width:26ch;margin-top:8px;">« L'école moyenne » n'existe pas&nbsp;: la moyenne additionne des mondes qui ne se croisent jamais.</p>
+  <p class="src">IPS moyen par secteur · DEPP, collèges 2025-2026.</p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 6 · PAS UNE FATALITÉ -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">5 · La nuance décisive</p>
+  <span class="counter">6 / 8</span>
+  <h2 style="font-size:66px;margin-top:40px;max-width:18ch;">Un collège défavorisé n'est pas perdu</h2>
+  <div class="duo">
+    <div class="chip"><div class="n" style="color:var(--vert);">+0,6</div><div class="c">valeur ajoutée moyenne des collèges les plus défavorisés (la plus élevée des quatre quartiles)</div></div>
+    <div class="chip"><div class="n" style="color:var(--vert);">50 %</div><div class="c">d'entre eux font mieux au brevet que ce que leur profil social laissait attendre</div></div>
+  </div>
+  <p class="lead" style="font-size:36px;max-width:26ch;">Un IPS bas pèse sur les résultats, mais ne condamne personne. À profil égal, l'école élève encore.</p>
+  <p class="src">Valeur ajoutée au DNB · DEPP, session 2025.</p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 7 · LA RÉPONSE -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <p class="eyebrow">La réponse</p>
+  <span class="counter">7 / 8</span>
+  <div class="spacer" style="max-height:80px"></div>
+  <h2 style="font-size:76px;max-width:17ch;">Elle fait les deux à la fois</h2>
+  <p class="lead" style="font-size:42px;margin-top:44px;max-width:24ch;">
+    L'école reçoit un public déjà séparé socialement. Mais là où c'est le plus dur,
+    elle rattrape en partie.
+  </p>
+  <p class="body" style="font-size:32px;margin-top:36px;max-width:27ch;">
+    Le vrai tri se joue surtout <b>avant</b> et <b>autour</b> d'elle&nbsp;: le privé, la carte
+    scolaire, le territoire. La question n'est pas « échoue-t-elle&nbsp;? », mais « jusqu'où
+    peut-elle rattraper ce que la société sépare&nbsp;? ».
+  </p>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+</section>
+
+<!-- 8 · CTA -->
+<section class="slide" style="background:var(--ink);color:#f3efe7;">
+  <div class="accent-bar"></div>
+  <span class="counter" style="color:#6f6a60;">8 / 8</span>
+  <div class="spacer"></div>
+  <h2 style="font-size:80px;max-width:16ch;color:#f8f4ec;">L'enquête complète, sources et méthode</h2>
+  <p style="font-family:var(--serif);font-size:52px;color:var(--ocre);margin-top:40px;">
+    labs.badreddineek.com/rentree-2026
+  </p>
+  <p style="font-size:32px;color:#c7c1b4;margin-top:36px;max-width:26ch;line-height:1.5;">
+    Cartes interactives, graphiques, corrélations et pipeline de données reproductible.
+    Chaque chiffre est daté et sourcé.
+  </p>
+  <div class="spacer"></div>
+  <p style="font-size:30px;color:#9a948a;">Ça vous a fait réfléchir&nbsp;? Enregistrez, partagez, et dites-moi ce que vous en pensez.</p>
+  <div class="foot" style="border-color:#33302a;"><span style="color:#c7c1b4;"><b style="color:#e8e2d6;">Badreddine EL KHAMLICHI</b> · data scientist, Lyon</span><span style="color:#8a847a;">@BadreddineEK</span></div>
+</section>
+
+</body>
+</html>
