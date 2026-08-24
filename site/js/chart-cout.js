@@ -161,7 +161,7 @@
     if (lg) lg.innerHTML = '<span style="color:' + COOL + '">\u25a0</span> fait mieux qu\u2019attendu &nbsp; '
       + '<span style="color:' + HOT + '">\u25a0</span> fait moins bien qu\u2019attendu';
     var tk = document.getElementById('ivac-takeaway');
-    if (tk) tk.innerHTML = 'Surprise&nbsp;: le quart des coll\u00e8ges <em>les plus d\u00e9favoris\u00e9s</em> (Q1) affiche la '
+    if (tk) tk.innerHTML = 'Le quart des coll\u00e8ges <em>les plus d\u00e9favoris\u00e9s</em> (Q1) affiche pourtant la '
       + 'valeur ajout\u00e9e moyenne la plus \u00e9lev\u00e9e (' + signed(q1.va_moyenne) + '), avec '
       + q1.part_va_positive_pct + '\u00a0% d\u2019\u00e9tablissements au-dessus de ce que leur profil laissait attendre. '
       + 'Un IPS bas p\u00e8se sur les r\u00e9sultats, mais ne condamne personne&nbsp;: \u00e0 profil \u00e9gal, ces coll\u00e8ges '
