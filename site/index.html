@@ -42,24 +42,28 @@
 
 <main class="wrap">
 
-  <!-- INTRO — cadrage + mise en garde méthodo -->
+  <!-- INTRO — feuille de route + cadrage méthodo -->
   <section id="intro" class="note-method">
     <p>
-      <strong>Comment lire ce Lab.</strong> L'outil central est l'<abbr title="Indice de position sociale">IPS</abbr>,
-      l'indice de position sociale que la DEPP calcule pour chaque établissement&nbsp;: plus il est
-      élevé, plus le public d'élèves est favorisé (la moyenne nationale tourne autour de 100). Chaque
-      chiffre est daté et sourcé. Et je dis aussi ce que ces données ne permettent pas d'affirmer&nbsp;:
-      deux faits qui varient ensemble ne prouvent pas que l'un cause l'autre.
+      <strong>Comment lire ce Lab.</strong> Une seule question guide tout&nbsp;: l'école française
+      trie-t-elle les enfants selon leur milieu social&nbsp;? Pour y répondre sans parti pris, un seul
+      instrument de mesure, l'<abbr title="Indice de position sociale">IPS</abbr> que la DEPP calcule
+      pour chaque établissement&nbsp;: plus il est élevé, plus les élèves viennent de familles
+      favorisées (100 = la moyenne nationale). On avance en six temps&nbsp;: <strong>l'ampleur</strong>
+      du tri, son <strong>évolution</strong>, sa <strong>géographie</strong>, ce qu'il
+      <strong>recoupe</strong>, ses <strong>extrêmes</strong>, et enfin ce que l'école
+      <strong>arrive encore à faire</strong> malgré lui. Chaque chiffre est daté et sourcé, et je
+      signale toujours ce que les données ne prouvent pas.
     </p>
   </section>
 
   <!-- CH.1 · LA TRAJECTOIRE DU TRI (IPS par niveau) -->
   <section id="trajectoire">
-    <h2>Du primaire au lycée, l'entre-soi se creuse</h2>
+    <h2>1. L'ampleur&nbsp;: du primaire au lycée, l'entre-soi se creuse</h2>
     <p class="section-intro">
-      Commençons par le plus frappant. Si on compare l'IPS moyen du <strong>public</strong> et du
-      <strong>privé sous contrat</strong> à chaque étage de la scolarité, l'écart ne cesse de grandir.
-      Il est déjà là dès l'école primaire, et il se creuse nettement au collège puis au lycée.
+      Commençons par le plus simple à vérifier&nbsp;: à quel point public et privé accueillent-ils le
+      même monde&nbsp;? Si les deux secteurs scolarisaient les mêmes familles, leurs barres seraient à
+      la même hauteur. Regardez ce qu'il en est, étage par étage de la scolarité.
     </p>
     <div class="chart-wrap">
       <canvas id="chart-niveau" height="220" aria-label="IPS moyen du public et du privé sous contrat, pour les écoles, collèges et lycées"></canvas>
@@ -70,11 +74,11 @@
 
   <!-- CH.2 · ÉVOLUTION DANS LE TEMPS -->
   <section id="evolution">
-    <h2>Et ce n'est pas en train de s'arranger</h2>
+    <h2>2. L'évolution&nbsp;: et ce n'est pas en train de s'arranger</h2>
     <p class="section-intro">
-      Une photo, c'est bien&nbsp;; le film, c'est mieux. Sur les dernières rentrées disponibles,
-      l'écart d'IPS entre privé sous contrat et public ne se referme pas. Il se <strong>creuse</strong>,
-      à chaque niveau.
+      Ce qu'on vient de voir, c'est une photo de la dernière rentrée. Mais une photo peut tromper&nbsp;:
+      peut-être que ce fossé se referme lentement, année après année. Le film répond mieux que l'arrêt
+      sur image. Voici donc le même écart privé/public, mais suivi dans le temps, à chaque niveau.
     </p>
     <div class="chart-wrap">
       <canvas id="chart-evolution" height="200" aria-label="Évolution de l'écart d'IPS entre privé et public, par niveau, sur les dernières rentrées"></canvas>
@@ -85,11 +89,12 @@
 
   <!-- CH.3 · CARTE SOCIALE (IPS collèges) -->
   <section id="carte-ips">
-    <h2>La carte sociale des collèges</h2>
+    <h2>3. La géographie&nbsp;: où le tri frappe-t-il&nbsp;?</h2>
     <p class="section-intro">
-      Cet entre-soi a une géographie. Voici l'<abbr title="Indice de position sociale">IPS</abbr> moyen
-      des collèges, département par département. Plus la couleur penche vers le bleu, plus le public est
-      favorisé&nbsp;; plus elle penche vers le brun, plus il est défavorisé.
+      Le tri est réel et il progresse. Mais frappe-t-il partout de la même façon&nbsp;? Pour le voir,
+      on descend à l'échelle du territoire. Chaque département est coloré selon l'IPS moyen de ses
+      collèges&nbsp;: vers le bleu, un public plutôt favorisé&nbsp;; vers le brun, plutôt défavorisé.
+      Cette carte va nous servir de tremplin vers la question d'après.
     </p>
     <div class="panel">
       <div id="map-ips" class="map" role="img" aria-label="Carte des départements français colorés selon l'IPS moyen des collèges"></div>
@@ -105,13 +110,16 @@
     </p>
   </section>
 
-  <!-- CH.3 · LE LIEN VÉRIFIÉ (scatter) -->
+  <!-- CH.4 · LE LIEN VÉRIFIÉ (scatter) -->
   <section id="correlation">
-    <h2>Ce que la carte recoupe</h2>
+    <h2>4. Ce que le tri recoupe&nbsp;: la carte des revenus</h2>
     <p class="section-intro">
-      Je croise deux faits distincts&nbsp;: l'IPS moyen des collèges et la médiane du niveau de vie
-      (INSEE Filosofi), par département. Une <strong>corrélation</strong> mesure à quel point deux
-      grandeurs montent et descendent ensemble (0 = aucun lien, 1 = lien parfait).
+      La carte pose une question dérangeante&nbsp;: ces écarts scolaires ne seraient-ils pas, tout
+      simplement, la carte des riches et des pauvres&nbsp;? Testons-le. Je confronte l'IPS des collèges
+      d'un département à une donnée <em>indépendante de l'école</em>&nbsp;: le niveau de vie médian de
+      ses habitants (INSEE). Une <strong>corrélation</strong> mesure à quel point deux grandeurs varient
+      ensemble (0 = aucun lien, 1 = elles se suivent parfaitement). Plus le nuage de points forme une
+      ligne, plus le lien est fort.
     </p>
     <div class="corr-head">
       <span class="corr-r" id="corr-r">—</span>
@@ -127,13 +135,14 @@
     </p>
   </section>
 
-  <!-- CH.5 · SECTEUR & ÉDUCATION PRIORITAIRE (les deux bouts de la distribution) -->
+  <!-- CH.5 · SECTEUR & ÉDUCATION PRIORITAIRE (l'amplitude à un seul niveau) -->
   <section id="secteur">
-    <h2>Les deux bouts&nbsp;: le privé et l'éducation prioritaire</h2>
+    <h2>5. Les extrêmes&nbsp;: du privé huppé aux réseaux prioritaires</h2>
     <p class="section-intro">
-      Zoomons sur le collège. La moyenne nationale (autour de 100) masque deux extrêmes qui ne se
-      croisent jamais&nbsp;: en haut, le privé sous contrat&nbsp;; en bas, l'éducation prioritaire.
-      REP et REP+ regroupent les collèges au public le plus défavorisé.
+      Jusqu'ici on a raisonné en moyennes. Or une moyenne à 100 peut cacher deux mondes qui ne se
+      croisent jamais. Arrêtons-nous sur un seul étage, le collège, pour mesurer l'écart <em>d'un
+      bout à l'autre</em>&nbsp;: tout en haut le privé sous contrat, tout en bas l'éducation
+      prioritaire (REP et REP+), qui regroupe les collèges au public le plus défavorisé.
     </p>
     <div class="cols">
       <div class="figure">
@@ -148,15 +157,17 @@
     <p class="takeaway" id="secteur-takeaway"></p>
   </section>
 
-  <!-- 7 · UN IPS BAS N'EST PAS UNE FATALITÉ (IVAC) -->
+  <!-- 6 · UN IPS BAS N'EST PAS UNE FATALITÉ (IVAC) -->
   <section id="valeur-ajoutee">
-    <h2>Un collège défavorisé n'est pas un collège perdu</h2>
+    <h2>6. La nuance décisive&nbsp;: un collège défavorisé n'est pas perdu</h2>
     <p class="section-intro">
-      Avant d'en conclure quoi que ce soit, une nuance essentielle, et c'est la plus importante. Un IPS
-      bas décrit un contexte, pas un destin. La <strong>valeur ajoutée</strong> (DEPP) compare la
-      réussite au brevet <em>observée</em> d'un collège à celle <em>attendue</em> vu le profil de ses
-      élèves. Positive, elle signifie que l'établissement fait mieux que prévu. Voici cette valeur
-      ajoutée moyenne selon le milieu social des collèges, du quart le plus défavorisé au plus favorisé.
+      Le constat précédent est lourd, et on pourrait en tirer une conclusion fataliste&nbsp;: l'avenir
+      d'un enfant serait scellé par le collège où il atterrit. C'est faux, et c'est le point le plus
+      important du Lab. Pour le prouver, il faut cesser de regarder les résultats bruts (forcément plus
+      bas là où le public est défavorisé) et regarder la <strong>valeur ajoutée</strong> (DEPP)&nbsp;:
+      l'écart entre la réussite au brevet <em>observée</em> d'un collège et celle <em>attendue</em> vu
+      le profil social de ses élèves. Positive, elle signifie que l'établissement fait mieux que
+      prévu. La voici, du quart des collèges le plus défavorisé au plus favorisé.
     </p>
     <div class="chart-wrap">
       <canvas id="chart-ivac" height="200" aria-label="Valeur ajoutée moyenne au brevet selon le quartile d'IPS des collèges"></canvas>
