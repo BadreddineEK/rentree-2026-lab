@@ -89,9 +89,10 @@
     var tk = document.getElementById('evolution-takeaway');
     if (tk && col && col.points.length >= 2) {
       var a = col.points[0], b = col.points[col.points.length - 1];
-      tk.innerHTML = 'Aucune des trois courbes ne redescend. Au coll\u00e8ge, l\u2019\u00e9cart priv\u00e9-public est pass\u00e9 de <em>'
-        + fr(a.ecart_prive_public) + '</em> \u00e0 <em>' + fr(b.ecart_prive_public) + '</em> points entre '
-        + a.annee + ' et ' + b.annee + '. Le tri social ne stagne pas&nbsp;: il progresse.';
+      tk.innerHTML = 'Sur les trois rentr\u00e9es disponibles, aucune courbe ne redescend. Au coll\u00e8ge, '
+        + 'l\u2019\u00e9cart priv\u00e9-public passe de <em>' + fr(a.ecart_prive_public) + '</em> \u00e0 <em>'
+        + fr(b.ecart_prive_public) + '</em> points entre ' + a.annee + ' et ' + b.annee
+        + '. Fen\u00eatre trop courte pour une tendance de fond, mais aucun signe de r\u00e9sorption.';
     }
   });
 
@@ -136,22 +137,24 @@
     new Chart(el, {
       type: 'bar',
       data: {
-        labels: q.map(function (x) { return x.label; }),
+        labels: q.map(function (x) { return x.quartile; }),
         datasets: [{ data: vals, backgroundColor: cols, borderRadius: 6, maxBarThickness: 78 }]
       },
       options: {
         responsive: true,
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: function (c) {
-            var x = q[c.dataIndex];
-            return 'VA moyenne ' + signed(x.va_moyenne)
-              + ' \u00b7 ' + x.part_va_positive_pct + '\u00a0% de coll\u00e8ges au-dessus de l\u2019attendu'
-              + ' \u00b7 ' + x.n_colleges + ' coll\u00e8ges';
+          tooltip: { callbacks: {
+            title: function (items) { return q[items[0].dataIndex].label; },
+            label: function (c) {
+              var x = q[c.dataIndex];
+              return 'VA moyenne ' + signed(x.va_moyenne)
+                + ' \u00b7 ' + x.part_va_positive_pct + '\u00a0% de coll\u00e8ges au-dessus de l\u2019attendu'
+                + ' \u00b7 ' + x.n_colleges + ' coll\u00e8ges';
           } } }
         },
         scales: {
-          x: noGridX(),
+          x: { grid: { display: false }, ticks: { color: '#9aa4b2' }, title: { display: true, text: 'du quart le plus d\u00e9favoris\u00e9 (Q1) au plus favoris\u00e9 (Q4)' } },
           y: { grid: { color: GRID }, title: { display: true, text: 'Valeur ajout\u00e9e moyenne (points de r\u00e9ussite au DNB)' } }
         }
       }
