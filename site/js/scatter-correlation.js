@@ -13,7 +13,10 @@
     if (src) src.innerHTML = 'Calcul sur mes donn\u00e9es&nbsp;: <b>r = ' + String(cc.r_pearson).replace('.', ',')
       + '</b> (' + cc.n_departements + ' d\u00e9partements, IPS ' + cc.annee_reference.ips + ' \u00d7 niveau de vie '
       + cc.annee_reference.revenu + '). R\u00e9f\u00e9rence publi\u00e9e&nbsp;: <b>r = ' + String(ref.r).replace('.', ',')
-      + '</b>, ' + ref.description + ' (' + ref.source + ').';
+      + '</b>, ' + ref.description + ' (' + ref.source + '). '
+      + 'L\u2019\u00e9cart entre les deux tient au p\u00e9rim\u00e8tre\u00a0: je corr\u00e8le l\u2019IPS moyen des '
+      + 'coll\u00e8ges au niveau d\u00e9partemental, quand la DEPP corr\u00e8le l\u2019IPS des \u00e9l\u00e8ves de 3e au '
+      + 'niveau communal.';
     var mn = document.getElementById('method-n');
     if (mn) mn.textContent = cc.n_departements;
     if (!el) return;
