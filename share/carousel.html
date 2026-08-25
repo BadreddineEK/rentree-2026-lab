@@ -5,10 +5,17 @@
 <title>Carrousel LinkedIn - L'école réduit-elle encore les inégalités ?</title>
 <!--
   Carrousel 8 slides (1080x1080) pour LinkedIn. 100 % autonome, aucune dépendance.
-  EXPORT : ouvre ce fichier dans Chrome puis Ctrl+P, Destination « PDF »,
-  Marges « Aucune », coche « Graphiques d'arriere-plan ».
-  Chaque slide = 1 page. Tu obtiens un PDF 8 pages a publier tel quel en carrousel.
-  (Ou capture chaque slide en PNG 1080x1080.)
+
+  EXPORT PDF (recommandé) :
+    Ouvre ce fichier dans Chrome, puis Ctrl+P.
+    - Destination : « Enregistrer au format PDF »
+    - Mise en page : Portrait
+    - Marges : Aucune
+    - Coche « Graphiques d'arriere-plan » (par securite ; les couleurs sont deja forcees)
+    Chaque slide = 1 page carree. Tu obtiens un PDF 8 pages a publier tel quel.
+
+  EXPORT PNG (si tu preferes des images) :
+    Zoome pour qu'une slide remplisse l'ecran, puis capture (Win+Maj+S) chaque slide.
 -->
 <style>
   :root{
@@ -23,6 +30,8 @@
   .slide{
     width:1080px;height:1080px;background:var(--bg);color:var(--ink);
     position:relative;overflow:hidden;padding:96px 88px;display:flex;flex-direction:column;
+    /* Force l'impression des fonds de couleur (evite les slides blanches en PDF). */
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
   }
   .accent-bar{position:absolute;top:0;left:0;width:100%;height:12px;background:var(--accent);}
   .eyebrow{font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;}
@@ -50,8 +59,9 @@
   .chip .c{font-size:26px;color:var(--muted);margin-top:16px;line-height:1.35;}
 
   @media print{
-    body{background:none;padding:0;gap:0;}
-    .slide{box-shadow:none;page-break-after:always;}
+    html,body{margin:0;padding:0;background:#fff;gap:0;}
+    .slide{box-shadow:none;page-break-after:always;break-after:page;page-break-inside:avoid;}
+    .slide:last-child{page-break-after:auto;break-after:auto;}
     @page{size:1080px 1080px;margin:0;}
   }
 </style>
@@ -86,7 +96,7 @@
     À profil social égal, ce sont souvent les établissements les plus difficiles qui font le plus progresser leurs élèves.
   </p>
   <p class="src">Valeur ajoutée au DNB · DEPP, session 2025.</p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 3 - L'AMPLEUR -->
@@ -105,7 +115,7 @@
     <div class="bar"><span class="val">+19</span><div class="col" style="height:66%;background:var(--ocre);"></div><span class="lbl">Lycée</span></div>
   </div>
   <p class="src">Écart d'IPS privé sous contrat − public · DEPP, rentrées 2024-2026.</p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 4 - L'ÉVOLUTION RÉCENTE (court terme, sans prétention de tendance) -->
@@ -121,7 +131,7 @@
      <span class="big" style="font-size:140px;">20,2</span></p>
   <p class="lead" style="font-size:36px;max-width:26ch;">sur les trois dernières rentrées. Trois années, c'est court&nbsp;: pas de tendance de fond, mais aucun signe de résorption.</p>
   <p class="src" style="margin-top:36px;">DEPP, IPS des collèges, 2023-2024 à 2025-2026.</p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 5 - LA GÉOGRAPHIE + CORRÉLATION (sans nommer de territoire négativement) -->
@@ -140,7 +150,7 @@
     Les départements au niveau de vie le plus élevé ont aussi les IPS les plus hauts, et inversement.
   </p>
   <p class="src">DEPP × INSEE Filosofi · 98 départements. Corrélation n'est pas causalité.</p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 6 - LES EXTRÊMES -->
@@ -156,7 +166,7 @@
   </div>
   <p class="lead" style="font-size:34px;max-width:26ch;margin-top:8px;">« L'école moyenne » n'existe pas&nbsp;: la moyenne additionne des mondes très différents.</p>
   <p class="src">IPS moyen par secteur · DEPP, collèges 2025-2026.</p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 7 - LA RÉPONSE -->
@@ -175,7 +185,7 @@
     scolaire, le quartier. La question n'est pas « échoue-t-elle&nbsp;? », mais « jusqu'où
     peut-elle rattraper ce que la société sépare&nbsp;? ».
   </p>
-  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>@BadreddineEK</span></div>
+  <div class="foot"><span><b>labs.badreddineek.com</b>/rentree-2026</span><span>Badreddine EL KHAMLICHI</span></div>
 </section>
 
 <!-- 8 - CTA -->
@@ -193,7 +203,7 @@
   </p>
   <div class="spacer"></div>
   <p style="font-size:30px;color:#9a948a;">Ça vous a fait réfléchir&nbsp;? Enregistrez, partagez, et dites-moi ce que vous en pensez.</p>
-  <div class="foot" style="border-color:#33302a;"><span style="color:#c7c1b4;"><b style="color:#e8e2d6;">Badreddine EL KHAMLICHI</b> · data scientist, Lyon</span><span style="color:#8a847a;">@BadreddineEK</span></div>
+  <div class="foot" style="border-color:#33302a;"><span style="color:#c7c1b4;"><b style="color:#e8e2d6;">Badreddine EL KHAMLICHI</b> · data scientist, Lyon</span><span style="color:#8a847a;">labs.badreddineek.com</span></div>
 </section>
 
 </body>
